@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Điền thông tin yêu cầu — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/warranty.css">
+</head>
+<body data-page="return-form">
+
+  <!-- ===== SITE HEADER ===== -->
+  <div id="site-header"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="warranty.html">Đổi trả/ Bảo hành</a></li>
+        <li id="breadcrumb-current">Điền thông tin yêu cầu</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="warranty-wrap">
+      
+      <h1 class="warranty-title" id="form-main-title">Điền thông tin bảo hành</h1>
+      <p class="warranty-subtitle" id="form-main-desc">Vui lòng điền đầy đủ thông tin để chúng tôi tiếp nhận và xử lý yêu cầu bảo hành của bạn</p>
+
+      <!-- Progress Steps (Step 4 is active) -->
+      <div class="warranty-steps">
+        <div class="warranty-step">
+          <div class="warranty-step__circle">1</div>
+          <span class="warranty-step__title">Tìm kiếm sản phẩm</span>
+          <span class="warranty-step__desc">Tìm kiếm sản phẩm cần bảo hành/ đổi trả</span>
+        </div>
+        <div class="warranty-step__arrow">
+          <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h22M16 1l5 5-5 5"/></svg>
+        </div>
+        <div class="warranty-step">
+          <div class="warranty-step__circle">2</div>
+          <span class="warranty-step__title">Chọn đổi trả/ bảo hành</span>
+          <span class="warranty-step__desc">Chọn sản phẩm cần đổi trả/ bảo hành</span>
+        </div>
+        <div class="warranty-step__arrow">
+          <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h22M16 1l5 5-5 5"/></svg>
+        </div>
+        <div class="warranty-step">
+          <div class="warranty-step__circle">3</div>
+          <span class="warranty-step__title">Tạo đơn yêu cầu</span>
+          <span class="warranty-step__desc">Nhận tạo đơn yêu cầu</span>
+        </div>
+        <div class="warranty-step__arrow">
+          <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h22M16 1l5 5-5 5"/></svg>
+        </div>
+        <div class="warranty-step is-active">
+          <div class="warranty-step__circle">4</div>
+          <span class="warranty-step__title">Điền form yêu cầu</span>
+          <span class="warranty-step__desc">Cung cấp thông tin, tình trạng mặt hàng</span>
+        </div>
+        <div class="warranty-step__arrow">
+          <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h22M16 1l5 5-5 5"/></svg>
+        </div>
+        <div class="warranty-step">
+          <div class="warranty-step__circle">5</div>
+          <span class="warranty-step__title">Xử lý bảo hành</span>
+          <span class="warranty-step__desc">CaraVeso xét duyệt yêu cầu bảo hành</span>
+        </div>
+      </div>
+
+      <form id="warranty-request-form" novalidate>
+        
+        <!-- STEP 1: PRODUCT INFO CARD -->
+        <h2 class="form-step-title">1. Thông tin sản phẩm</h2>
+        <div class="form-section-card">
+          <div class="form-product-card">
+            <div class="form-product-img">
+              <img id="p-img" src="" alt="">
+            </div>
+            <div class="form-product-details">
+              <div class="form-product-info-col">
+                <span>Tên sản phẩm</span>
+                <p id="p-name"></p>
+              </div>
+              <div class="form-product-info-col">
+                <span>Trạng thái</span>
+                <div class="form-product-badge-row">
+                  <span class="badge-status" id="p-badge"></span>
+                </div>
+              </div>
+              <div class="form-product-info-col">
+                <span>Phân loại</span>
+                <p id="p-specs"></p>
+              </div>
+              <div class="form-product-info-col">
+                <span>Hạn bảo hành / đổi trả</span>
+                <p id="p-deadline"></p>
+              </div>
+              <div class="form-product-info-col">
+                <span>Mã đơn hàng</span>
+                <p id="p-order-id"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: CUSTOMER INFO -->
+        <h2 class="form-step-title">2. Thông tin khách hàng</h2>
+        <div class="form-section-card">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="cust-name">Họ và Tên <span style="color: var(--color-danger)">*</span></label>
+              <input class="form-control" type="text" id="cust-name" placeholder="Nhập họ tên đầy đủ">
+              <span class="form-error" id="err-cust-name"></span>
+            </div>
+            <div class="form-group">
+              <label for="cust-phone">Số điện thoại <span style="color: var(--color-danger)">*</span></label>
+              <input class="form-control" type="text" id="cust-phone" placeholder="Nhập số điện thoại">
+              <span class="form-error" id="err-cust-phone"></span>
+            </div>
+            <div class="form-group form-group-full">
+              <label for="cust-email">Email <span style="color: var(--color-danger)">*</span></label>
+              <input class="form-control" type="email" id="cust-email" placeholder="Nhập địa chỉ email">
+              <span class="form-error" id="err-cust-email"></span>
+            </div>
+            <div class="form-group form-group-full">
+              <label for="cust-address">Địa chỉ <span style="color: var(--color-danger)">*</span></label>
+              <input class="form-control" type="text" id="cust-address" placeholder="Nhập địa chỉ (số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố)">
+              <span class="form-error" id="err-cust-address"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: REQUEST DETAILS -->
+        <h2 class="form-step-title" id="form-step-3-title">3. Nội dung yêu cầu bảo hành</h2>
+        <div class="form-section-card">
+          <div class="form-grid-2">
+            
+            <!-- Type Selector: Exchange vs Return (Hidden by default, shown in Return mode) -->
+            <div class="form-group form-group-full" id="return-type-group" style="display: none;">
+              <label>Lựa chọn <span style="color: var(--color-danger)">*</span></label>
+              <div class="return-type-selector">
+                <label class="return-type-option">
+                  <input type="radio" name="return-type" value="exchange" checked>
+                  Đổi hàng
+                </label>
+                <label class="return-type-option">
+                  <input type="radio" name="return-type" value="refund">
+                  Trả hàng
+                </label>
+              </div>
+            </div>
+
+            <!-- Reason select -->
+            <div class="form-group form-group-full">
+              <label for="req-reason">Lỗi gặp phải <span style="color: var(--color-danger)">*</span></label>
+              <select class="form-control" id="req-reason">
+                <option value="">Chọn lỗi gặp phải</option>
+                <!-- populated by JS -->
+              </select>
+              <span class="form-error" id="err-req-reason"></span>
+            </div>
+
+            <!-- Detail Description -->
+            <div class="form-group form-group-full">
+              <label for="req-desc">Mô tả chi tiết <span style="color: var(--color-danger)">*</span></label>
+              <div class="textarea-wrapper">
+                <textarea class="form-control" id="req-desc" rows="6" maxlength="500" placeholder="Vui lòng mô tả đầy đủ chi tiết lỗi bạn đang gặp phải" style="resize: vertical;"></textarea>
+                <span class="textarea-counter" id="desc-counter">0/500</span>
+              </div>
+              <span class="form-error" id="err-req-desc"></span>
+            </div>
+
+            <!-- Image/Video Evidence Uploader -->
+            <div class="form-group form-group-full">
+              <label>Hình ảnh/ video minh chứng (tối đa 5 tệp) <span style="color: var(--color-danger)">*</span></label>
+              <div class="uploader-box" id="drag-uploader">
+                <div class="uploader-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <path d="M21 15l-5-5L5 21"/>
+                  </svg>
+                </div>
+                <div class="uploader-text">
+                  Kéo thả hình ảnh hoặc video vào đây
+                  <span>Định dạng: JPG, PNG, MP4 (tối đa 20MB/tệp)</span>
+                </div>
+                <button class="btn-upload-select" type="button" id="btn-file-select">Chọn tệp</button>
+                <input type="file" id="file-input" multiple accept="image/*,video/*" style="display: none;">
+              </div>
+              <span class="form-error" id="err-files"></span>
+              
+              <!-- File Preview List -->
+              <div class="upload-preview-list" id="preview-list"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Checkbox agreement -->
+        <div class="agree-checkbox-row">
+          <input type="checkbox" id="req-agree">
+          <label for="req-agree" id="agree-label">Tôi đã đọc và đồng ý với <a href="#" target="_blank">chính sách bảo hành</a> của CaraVeso</label>
+        </div>
+        <span class="form-error" id="err-agree" style="margin-top: -16px; margin-bottom: 24px; display: block;"></span>
+
+        <!-- Submit Row -->
+        <div class="form-submit-row">
+          <button class="btn-large-navy" type="submit" id="btn-submit-form">Gửi yêu cầu bảo hành</button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- ===== SITE FOOTER ===== -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script>
+    if (typeof NAV_ITEMS !== 'undefined' && NAV_ITEMS[3]) {
+      NAV_ITEMS[3].href = 'warranty.html';
+    }
+  </script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const reqType = urlParams.get('type') || 'warranty'; // 'warranty' or 'return'
+      const productId = urlParams.get('id') || '1';
+      const orderId = urlParams.get('order') || 'HHT080906';
+
+      // 1. Dynamic setup titles and texts depending on mode
+      const formMainTitle = document.getElementById('form-main-title');
+      const formMainDesc = document.getElementById('form-main-desc');
+      const breadcrumbCurrent = document.getElementById('breadcrumb-current');
+      const formStep3Title = document.getElementById('form-step-3-title');
+      const returnTypeGroup = document.getElementById('return-type-group');
+      const agreeLabel = document.getElementById('agree-label');
+      const btnSubmitForm = document.getElementById('btn-submit-form');
+      const reqReason = document.getElementById('req-reason');
+
+      const isWarranty = reqType === 'warranty';
+
+      if (isWarranty) {
+        formMainTitle.textContent = 'Điền thông tin bảo hành';
+        formMainDesc.textContent = 'Vui lòng điền đầy đủ thông tin để chúng tôi tiếp nhận và xử lý yêu cầu bảo hành của bạn';
+        breadcrumbCurrent.textContent = 'Điền thông tin bảo hành';
+        formStep3Title.textContent = '3. Nội dung yêu cầu bảo hành';
+        returnTypeGroup.style.display = 'none';
+        agreeLabel.innerHTML = 'Tôi đã đọc và đồng ý với <a href="#" target="_blank">chính sách bảo hành</a> của CaraVeso';
+        btnSubmitForm.textContent = 'Gửi yêu cầu bảo hành';
+
+        // Dropdown reasons for warranty
+        const warrantyReasons = [
+          'Sản phẩm không hoạt động đúng thiết kế',
+          'Sản phẩm bị xẹp lún/cong vênh',
+          'Lỗi bung chỉ/rách da/rách vải',
+          'Lỗi hư hại phụ kiện kèm theo',
+          'Khác (vui lòng mô tả chi tiết)'
+        ];
+        warrantyReasons.forEach(r => {
+          const opt = document.createElement('option');
+          opt.value = r;
+          opt.textContent = r;
+          reqReason.appendChild(opt);
+        });
+      } else {
+        formMainTitle.textContent = 'Điền thông tin đổi trả';
+        formMainDesc.textContent = 'Vui lòng điền đầy đủ thông tin để chúng tôi tiếp nhận và xử lý yêu cầu đổi trả của bạn';
+        breadcrumbCurrent.textContent = 'Điền thông tin đổi trả';
+        formStep3Title.textContent = '3. Nội dung yêu cầu đổi trả';
+        returnTypeGroup.style.display = 'block';
+        agreeLabel.innerHTML = 'Tôi đã đọc và đồng ý với <a href="#" target="_blank">chính sách đổi trả</a> của CaraVeso';
+        btnSubmitForm.textContent = 'Gửi yêu cầu đổi/ trả';
+
+        // Dropdown reasons for return
+        const returnReasons = [
+          'Sản phẩm bị lỗi kỹ thuật nặng',
+          'Sản phẩm bị trầy xước/bể vỡ khi nhận hàng',
+          'Không đúng kích thước/màu sắc đặt mua',
+          'Không vừa ý với chất lượng thực tế',
+          'Khác (vui lòng mô tả chi tiết)'
+        ];
+        returnReasons.forEach(r => {
+          const opt = document.createElement('option');
+          opt.value = r;
+          opt.textContent = r;
+          reqReason.appendChild(opt);
+        });
+      }
+
+      // Helper to check if a date is in the past (using simulated current date: 11/07/2026)
+      function isExpiredDate(dateStr) {
+        const parts = dateStr.split('/');
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        const deadlineDate = new Date(year, month, day);
+        const currentDate = new Date(2026, 6, 11); // 11 July 2026
+        return currentDate > deadlineDate;
+      }
+
+      // 2. Load Selected Product Information
+      const productsMock = [
+        {
+          id: 1,
+          name: 'Nệm Kymdan Long Thành',
+          img: 'https://picsum.photos/seed/caraveso-nem1/500/500',
+          specs: '1m8 x 2m, Cao su tự nhiên',
+          warrantyDeadline: '30/12/2026',
+          returnDeadline: '30/06/2026'
+        },
+        {
+          id: 2,
+          name: 'Ghế Sofa Milano Shape U',
+          img: 'https://picsum.photos/seed/caraveso-sofa1/500/500',
+          specs: 'Ghế 2 chỗ, Trắng kem, Vải boucle',
+          warrantyDeadline: '30/12/2026',
+          returnDeadline: '30/06/2026'
+        },
+        {
+          id: 3,
+          name: 'Ghế Sofa CaraVeso Vintage',
+          img: 'https://picsum.photos/seed/caraveso-sofa2/500/500',
+          specs: 'Bọc da, Đen than, Da thật',
+          warrantyDeadline: '30/12/2025', // Expired warranty for demo
+          returnDeadline: '10/07/2026'  // Expired return for demo
+        },
+        {
+          id: 4,
+          name: 'Bàn Trà Đá Marble Tròn',
+          img: 'https://picsum.photos/seed/caraveso-ban1/500/500',
+          specs: 'D80cm, Trắng đá, Đá Marble',
+          warrantyDeadline: '08/09/2027',
+          returnDeadline: '08/09/2026'  // Still valid return & warranty
+        }
+      ];
+
+      const activeProduct = productsMock.find(p => p.id == productId) || productsMock[0];
+      
+      document.getElementById('p-img').src = activeProduct.img;
+      document.getElementById('p-img').alt = activeProduct.name;
+      document.getElementById('p-name').textContent = activeProduct.name;
+      document.getElementById('p-specs').textContent = activeProduct.specs;
+      document.getElementById('p-order-id').textContent = '#' + orderId;
+
+      const pBadge = document.getElementById('p-badge');
+      const pDeadline = document.getElementById('p-deadline');
+      
+      const isExpired = isExpiredDate(isWarranty ? activeProduct.warrantyDeadline : activeProduct.returnDeadline);
+
+      if (isWarranty) {
+        if (isExpired) {
+          pBadge.className = 'badge-status badge-status--red';
+          pBadge.textContent = 'Hết hạn bảo hành';
+        } else {
+          pBadge.className = 'badge-status badge-status--green';
+          pBadge.textContent = 'Còn bảo hành';
+        }
+        pDeadline.textContent = activeProduct.warrantyDeadline;
+      } else {
+        if (isExpired) {
+          pBadge.className = 'badge-status badge-status--red';
+          pBadge.textContent = 'Hết hạn đổi trả';
+        } else {
+          pBadge.className = 'badge-status badge-status--green';
+          pBadge.textContent = 'Còn hạn đổi trả';
+        }
+        pDeadline.textContent = activeProduct.returnDeadline;
+      }
+
+      // 2.5. Disable form submission if expired and show warning banner
+      if (isExpired) {
+        btnSubmitForm.disabled = true;
+        
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'form-group-full';
+        alertDiv.style.background = '#fcebeb';
+        alertDiv.style.border = '1px solid var(--color-danger)';
+        alertDiv.style.color = 'var(--color-danger)';
+        alertDiv.style.padding = '14px 20px';
+        alertDiv.style.borderRadius = '8px';
+        alertDiv.style.marginBottom = '20px';
+        alertDiv.style.fontSize = '15px';
+        alertDiv.style.fontWeight = '600';
+        alertDiv.style.textAlign = 'center';
+        alertDiv.textContent = isWarranty 
+          ? '⚠️ Sản phẩm đã hết hạn bảo hành. Bạn không thể gửi yêu cầu bảo hành cho mặt hàng này.'
+          : '⚠️ Sản phẩm đã hết hạn đổi trả. Bạn không thể gửi yêu cầu đổi trả cho mặt hàng này.';
+        
+        const formSubmitRow = document.querySelector('.form-submit-row');
+        formSubmitRow.parentNode.insertBefore(alertDiv, formSubmitRow);
+      }
+
+      // 3. Prefill Customer Details (using global ACCOUNT_USER)
+      if (typeof ACCOUNT_USER !== 'undefined') {
+        document.getElementById('cust-name').value = ACCOUNT_USER.name || '';
+        document.getElementById('cust-phone').value = ACCOUNT_USER.phone || '';
+        document.getElementById('cust-email').value = ACCOUNT_USER.email || '';
+        document.getElementById('cust-address').value = ACCOUNT_USER.address || '';
+      }
+
+      // 4. Textarea Character Count
+      const reqDesc = document.getElementById('req-desc');
+      const descCounter = document.getElementById('desc-counter');
+      reqDesc.addEventListener('input', function () {
+        descCounter.textContent = `${this.value.length}/500`;
+      });
+
+      // 5. File selection & drag-and-drop simulation
+      const dragUploader = document.getElementById('drag-uploader');
+      const fileInput = document.getElementById('file-input');
+      const btnFileSelect = document.getElementById('btn-file-select');
+      const previewList = document.getElementById('preview-list');
+
+      let uploadedFiles = []; // Track selected file list
+
+      btnFileSelect.addEventListener('click', () => fileInput.click());
+      
+      // Simulate file drop
+      dragUploader.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dragUploader.classList.add('is-dragover');
+      });
+
+      dragUploader.addEventListener('dragleave', () => {
+        dragUploader.classList.remove('is-dragover');
+      });
+
+      dragUploader.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dragUploader.classList.remove('is-dragover');
+        handleFiles(e.dataTransfer.files);
+      });
+
+      fileInput.addEventListener('change', () => {
+        handleFiles(fileInput.files);
+      });
+
+      function handleFiles(files) {
+        if (uploadedFiles.length + files.length > 5) {
+          alert('Chỉ được chọn tối đa 5 hình ảnh hoặc video minh chứng.');
+          return;
+        }
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          uploadedFiles.push(file);
+
+          const item = document.createElement('div');
+          item.className = 'upload-preview-item';
+          
+          // Generate simulated preview
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            if (file.type.startsWith('image/')) {
+              item.innerHTML = `<img src="${e.target.result}" alt="preview"><span class="upload-preview-remove">&times;</span>`;
+            } else {
+              // Video preview placeholder
+              item.innerHTML = `<div style="background:#555; width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:white; font-size:24px;">🎬</div><span class="upload-preview-remove">&times;</span>`;
+            }
+
+            // Remove action
+            item.querySelector('.upload-preview-remove').addEventListener('click', function () {
+              const idx = uploadedFiles.indexOf(file);
+              if (idx > -1) uploadedFiles.splice(idx, 1);
+              item.remove();
+              // Clear validation error if any
+              document.getElementById('err-files').textContent = '';
+            });
+          }
+          reader.readAsDataURL(file);
+          previewList.appendChild(item);
+        }
+        document.getElementById('err-files').textContent = '';
+      }
+
+      // 6. Form Submission and Validation
+      const form = document.getElementById('warranty-request-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Reset errors
+        const errorElements = form.querySelectorAll('.form-error');
+        errorElements.forEach(el => el.textContent = '');
+        const invalidControls = form.querySelectorAll('.form-control');
+        invalidControls.forEach(el => el.classList.remove('is-invalid'));
+
+        let isValid = true;
+
+        // Validate Name
+        const name = document.getElementById('cust-name');
+        if (name.value.trim().length < 2) {
+          name.classList.add('is-invalid');
+          document.getElementById('err-cust-name').textContent = 'Vui lòng nhập họ và tên (tối thiểu 2 ký tự).';
+          isValid = false;
+        }
+
+        // Validate Phone
+        const phone = document.getElementById('cust-phone');
+        if (!/^(0|\+84)\d{9,10}$/.test(phone.value.trim().replace(/\s/g, ''))) {
+          phone.classList.add('is-invalid');
+          document.getElementById('err-cust-phone').textContent = 'Số điện thoại không hợp lệ.';
+          isValid = false;
+        }
+
+        // Validate Email
+        const email = document.getElementById('cust-email');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+          email.classList.add('is-invalid');
+          document.getElementById('err-cust-email').textContent = 'Địa chỉ email không hợp lệ.';
+          isValid = false;
+        }
+
+        // Validate Address
+        const address = document.getElementById('cust-address');
+        if (address.value.trim().length < 10) {
+          address.classList.add('is-invalid');
+          document.getElementById('err-cust-address').textContent = 'Vui lòng nhập địa chỉ đầy đủ (tối thiểu 10 ký tự).';
+          isValid = false;
+        }
+
+        // Validate Reason Dropdown
+        const reason = document.getElementById('req-reason');
+        if (!reason.value) {
+          reason.classList.add('is-invalid');
+          document.getElementById('err-req-reason').textContent = 'Vui lòng chọn lỗi gặp phải.';
+          isValid = false;
+        }
+
+        // Validate Description
+        const desc = document.getElementById('req-desc');
+        if (desc.value.trim().length < 10) {
+          desc.classList.add('is-invalid');
+          document.getElementById('err-req-desc').textContent = 'Vui lòng mô tả chi tiết lỗi (tối thiểu 10 ký tự).';
+          isValid = false;
+        }
+
+        // Validate Files upload (simulated: requires at least one item)
+        if (uploadedFiles.length === 0) {
+          document.getElementById('err-files').textContent = 'Vui lòng tải lên ít nhất 1 hình ảnh hoặc video làm minh chứng.';
+          isValid = false;
+        }
+
+        // Validate Checkbox
+        const agree = document.getElementById('req-agree');
+        if (!agree.checked) {
+          document.getElementById('err-agree').textContent = 'Bạn cần đồng ý với các chính sách đổi trả/bảo hành để tiếp tục.';
+          isValid = false;
+        }
+
+        // Redirect if successful
+        if (isValid) {
+          window.location.href = `warranty.html?success=true&order=${orderId}&type=${reqType}`;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
