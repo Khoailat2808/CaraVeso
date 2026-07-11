@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="cart">
+
+  <div id="site-header"></div>
+
+  <main class="container">
+    <div class="cart-layout">
+      <!-- ===== CỘT TRÁI: DANH SÁCH MẶT HÀNG ===== -->
+      <section>
+        <h1 class="page-title">Giỏ hàng</h1>
+        <p class="cart-items__count" id="cart-count">Mặt hàng (0)</p>
+        <div id="cart-items"></div>
+      </section>
+
+      <!-- ===== CỘT PHẢI: THÔNG TIN ĐƠN HÀNG ===== -->
+      <aside class="order-panel">
+        <h2 class="order-panel__heading">Thông tin đơn hàng</h2>
+        <div class="order-card">
+          <h3 class="order-card__title">Tổng sản phẩm (<span id="sum-count">0</span>)</h3>
+
+          <div class="order-row">
+            <span id="sum-subtotal-label">Tạm tính (0 mặt hàng)</span>
+            <strong id="sum-subtotal">0 VNĐ</strong>
+          </div>
+          <div class="order-row">
+            <span>Phí vận chuyển</span>
+            <strong id="sum-shipping">Miễn phí giao hàng</strong>
+          </div>
+          <div class="order-row">
+            <span>Tổng giảm giá</span>
+            <strong id="sum-discount">0 VNĐ</strong>
+          </div>
+
+          <!-- Mã giảm giá (thử: CARAVESO100, SALE10) -->
+          <div class="voucher-row">
+            <input type="text" id="voucher-input" placeholder="Nhập mã giảm giá" aria-label="Mã giảm giá">
+            <button id="voucher-apply" type="button">Áp dụng</button>
+          </div>
+          <p class="voucher-msg" id="voucher-msg"></p>
+
+          <div class="order-total">
+            <div class="order-row">
+              <strong>Tổng tiền</strong>
+              <strong id="sum-total">0 VNĐ</strong>
+            </div>
+            <p class="order-total__note">(Đã bao gồm VAT)</p>
+          </div>
+
+          <button class="btn-checkout" id="btn-checkout">THANH TOÁN</button>
+          <a class="continue-link" href="products.html">Tiếp tục mua sắm</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khuyến mãi — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="promo">
+
+  <div id="site-header"></div>
+
+  <main>
+    <!-- ===== HERO KHUYẾN MÃI + ĐỒNG HỒ ĐẾM NGƯỢC ===== -->
+    <section class="promo-hero">
+      <h1>Khuyến mãi hôm nay</h1>
+      <p>Ưu đãi lên đến 30% cho các sản phẩm nội thất cao cấp — nhanh tay kẻo lỡ!</p>
+      <div class="countdown" role="timer" aria-label="Thời gian khuyến mãi còn lại">
+        <div class="countdown__cell">
+          <div class="countdown__num" id="cd-days">00</div>
+          <div class="countdown__label">NGÀY</div>
+        </div>
+        <div class="countdown__cell">
+          <div class="countdown__num" id="cd-hours">00</div>
+          <div class="countdown__label">GIỜ</div>
+        </div>
+        <div class="countdown__cell">
+          <div class="countdown__num" id="cd-mins">00</div>
+          <div class="countdown__label">PHÚT</div>
+        </div>
+        <div class="countdown__cell">
+          <div class="countdown__num" id="cd-secs">00</div>
+          <div class="countdown__label">GIÂY</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LƯỚI SẢN PHẨM ĐANG GIẢM GIÁ ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Sản phẩm đang giảm giá</h2>
+          <a class="section__more" href="products.html">Xem tất cả</a>
+        </div>
+        <div class="product-grid" id="promo-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

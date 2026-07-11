@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="register">
+
+  <!-- ===== HEADER ĐẦY ĐỦ ===== -->
+  <div id="site-header"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li>Đăng ký</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="auth-wrap">
+    <!-- ===== CARD ĐĂNG KÝ ===== -->
+    <div class="auth-card">
+      <h1 class="auth-title">Đăng ký tài khoản</h1>
+
+      <form id="register-form" novalidate>
+        <div class="form-group">
+          <label for="rg-email">Địa chỉ Email <span class="req">*</span></label>
+          <input class="form-control" type="text" id="rg-email" placeholder="Nhập địa chỉ email hoặc Số điện thoại">
+          <span class="form-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="rg-name">Họ và tên <span class="req">*</span></label>
+          <input class="form-control" type="text" id="rg-name" placeholder="Nhập đầy đủ họ và tên">
+          <span class="form-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="rg-password">Mật khẩu <span class="req">*</span></label>
+          <div class="password-field">
+            <input class="form-control" type="password" id="rg-password" placeholder="Nhập mật khẩu">
+            <button class="toggle-password" type="button" aria-label="Hiện/ẩn mật khẩu"></button>
+            <span class="form-error"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="agree-row">
+            <input type="checkbox" id="rg-agree">
+            <span>Tôi trên 16 tuổi và đồng ý với <a href="#">Điều khoản và điều kiện</a></span>
+          </label>
+          <span class="form-error" id="rg-agree-error"></span>
+        </div>
+
+        <p class="legal-text">
+          Bằng việc tiếp tục đăng ký, tôi xác nhận rằng tôi đã đọc và
+          đồng ý với Điều khoản sử dụng và Chính sách bảo mật của
+          CaraVeso, trong đó quy định cách CaraVeso thu thập, sử
+          dụng và tiết lộ dữ liệu cá nhân của tôi cũng như các quyền
+          mà tôi có theo luật hiện hành.
+        </p>
+
+        <button class="btn-submit" type="submit">Tạo tài khoản mới</button>
+      </form>
+
+      <hr class="auth-divider">
+
+      <!-- Khối quay lại đăng nhập -->
+      <h2 class="auth-subtitle">Đã có tài khoản?</h2>
+      <a class="btn-outline-navy" href="login.html">Đăng nhập ngay</a>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ĐẦY ĐỦ ===== -->
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

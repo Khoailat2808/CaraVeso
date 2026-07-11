@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+
+  <!-- ===== HEADER ĐẦY ĐỦ (theo Figma: có nav + search) ===== -->
+  <div id="site-header"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li>Đăng nhập</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="auth-wrap">
+    <!-- ===== CARD ĐĂNG NHẬP ===== -->
+    <div class="auth-card">
+      <h1 class="auth-title">Thành viên đăng nhập</h1>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="lg-email">Địa chỉ Email <span class="req">*</span></label>
+          <input class="form-control" type="email" id="lg-email" placeholder="Nhập địa chỉ email">
+          <span class="form-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="lg-password">Mật khẩu <span class="req">*</span></label>
+          <div class="password-field">
+            <input class="form-control" type="password" id="lg-password" placeholder="Nhập mật khẩu">
+            <button class="toggle-password" type="button" aria-label="Hiện/ẩn mật khẩu"></button>
+            <span class="form-error"></span>
+          </div>
+        </div>
+
+        <button class="btn-submit" type="submit">Đăng nhập</button>
+      </form>
+
+      <a class="auth-forgot" href="#">Quên mật khẩu?</a>
+
+      <hr class="auth-divider">
+
+      <!-- Khối mời đăng ký thành viên mới -->
+      <h2 class="auth-subtitle">Thành viên mới tại CaraVeso?</h2>
+      <p class="auth-muted">
+        Hãy gia nhập cùng chúng tôi để không bỏ lỡ thông
+        báo về ưu đãi mới và mã giảm giá hấp dẫn.
+      </p>
+      <a class="btn-outline-navy" href="register.html">Đăng ký thành viên mới</a>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ĐẦY ĐỦ ===== -->
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
