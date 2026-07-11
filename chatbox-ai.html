@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tìm kiếm bằng ChatBox AI - CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="chatbox-ai">
+  <div id="site-header"></div>
+
+  <nav class="breadcrumb chat-ai-breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li>Tìm kiếm bằng ChatBox Ai</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="chat-ai-page">
+    <aside class="chat-ai-sidebar" aria-label="ChatBox AI">
+      <div class="chat-ai-sidebar__head">
+        <h1>Tìm kiếm bằng ChatBox Ai</h1>
+        <button class="chat-refresh" type="button" id="chat-refresh" aria-label="Làm mới cuộc trò chuyện">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-2.6-6.4"/><path d="M21 3v6h-6"/></svg>
+          Refresh
+        </button>
+      </div>
+
+      <div class="chat-thread" id="chat-thread" aria-live="polite">
+        <div class="chat-row chat-row--ai">
+          <span class="chat-sparkle">✦</span>
+          <div class="chat-bubble chat-bubble--ai">
+            Xin chào! Mình là CaraVeso AI ✨<br>
+            Bạn mô tả sản phẩm cần tìm mình sẽ gợi ý những lựa chọn phù hợp nhé
+          </div>
+        </div>
+
+        <div class="chat-row chat-row--user">
+          <div class="chat-bubble chat-bubble--user">
+            Tôi đang tìm bàn ăn 4 ghế, hiện đại,<br>
+            màu gỗ sáng, cho căn hộ nhỏ
+            <time>13:00</time>
+          </div>
+        </div>
+
+        <div class="chat-row chat-row--ai">
+          <span class="chat-sparkle">✦</span>
+          <div class="chat-bubble chat-bubble--ai chat-bubble--wide">
+            Đây là một số lựa chọn mình tìm thấy. Bạn có thể chỉnh thêm để kết quả chính xác hơn nhé.
+            <time>13:00</time>
+            <div class="chat-summary">
+              <strong>Bạn đang tìm:</strong>
+              <p><span>▣</span><b>Sản phẩm:</b> Bàn ăn + ghế ăn</p>
+              <p><span>▣</span><b>Số lượng:</b> 4 ghế</p>
+              <p><span>◆</span><b>Phong cách:</b> Hiện đại</p>
+              <p><span>◆</span><b>Màu sắc:</b> Gỗ sáng</p>
+              <p><span>▣</span><b>Phù hợp:</b> Căn hộ nhỏ</p>
+              <button type="button">Chỉnh sửa</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="chat-compose" id="chat-compose">
+        <label class="visually-hidden" for="chat-message">Nhập mô tả sản phẩm</label>
+        <textarea id="chat-message" rows="3" placeholder="Nhập mô tả đơn giản về sản phẩm,..."></textarea>
+        <button type="submit" aria-label="Gửi tin nhắn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20V4l19 8-19 8zm3-4.5L15.7 12 6 8.5v3l7 0.5-7 0.5v3z"/></svg>
+        </button>
+      </form>
+    </aside>
+
+    <section class="chat-results" aria-label="Kết quả tìm kiếm bằng ChatBox AI">
+      <h2>Kết quả cho “Sofa cho màu trắng, phòng 30m2,...</h2>
+
+      <div class="chat-filter-panel">
+        <div class="chat-filter-row">
+          <label>Danh mục:
+            <select id="chat-category">
+              <option value="table">Bàn ăn</option>
+              <option value="sofa">Sofa</option>
+              <option value="chair">Ghế ăn</option>
+            </select>
+          </label>
+          <label>Số ghế:
+            <select id="chat-seats">
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="8">8</option>
+            </select>
+          </label>
+          <label>Phong cách:
+            <select id="chat-style">
+              <option value="modern">Hiện đại</option>
+              <option value="nordic">Bắc Âu</option>
+              <option value="minimal">Tối giản</option>
+            </select>
+          </label>
+          <button class="chat-filter-more" type="button" id="chat-filter-more">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h10"/><path d="M18 7h2"/><circle cx="16" cy="7" r="2"/><path d="M4 17h2"/><path d="M10 17h10"/><circle cx="8" cy="17" r="2"/></svg>
+            Bộ lọc khác
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="chat-active-filters" id="chat-active-filters">
+          <button type="button" data-remove-filter="budget">Dưới 20 triệu <span>×</span></button>
+        </div>
+      </div>
+
+      <div class="chat-product-grid" id="chat-product-grid"></div>
+      <div class="chat-load-more">
+        <button type="button" id="chat-load-more">Xem thêm</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

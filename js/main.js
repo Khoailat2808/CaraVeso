@@ -164,12 +164,8 @@ function renderHeader() {
   right.appendChild(buildSearchBox('header__search-desktop'));
 
   const chatbox = el('a', 'chatbox-link');
-  chatbox.href = '#';
+  chatbox.href = 'chatbox-ai.html';
   chatbox.innerHTML = ICONS.sparkle + '<span>ChatBox</span>';
-  chatbox.addEventListener('click', function (e) {
-    e.preventDefault();
-    showToast('ChatBox AI đang phát triển — hẹn gặp bạn sớm!');
-  });
   right.appendChild(chatbox);
 
   const account = el('a', 'header__icon');
@@ -1461,7 +1457,349 @@ function initPromoPage() {
   setInterval(tick, 1000);
 }
 
-/* ============ 15. QUẢN LÝ TÀI KHOẢN ============ */
+/* ============ 15. TÌM KIẾM BẰNG CHATBOX AI ============ */
+
+const CHAT_PRODUCTS = [
+  ['Bàn ăn Minimal Oak', 'Gỗ sồi tự nhiên,<br>120 × 75 × 75 cm', 4890000, 'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Honey Oak', 'Gỗ sồi vàng cao cấp,<br>120 × 70 × 75 cm', 5290000, 'https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Nordic Light', 'Phong cách Bắc Âu,<br>120 × 80 × 75 cm', 5790000, 'https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Urban 4S', 'Thiết kế hiện đại,<br>130 × 80 × 75 cm', 6190000, 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Japandi Home', 'Tối giản tinh tế,<br>120 × 75 × 75 cm', 6490000, 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Compact Plus', 'Tiết kiệm diện tích,<br>110 × 70 × 75 cm', 6890000, 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn White Harmony', 'Sang trọng,<br>120 × 75 × 75 cm', 7290000, 'https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Walnut Classic', 'Gỗ óc chó hiện đại,<br>140 × 80 × 75 cm', 7890000, 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Nordic Prime', 'Gỗ sồi Mỹ bền đẹp,<br>140 × 80 × 75 cm', 8490000, 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Cozy Living', 'Phù hợp căn hộ nhỏ,<br>120 × 75 × 75 cm', 8990000, 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Milano Wood', 'Mặt chống trầy xước,<br>140 × 80 × 75 cm', 9490000, 'https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Osaka Modern', 'Gỗ tần bì tự nhiên,<br>140 × 80 × 75 cm', 9990000, 'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Stockholm', 'Scandinavian cao cấp,<br>150 × 80 × 75 cm', 10490000, 'https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Elegant Oak', 'Gỗ sồi nguyên khối,<br>150 × 80 × 75 cm', 11290000, 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Verona', 'Chân thép phối gỗ,<br>140 × 80 × 75 cm', 11990000, 'https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Copenhagen', 'Gỗ cao su tự nhiên,<br>150 × 85 × 75 cm', 12790000, 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Signature Walnut', 'Gỗ óc chó cao cấp,<br>160 × 85 × 75 cm', 14100000, 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Premium Nordic', 'Gỗ sồi nhập khẩu,<br>160 × 90 × 75 cm', 15490000, 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Luxury Wood', 'Mặt gỗ dày 30mm,<br>180 × 90 × 75 cm', 17490000, 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=420&q=80'],
+  ['Bàn ăn Royal Walnut', 'Gỗ óc chó nguyên khối,<br>180 × 90 × 75 cm', 19890000, 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=420&q=80']
+].map(function (item, index) {
+  return { id: index + 101, name: item[0], desc: item[1], price: item[2], img: item[3] };
+});
+
+function initChatboxAiPage() {
+  const grid = document.getElementById('chat-product-grid');
+  if (!grid) return;
+
+  let visibleCount = 20;
+  let budgetFilter = true;
+  const loadMoreBtn = document.getElementById('chat-load-more');
+  const filtersWrap = document.getElementById('chat-active-filters');
+  const thread = document.getElementById('chat-thread');
+  const compose = document.getElementById('chat-compose');
+  const messageInput = document.getElementById('chat-message');
+  const chatState = {
+    category: 'table',
+    seats: '4',
+    style: 'modern',
+    budget: 'Dưới 20 triệu',
+    tone: 'gỗ sáng',
+    room: 'căn hộ nhỏ'
+  };
+
+  function escapeHtml(text) {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function chatTime() {
+    return new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function appendUserMessage(text) {
+    const row = el('div', 'chat-row chat-row--user');
+    row.innerHTML = '<div class="chat-bubble chat-bubble--user">' + escapeHtml(text) + '<time>' + chatTime() + '</time></div>';
+    thread.appendChild(row);
+  }
+
+  function appendAiMessage(html) {
+    const row = el('div', 'chat-row chat-row--ai');
+    row.innerHTML =
+      '<span class="chat-sparkle">✦</span>' +
+      '<div class="chat-bubble chat-bubble--ai chat-bubble--wide">' +
+        html +
+        '<time>' + chatTime() + '</time>' +
+      '</div>';
+    thread.appendChild(row);
+    thread.scrollTop = thread.scrollHeight;
+  }
+
+  function syncControlsFromState() {
+    document.getElementById('chat-category').value = chatState.category;
+    document.getElementById('chat-seats').value = chatState.seats;
+    document.getElementById('chat-style').value = chatState.style;
+  }
+
+  function inferChatContext(text) {
+    const lower = text.toLowerCase();
+    const changed = [];
+
+    if (lower.indexOf('sofa') >= 0 || lower.indexOf('ghế sofa') >= 0) {
+      chatState.category = 'sofa';
+      changed.push('danh mục Sofa');
+    } else if (lower.indexOf('ghế') >= 0 && lower.indexOf('bàn') < 0) {
+      chatState.category = 'chair';
+      changed.push('danh mục Ghế ăn');
+    } else if (lower.indexOf('bàn') >= 0 || lower.indexOf('ăn') >= 0) {
+      chatState.category = 'table';
+      changed.push('danh mục Bàn ăn');
+    }
+
+    if (lower.indexOf('8 ghế') >= 0 || lower.indexOf('8 người') >= 0 || lower.indexOf('8 cho') >= 0) {
+      chatState.seats = '8';
+      changed.push('8 ghế');
+    } else if (lower.indexOf('6 ghế') >= 0 || lower.indexOf('6 người') >= 0 || lower.indexOf('6 cho') >= 0) {
+      chatState.seats = '6';
+      changed.push('6 ghế');
+    } else if (lower.indexOf('4 ghế') >= 0 || lower.indexOf('4 người') >= 0 || lower.indexOf('4 cho') >= 0) {
+      chatState.seats = '4';
+      changed.push('4 ghế');
+    }
+
+    if (lower.indexOf('bắc âu') >= 0 || lower.indexOf('nordic') >= 0 || lower.indexOf('scandinavian') >= 0) {
+      chatState.style = 'nordic';
+      changed.push('phong cách Bắc Âu');
+    } else if (lower.indexOf('tối giản') >= 0 || lower.indexOf('minimal') >= 0 || lower.indexOf('minimalist') >= 0) {
+      chatState.style = 'minimal';
+      changed.push('phong cách Tối giản');
+    } else if (lower.indexOf('hiện đại') >= 0 || lower.indexOf('modern') >= 0) {
+      chatState.style = 'modern';
+      changed.push('phong cách Hiện đại');
+    }
+
+    if (lower.indexOf('gỗ sáng') >= 0 || lower.indexOf('sồi') >= 0 || lower.indexOf('oak') >= 0) chatState.tone = 'gỗ sáng';
+    if (lower.indexOf('óc chó') >= 0 || lower.indexOf('walnut') >= 0 || lower.indexOf('nâu') >= 0) chatState.tone = 'gỗ nâu ấm';
+    if (lower.indexOf('trắng') >= 0 || lower.indexOf('kem') >= 0) chatState.tone = 'trắng kem';
+    if (lower.indexOf('căn hộ') >= 0 || lower.indexOf('nhỏ') >= 0 || lower.indexOf('chung cư') >= 0) chatState.room = 'căn hộ nhỏ';
+    if (lower.indexOf('rộng') >= 0 || lower.indexOf('phòng lớn') >= 0) chatState.room = 'không gian rộng';
+
+    const budgetMatch = lower.match(/(\d+)\s*(tr|triệu|trieu)/);
+    if (budgetMatch) {
+      chatState.budget = 'Dưới ' + budgetMatch[1] + ' triệu';
+      budgetFilter = Number(budgetMatch[1]) <= 20;
+      changed.push(chatState.budget.toLowerCase());
+    } else if (lower.indexOf('rẻ') >= 0 || lower.indexOf('tiết kiệm') >= 0 || lower.indexOf('dưới 20') >= 0) {
+      chatState.budget = 'Dưới 20 triệu';
+      budgetFilter = true;
+      changed.push('ngân sách tiết kiệm');
+    }
+
+    syncControlsFromState();
+    return changed;
+  }
+
+  function buildRecommendationSummary(prefix) {
+    return prefix +
+      '<div class="chat-summary">' +
+        '<strong>Mình đang lọc theo:</strong>' +
+        '<p><span>▣</span><b>Danh mục:</b> ' + document.getElementById('chat-category').selectedOptions[0].textContent + '</p>' +
+        '<p><span>▣</span><b>Số ghế:</b> ' + chatState.seats + ' ghế</p>' +
+        '<p><span>◆</span><b>Phong cách:</b> ' + document.getElementById('chat-style').selectedOptions[0].textContent + '</p>' +
+        '<p><span>◆</span><b>Màu sắc:</b> ' + chatState.tone + '</p>' +
+        '<p><span>▣</span><b>Không gian:</b> ' + chatState.room + '</p>' +
+        '<button type="button">Đã cập nhật</button>' +
+      '</div>';
+  }
+
+  function createAiReply(text, changed) {
+    const lower = text.toLowerCase();
+    if (/^(hi|hello|chào|xin chào|alo)\b/.test(lower)) {
+      return 'Chào bạn, mình đây. Bạn cứ nói kiểu tự nhiên như “mình cần bàn ăn 4 ghế dưới 10 triệu cho căn hộ nhỏ”, mình sẽ lọc và gợi ý ngay.';
+    }
+    if (lower.indexOf('cảm ơn') >= 0 || lower.indexOf('thanks') >= 0) {
+      return 'Không có gì nha. Mình vẫn giữ các gợi ý hiện tại ở bên phải, bạn muốn đổi ngân sách, màu hay số ghế thì nói mình chỉnh tiếp.';
+    }
+    if (lower.indexOf('bảo hành') >= 0) {
+      return 'Với nhóm bàn ăn, CaraVeso thường hỗ trợ bảo hành kết cấu gỗ 24 tháng và đổi trả trong 30 ngày nếu lỗi do nhà sản xuất. Mình có thể ưu tiên mẫu dễ bảo trì nếu bạn muốn.';
+    }
+    if (lower.indexOf('giao') >= 0 || lower.indexOf('ship') >= 0) {
+      return 'Thời gian giao thường khoảng 1-3 ngày nội thành và lâu hơn tùy khu vực. Với bàn ăn 4 ghế, mình khuyên chọn mẫu tháo lắp gọn để vận chuyển lên chung cư dễ hơn.';
+    }
+    if (lower.indexOf('mua') >= 0 || lower.indexOf('chọn') >= 0 || lower.indexOf('nên lấy') >= 0) {
+      return 'Nếu ưu tiên gọn, sáng và dễ phối nội thất, mình nghiêng về Bộ bàn ăn Minimal Oak. Giá mềm, kiểu dáng an toàn, hợp căn hộ nhỏ. Bạn có thể bấm vào sản phẩm đầu tiên để xem chi tiết.';
+    }
+    if (changed.length) {
+      return buildRecommendationSummary('Mình hiểu rồi. Mình đã cập nhật ' + changed.join(', ') + ' và sắp xếp lại gợi ý cho hợp nhu cầu hơn nhé.');
+    }
+    return 'Mình nghe được rồi. Bạn có thể nói rõ hơn một chút về loại sản phẩm, ngân sách, màu sắc hoặc kích thước phòng không? Ví dụ: “bàn ăn 6 ghế gỗ sáng dưới 15 triệu”.';
+  }
+
+  function productCard(product) {
+    const article = el('article', 'chat-product-card');
+    article.innerHTML =
+      '<a class="chat-product-card__img" href="chatbox-product-detail.html">' +
+        '<img src="' + product.img + '" alt="' + product.name + '" loading="lazy">' +
+      '</a>' +
+      '<h3><a href="chatbox-product-detail.html">' + product.name + '</a></h3>' +
+      '<p>' + product.desc + '</p>' +
+      '<strong>' + fmtVND(product.price) + '</strong>' +
+      '<div class="chat-product-card__actions">' +
+        '<button class="btn-add-cart" type="button" data-chat-cart="' + product.id + '">THÊM VÀO GIỎ</button>' +
+        '<button class="btn-fav" type="button" aria-label="Yêu thích">' + ICONS.heart + '</button>' +
+      '</div>';
+    return article;
+  }
+
+  function filteredProducts() {
+    return CHAT_PRODUCTS.filter(function (product) {
+      return !budgetFilter || product.price < 20000000;
+    });
+  }
+
+  function renderFilters() {
+    filtersWrap.innerHTML = budgetFilter
+      ? '<button type="button" data-remove-filter="budget">Dưới 20 triệu <span>×</span></button>'
+      : '';
+    const removeBtn = filtersWrap.querySelector('[data-remove-filter]');
+    if (removeBtn) {
+      removeBtn.addEventListener('click', function () {
+        budgetFilter = false;
+        render();
+      });
+    }
+  }
+
+  function render() {
+    const items = filteredProducts();
+    grid.textContent = '';
+    items.slice(0, visibleCount).forEach(function (product) {
+      grid.appendChild(productCard(product));
+    });
+    loadMoreBtn.hidden = visibleCount >= items.length;
+    renderFilters();
+
+    grid.querySelectorAll('[data-chat-cart]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        cartAdd(8, 1);
+        showToast('Đã thêm sản phẩm vào giỏ hàng');
+      });
+    });
+    grid.querySelectorAll('.btn-fav').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btn.classList.toggle('is-active');
+        showToast(btn.classList.contains('is-active') ? 'Đã thêm vào danh sách yêu thích' : 'Đã bỏ khỏi danh sách yêu thích');
+      });
+    });
+  }
+
+  loadMoreBtn.addEventListener('click', function () {
+    visibleCount += 5;
+    render();
+  });
+
+  document.getElementById('chat-filter-more').addEventListener('click', function () {
+    budgetFilter = !budgetFilter;
+    visibleCount = Math.max(visibleCount, 20);
+    render();
+  });
+
+  ['chat-category', 'chat-seats', 'chat-style'].forEach(function (id) {
+    document.getElementById(id).addEventListener('change', function () {
+      showToast('ChatBox AI đã cập nhật bộ lọc gợi ý');
+    });
+  });
+
+  compose.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const text = messageInput.value.trim();
+    if (!text) return;
+    appendUserMessage(text);
+    messageInput.value = '';
+
+    const changed = inferChatContext(text);
+    visibleCount = 20;
+    render();
+    window.setTimeout(function () {
+      appendAiMessage(createAiReply(text, changed));
+    }, 260);
+  });
+
+  messageInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      compose.requestSubmit();
+    }
+  });
+
+  document.getElementById('chat-refresh').addEventListener('click', function () {
+    chatState.category = 'table';
+    chatState.seats = '4';
+    chatState.style = 'modern';
+    chatState.budget = 'Dưới 20 triệu';
+    chatState.tone = 'gỗ sáng';
+    chatState.room = 'căn hộ nhỏ';
+    syncControlsFromState();
+    budgetFilter = true;
+    visibleCount = 20;
+    render();
+    showToast('Đã làm mới gợi ý từ ChatBox AI');
+  });
+
+  render();
+}
+
+function initChatboxProductDetailPage() {
+  const mainImg = document.getElementById('chat-pd-main-img');
+  if (!mainImg) return;
+
+  document.querySelectorAll('#chat-pd-thumbs button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('#chat-pd-thumbs button').forEach(function (item) { item.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      mainImg.src = btn.dataset.img;
+    });
+  });
+
+  const qtyInput = document.getElementById('chat-pd-qty');
+  document.getElementById('chat-pd-minus').addEventListener('click', function () {
+    qtyInput.value = Math.max(1, Number(qtyInput.value) - 1);
+  });
+  document.getElementById('chat-pd-plus').addEventListener('click', function () {
+    qtyInput.value = Number(qtyInput.value) + 1;
+  });
+
+  document.querySelectorAll('.chat-pd-tabs .tabs__btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.chat-pd-tabs .tabs__btn').forEach(function (item) { item.classList.remove('is-active'); });
+      document.querySelectorAll('.chat-pd-tabs .tabs__panel').forEach(function (panel) { panel.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      document.getElementById(btn.dataset.tab).classList.add('is-active');
+    });
+  });
+
+  document.getElementById('chat-pd-add').addEventListener('click', function () {
+    cartAdd(8, Number(qtyInput.value) || 1);
+    showToast('Đã thêm Bộ bàn ăn Minimal Oak vào giỏ hàng');
+  });
+  document.getElementById('chat-pd-buy').addEventListener('click', function () {
+    cartAdd(8, Number(qtyInput.value) || 1);
+    window.location.href = 'cart.html';
+  });
+
+  const related = document.getElementById('chat-pd-related');
+  CHAT_PRODUCTS.slice(1, 6).forEach(function (product) {
+    const card = el('article', 'chat-product-card');
+    card.innerHTML =
+      '<a class="chat-product-card__img" href="chatbox-product-detail.html"><img src="' + product.img + '" alt="' + product.name + '" loading="lazy"></a>' +
+      '<h3><a href="chatbox-product-detail.html">' + product.name + '</a></h3>' +
+      '<p>' + product.desc + '</p>' +
+      '<strong>' + fmtVND(product.price) + '</strong>' +
+      '<div class="chat-product-card__actions"><button class="btn-add-cart" type="button">THÊM VÀO GIỎ</button><button class="btn-fav" type="button" aria-label="Yêu thích">' + ICONS.heart + '</button></div>';
+    card.querySelector('.btn-add-cart').addEventListener('click', function () {
+      cartAdd(8, 1);
+      showToast('Đã thêm sản phẩm vào giỏ hàng');
+    });
+    related.appendChild(card);
+  });
+}
+
+/* ============ 16. QUẢN LÝ TÀI KHOẢN ============ */
 
 const ACCOUNT_USER = {
   name: 'Hoàng Huy Tiến',
@@ -1634,5 +1972,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (page === 'login') initLoginPage();
   if (page === 'register') initRegisterPage();
   if (page === 'promo') initPromoPage();
+  if (page === 'chatbox-ai') initChatboxAiPage();
+  if (page === 'chatbox-product-detail') initChatboxProductDetailPage();
   if (page && page.indexOf('account') === 0) initAccountPage();
 });
