@@ -224,11 +224,6 @@
 
   <!-- Scripts -->
   <script src="js/data.js"></script>
-  <script>
-    if (typeof NAV_ITEMS !== 'undefined' && NAV_ITEMS[3]) {
-      NAV_ITEMS[3].href = 'warranty.html';
-    }
-  </script>
   <script src="js/main.js"></script>
 
   <script>
@@ -401,13 +396,15 @@
         formSubmitRow.parentNode.insertBefore(alertDiv, formSubmitRow);
       }
 
-      // 3. Prefill Customer Details (using global ACCOUNT_USER)
-      if (typeof ACCOUNT_USER !== 'undefined') {
-        document.getElementById('cust-name').value = ACCOUNT_USER.name || '';
-        document.getElementById('cust-phone').value = ACCOUNT_USER.phone || '';
-        document.getElementById('cust-email').value = ACCOUNT_USER.email || '';
-        document.getElementById('cust-address').value = ACCOUNT_USER.address || '';
-      }
+      // 3. Prefill Customer Details (using global ACCOUNT_USER, tải từ data/account.json)
+      APP_DATA_READY.then(function () {
+        if (ACCOUNT_USER) {
+          document.getElementById('cust-name').value = ACCOUNT_USER.name || '';
+          document.getElementById('cust-phone').value = ACCOUNT_USER.phone || '';
+          document.getElementById('cust-email').value = ACCOUNT_USER.email || '';
+          document.getElementById('cust-address').value = ACCOUNT_USER.address || '';
+        }
+      });
 
       // 4. Textarea Character Count
       const reqDesc = document.getElementById('req-desc');

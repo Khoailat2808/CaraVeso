@@ -1,0 +1,24 @@
+[
+  {
+    "name": "TP. Hồ Chí Minh",
+    "districts": [
+      { "name": "Quận 7", "wards": ["Phường Tân Phú", "Phường Tân Phong", "Phường Phú Mỹ"] },
+      { "name": "Quận 1", "wards": ["Phường Bến Nghé", "Phường Bến Thành", "Phường Đa Kao"] },
+      { "name": "TP. Thủ Đức", "wards": ["Phường Thảo Điền", "Phường An Phú", "Phường Hiệp Bình Chánh"] }
+    ]
+  },
+  {
+    "name": "Hà Nội",
+    "districts": [
+      { "name": "Quận Hoàn Kiếm", "wards": ["Phường Hàng Trống", "Phường Tràng Tiền", "Phường Cửa Đông"] },
+      { "name": "Quận Cầu Giấy", "wards": ["Phường Dịch Vọng", "Phường Nghĩa Đô", "Phường Yên Hòa"] }
+    ]
+  },
+  {
+    "name": "Đà Nẵng",
+    "districts": [
+      { "name": "Quận Hải Châu", "wards": ["Phường Thạch Thang", "Phường Hải Châu 1"] },
+      { "name": "Quận Sơn Trà", "wards": ["Phường An Hải Bắc", "Phường Mân Thái"] }
+    ]
+  }
+]

@@ -1,0 +1,102 @@
+{
+  "phong-ngu": {
+    "name": "Phòng ngủ",
+    "desc": "Phòng ngủ là nơi bắt đầu và khép lại một ngày của bạn. CaraVeso mang đến những thiết kế đề cao sự thư thái: chất liệu tự nhiên, gam màu dịu nhẹ và bố cục tối ưu công năng. Từ giường, tủ quần áo đến nệm và chăn ga, mỗi món đồ đều được chọn lọc để nâng niu giấc ngủ, giúp bạn thức dậy tràn đầy năng lượng mỗi sáng.",
+    "img": "https://picsum.photos/seed/caraveso-room-ngu/900/500",
+    "categories": ["giuong", "tu-ao", "ban-lam-viec", "tu-ngan-keo", "tham", "ban-trang-diem"],
+    "ideaTitle": "Ý tưởng cho phòng ngủ của bạn",
+    "collage1": {
+      "title": "CaraVeso hiểu và trân trọng giấc ngủ của bạn",
+      "sub": "Chúng tôi mang đến những sản phẩm được thiết kế để nâng niu từng giấc ngủ, giúp bạn tận hưởng sự thoải mái và thư giãn mỗi ngày.",
+      "images": [
+        { "img": "https://picsum.photos/seed/caraveso-clg1/900/860", "hotspots": [{ "x": 32, "y": 55, "productId": 1 }, { "x": 68, "y": 38, "productId": 5 }] },
+        { "img": "https://picsum.photos/seed/caraveso-clg2/860/420", "hotspots": [{ "x": 40, "y": 62, "productId": 12 }] },
+        { "img": "https://picsum.photos/seed/caraveso-clg3/860/420", "hotspots": [{ "x": 62, "y": 48, "productId": 11 }] }
+      ]
+    },
+    "collage2": {
+      "title": "Dành cho trẻ",
+      "sub": "Khám phá bộ sưu tập nội thất trẻ em với thiết kế đáng yêu và tiện nghi. Giúp bé có không gian vui chơi, học tập và nghỉ ngơi trọn vẹn.",
+      "images": [
+        { "img": "https://picsum.photos/seed/caraveso-kid1/900/760", "hotspots": [{ "x": 28, "y": 48, "productId": 2 }, { "x": 55, "y": 78, "productId": 13 }] },
+        { "img": "https://picsum.photos/seed/caraveso-kid2/620/760", "hotspots": [{ "x": 45, "y": 55, "productId": 9 }] },
+        { "img": "https://picsum.photos/seed/caraveso-kid3/420/760", "hotspots": [{ "x": 50, "y": 42, "productId": 15 }] }
+      ]
+    }
+  },
+  "phong-khach": {
+    "name": "Phòng khách",
+    "desc": "Phòng khách là trái tim của ngôi nhà — nơi gắn kết gia đình và đón tiếp bạn bè. CaraVeso đem đến những bộ sofa êm ái, bàn trà tinh tế và kệ tivi hiện đại, giúp bạn kiến tạo một không gian tiếp khách vừa sang trọng vừa ấm cúng, phản chiếu trọn vẹn cá tính của gia chủ.",
+    "img": "https://picsum.photos/seed/caraveso-room-khach/900/500",
+    "categories": ["sofa", "ban-tra", "ke-tivi", "den-san", "tham", "tu-trang-tri"],
+    "ideaTitle": "Ý tưởng cho phòng khách của bạn",
+    "collage1": {
+      "title": "Không gian tiếp khách đậm dấu ấn riêng",
+      "sub": "Những thiết kế sofa và bàn trà được tuyển chọn giúp phòng khách của bạn luôn là nơi ấm áp nhất trong nhà.",
+      "images": [
+        { "img": "https://picsum.photos/seed/caraveso-lkg1/900/860", "hotspots": [{ "x": 45, "y": 60, "productId": 2 }, { "x": 72, "y": 42, "productId": 6 }] },
+        { "img": "https://picsum.photos/seed/caraveso-lkg2/860/420", "hotspots": [{ "x": 38, "y": 58, "productId": 4 }] },
+        { "img": "https://picsum.photos/seed/caraveso-lkg3/860/420", "hotspots": [{ "x": 58, "y": 50, "productId": 9 }] }
+      ]
+    },
+    "collage2": {
+      "title": "Góc thư giãn cho cả nhà",
+      "sub": "Armchair, đèn đọc sách và thảm trải sàn — bộ ba hoàn hảo cho những buổi tối quây quần.",
+      "images": [
+        { "img": "https://picsum.photos/seed/caraveso-lkg4/900/760", "hotspots": [{ "x": 35, "y": 52, "productId": 13 }] },
+        { "img": "https://picsum.photos/seed/caraveso-lkg5/620/760", "hotspots": [{ "x": 48, "y": 60, "productId": 6 }] },
+        { "img": "https://picsum.photos/seed/caraveso-lkg6/420/760", "hotspots": [{ "x": 50, "y": 45, "productId": 16 }] }
+      ]
+    }
+  },
+  "phong-an": {
+    "name": "Phòng ăn",
+    "desc": "Bữa cơm gia đình ngon hơn trong một không gian được chăm chút. Bàn ăn gỗ óc chó, đèn thả rattan và tủ bếp gọn gàng của CaraVeso giúp phòng ăn của bạn trở thành nơi mọi người muốn nán lại lâu hơn sau mỗi bữa ăn.",
+    "img": "https://picsum.photos/seed/caraveso-room-an/900/500",
+    "categories": ["ban-an", "ghe-an", "tu-bep", "den-tha", "ke-ruou", "tham"],
+    "ideaTitle": "Ý tưởng cho phòng ăn của bạn",
+    "collage1": {
+      "title": "Bữa ăn ngon bắt đầu từ không gian đẹp",
+      "sub": "Bàn ăn và ánh sáng được phối hợp để mỗi bữa cơm đều là một trải nghiệm ấm cúng.",
+      "images": [
+        { "img": "https://picsum.photos/seed/caraveso-an1/900/860", "hotspots": [{ "x": 50, "y": 58, "productId": 8 }, { "x": 30, "y": 30, "productId": 15 }] },
+        { "img": "https://picsum.photos/seed/caraveso-an2/860/420", "hotspots": [{ "x": 42, "y": 55, "productId": 15 }] },
+        { "img": "https://picsum.photos/seed/caraveso-an3/860/420", "hotspots": [{ "x": 60, "y": 48, "productId": 4 }] }
+      ]
+    },
+    "collage2": {
+      "title": "Góc bếp gọn gàng",
+      "sub": "Giải pháp lưu trữ thông minh cho căn bếp luôn ngăn nắp và tiện dụng.",
+      "images": [
+        { "img": "https://picsum.photos/seed/caraveso-an4/900/760", "hotspots": [{ "x": 40, "y": 50, "productId": 14 }] },
+        { "img": "https://picsum.photos/seed/caraveso-an5/620/760", "hotspots": [{ "x": 50, "y": 58, "productId": 9 }] },
+        { "img": "https://picsum.photos/seed/caraveso-an6/420/760", "hotspots": [{ "x": 48, "y": 44, "productId": 11 }] }
+      ]
+    }
+  },
+  "phong-lam-viec": {
+    "name": "Phòng làm việc",
+    "desc": "Một góc làm việc tốt giúp bạn tập trung và sáng tạo hơn. CaraVeso mang đến bàn làm việc công thái học, ghế êm ái và hệ kệ lưu trữ khoa học — để mỗi giờ làm việc tại nhà đều hiệu quả như ở văn phòng.",
+    "img": "https://picsum.photos/seed/caraveso-room-lv/900/500",
+    "categories": ["ban-lam-viec", "ghe-xoay", "ke-sach", "den-ban", "tu-ho-so", "tham"],
+    "ideaTitle": "Ý tưởng cho phòng làm việc của bạn",
+    "collage1": {
+      "title": "Góc làm việc truyền cảm hứng",
+      "sub": "Bố trí ánh sáng và nội thất hợp lý giúp bạn duy trì năng lượng suốt ngày dài.",
+      "images": [
+        { "img": "https://picsum.photos/seed/caraveso-lv1/900/860", "hotspots": [{ "x": 44, "y": 56, "productId": 5 }, { "x": 70, "y": 35, "productId": 6 }] },
+        { "img": "https://picsum.photos/seed/caraveso-lv2/860/420", "hotspots": [{ "x": 40, "y": 60, "productId": 9 }] },
+        { "img": "https://picsum.photos/seed/caraveso-lv3/860/420", "hotspots": [{ "x": 55, "y": 50, "productId": 11 }] }
+      ]
+    },
+    "collage2": {
+      "title": "Lưu trữ khoa học",
+      "sub": "Kệ sách và tủ hồ sơ được thiết kế để mọi tài liệu luôn trong tầm tay.",
+      "images": [
+        { "img": "https://picsum.photos/seed/caraveso-lv4/900/760", "hotspots": [{ "x": 36, "y": 48, "productId": 14 }] },
+        { "img": "https://picsum.photos/seed/caraveso-lv5/620/760", "hotspots": [{ "x": 52, "y": 55, "productId": 5 }] },
+        { "img": "https://picsum.photos/seed/caraveso-lv6/420/760", "hotspots": [{ "x": 50, "y": 42, "productId": 15 }] }
+      ]
+    }
+  }
+}

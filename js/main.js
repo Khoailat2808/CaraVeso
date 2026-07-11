@@ -54,9 +54,15 @@ const ICONS = {
 };
 
 /* ============ 3. TRẠNG THÁI GIỎ HÀNG (trong bộ nhớ) ============ */
-/* Giỏ hàng khởi tạo bằng mock data để demo trang cart.html */
-const cartState = INITIAL_CART.map(function (item) { return Object.assign({}, item); });
+/* Giỏ hàng khởi tạo bằng mock data để demo trang cart.html.
+   Được nạp từ INITIAL_CART (data/initial-cart.json) sau khi dữ liệu tải xong. */
+let cartState = [];
 let appliedVoucher = null;
+
+/** Khởi tạo giỏ hàng từ dữ liệu đã tải (gọi trong bước KHỞI CHẠY). */
+function initCartState() {
+  cartState = INITIAL_CART.map(function (item) { return Object.assign({}, item); });
+}
 
 function cartCount() {
   return cartState.reduce(function (sum, item) { return sum + item.qty; }, 0);
@@ -145,8 +151,9 @@ function renderHeader() {
     if (item.dropdown) {
       const dd = el('div', 'nav__dropdown');
       item.dropdown.forEach(function (sub) {
-        const subA = el('a', '', sub);
-        subA.href = item.href;
+        // Mục con có thể là chuỗi hoặc object {label, href}
+        const subA = el('a', '', sub.label || sub);
+        subA.href = sub.href || item.href;
         dd.appendChild(subA);
       });
       li.appendChild(dd);
@@ -201,8 +208,8 @@ function renderHeader() {
     if (item.dropdown) {
       const sub = el('div', 'mobile-menu__sub');
       item.dropdown.forEach(function (s) {
-        const subA = el('a', '', s);
-        subA.href = item.href;
+        const subA = el('a', '', s.label || s);
+        subA.href = s.href || item.href;
         sub.appendChild(subA);
       });
       li.appendChild(sub);
@@ -1423,6 +1430,228 @@ function initRegisterPage() {
 
 /* ============ 13. TRANG KHUYẾN MÃI (Countdown) ============ */
 
+/* ============ TRANG CÁC PHÒNG (room.html) & PHONG CÁCH (style.html) ============ */
+
+/** Gắn các nút tròn (hotspot) lên một ô ảnh collage.
+    Hover (desktop) hoặc bấm (mobile) sẽ hiện tooltip sản phẩm. */
+function buildHotspots(cell, hotspots) {
+  (hotspots || []).forEach(function (h) {
+    const p = getProduct(h.productId);
+    if (!p) return;
+
+    const point = el('div', 'hotspot-point' + (h.x > 55 ? ' hotspot-point--left' : ''));
+    point.style.left = h.x + '%';
+    point.style.top = h.y + '%';
+
+    const dot = el('button', 'hotspot');
+    dot.setAttribute('aria-label', 'Xem sản phẩm ' + p.name);
+
+    // Tooltip = mini card sản phẩm, bấm vào đi tới trang chi tiết
+    const tip = el('a', 'hotspot-tooltip');
+    tip.href = 'product-detail.html?id=' + p.id;
+    tip.innerHTML =
+      '<div class="hotspot-tooltip__top">' +
+        '<img src="' + p.img + '" alt="' + p.name + '">' +
+        '<div>' +
+          '<p class="hotspot-tooltip__name">' + p.name + '</p>' +
+          '<p class="hotspot-tooltip__desc">' + p.desc + '</p>' +
+        '</div>' +
+      '</div>' +
+      '<p class="hotspot-tooltip__price">' + fmtVND(p.price) + '</p>' +
+      '<div class="hotspot-tooltip__foot">' +
+        '<span class="hotspot-tooltip__hint">Nhấn để xem chi tiết</span>' +
+        '<button class="hotspot-tooltip__icon" data-act="cart" aria-label="Thêm vào giỏ">' + ICONS.cart + '</button>' +
+        '<button class="hotspot-tooltip__icon" data-act="fav" aria-label="Yêu thích">' + ICONS.heart + '</button>' +
+      '</div>';
+
+    // Icon giỏ/tim trong tooltip: không điều hướng, chỉ thao tác nhanh
+    tip.querySelector('[data-act="cart"]').addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      cartAdd(p.id, 1);
+      showToast('Đã thêm "' + p.name + '" vào giỏ hàng');
+    });
+    tip.querySelector('[data-act="fav"]').addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.currentTarget.classList.toggle('is-active');
+      showToast(e.currentTarget.classList.contains('is-active')
+        ? 'Đã thêm vào danh sách yêu thích'
+        : 'Đã bỏ khỏi danh sách yêu thích');
+    });
+
+    // Bấm nút tròn (mobile/touch): bật tắt tooltip
+    dot.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const wasOpen = point.classList.contains('is-open');
+      document.querySelectorAll('.hotspot-point.is-open').forEach(function (pt) { pt.classList.remove('is-open'); });
+      if (!wasOpen) point.classList.add('is-open');
+    });
+
+    point.appendChild(dot);
+    point.appendChild(tip);
+    cell.appendChild(point);
+  });
+}
+
+/** Dựng 1 khối collage ảnh + hotspot */
+function renderCollage(mountId, images) {
+  const mount = document.getElementById(mountId);
+  if (!mount) return;
+  images.forEach(function (item, i) {
+    const cell = el('div', 'collage__cell' + (i === 0 ? ' collage__cell--main' : ''));
+    const img = el('img');
+    img.src = item.img;
+    img.alt = '';
+    img.loading = 'lazy';
+    cell.appendChild(img);
+    buildHotspots(cell, item.hotspots);
+    mount.appendChild(cell);
+  });
+}
+
+function initRoomPage() {
+  const root = document.getElementById('room-root');
+  if (!root) return;
+
+  const roomId = new URLSearchParams(window.location.search).get('room') || 'phong-ngu';
+  const room = ROOMS[roomId] || ROOMS['phong-ngu'];
+
+  document.title = room.name + ' — CaraVeso';
+  document.getElementById('room-breadcrumb-name').textContent = room.name;
+  document.getElementById('room-title').textContent = room.name;
+  document.getElementById('room-desc').textContent = room.desc;
+  const heroImg = document.getElementById('room-hero-img');
+  heroImg.src = room.img;
+  heroImg.alt = room.name;
+
+  /* --- Danh mục sản phẩm (hàng ảnh cuộn ngang) --- */
+  const catRow = document.getElementById('room-categories');
+  room.categories.forEach(function (cat, i) {
+    const a = el('a', 'cat-card');
+    a.href = 'products.html';
+    a.setAttribute('aria-label', cat);
+    a.innerHTML = '<img src="https://picsum.photos/seed/caraveso-cat-' + roomId + '-' + i + '/400/400" alt="' + cat + '" loading="lazy">';
+    catRow.appendChild(a);
+  });
+
+  /* --- Ý tưởng: 4 card phong cách, KHÁM PHÁ -> style.html --- */
+  document.getElementById('room-idea-title').textContent = room.ideaTitle;
+  const ideaRow = document.getElementById('idea-row');
+  Object.keys(STYLES).forEach(function (key) {
+    const s = STYLES[key];
+    const href = 'style.html?style=' + key + '&room=' + roomId;
+    const card = el('article', 'idea-card');
+    card.innerHTML =
+      '<a class="idea-card__img" href="' + href + '">' +
+        '<img src="https://picsum.photos/seed/caraveso-idea-' + key + '/620/600" alt="' + s.display + '" loading="lazy">' +
+      '</a>' +
+      '<h3 class="idea-card__title">' + s.display + '</h3>' +
+      '<p class="idea-card__desc">' + s.cardDesc + '</p>' +
+      '<a class="idea-card__btn" href="' + href + '">KHÁM PHÁ</a>';
+    ideaRow.appendChild(card);
+  });
+  const ideaWrap = document.getElementById('idea-carousel');
+  ideaWrap.querySelector('.slider-arrow--prev').addEventListener('click', function () {
+    ideaRow.scrollBy({ left: -640, behavior: 'smooth' });
+  });
+  ideaWrap.querySelector('.slider-arrow--next').addEventListener('click', function () {
+    ideaRow.scrollBy({ left: 640, behavior: 'smooth' });
+  });
+
+  /* --- 2 khối collage có hotspot --- */
+  document.getElementById('collage1-title').textContent = room.collage1.title;
+  document.getElementById('collage1-sub').textContent = room.collage1.sub;
+  renderCollage('collage-1', room.collage1.images);
+
+  document.getElementById('collage2-title').textContent = room.collage2.title;
+  document.getElementById('collage2-sub').textContent = room.collage2.sub;
+  renderCollage('collage-2', room.collage2.images);
+
+  // Bấm ra ngoài thì đóng tooltip đang mở (cho mobile)
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.hotspot-point.is-open').forEach(function (pt) { pt.classList.remove('is-open'); });
+  });
+}
+
+function initStylePage() {
+  const root = document.getElementById('style-root');
+  if (!root) return;
+
+  const q = new URLSearchParams(window.location.search);
+  const styleId = q.get('style') || 'zen';
+  const roomId = q.get('room') || 'phong-ngu';
+  const style = STYLES[styleId] || STYLES.zen;
+  const room = ROOMS[roomId] || ROOMS['phong-ngu'];
+
+  document.title = style.display + ' — CaraVeso';
+
+  /* --- Breadcrumb: Trang chủ › Các phòng › <Phòng> › <Style> --- */
+  const bcRoom = document.getElementById('style-breadcrumb-room');
+  bcRoom.textContent = room.name;
+  bcRoom.href = 'room.html?room=' + roomId;
+  document.getElementById('style-breadcrumb-name').textContent =
+    style.display.split(' ')[0] + ' Style';
+
+  /* --- Hero chữ trên ảnh --- */
+  const hero = document.getElementById('style-hero');
+  hero.querySelector('img').src = style.heroImg;
+  document.getElementById('style-hero-name').textContent = style.name;
+  document.getElementById('style-hero-tagline').textContent = style.tagline;
+
+  /* --- Đoạn giới thiệu + 3 ảnh --- */
+  document.getElementById('style-intro-title').textContent = style.tagline;
+  document.getElementById('style-intro-desc').textContent = style.desc;
+  const gallery = document.getElementById('style-gallery');
+  style.gallery.forEach(function (seed) {
+    const img = el('img');
+    img.src = 'https://picsum.photos/seed/' + seed + '/700/760';
+    img.alt = style.display;
+    img.loading = 'lazy';
+    gallery.appendChild(img);
+  });
+
+  /* --- Lưới sản phẩm 5 cột + phân trang --- */
+  const PER_PAGE = 10;
+  const list = PRODUCTS.slice();
+  const totalPages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+  let page = 1;
+  const grid = document.getElementById('style-grid');
+  const pag = document.getElementById('style-pagination');
+
+  function renderProducts() {
+    grid.textContent = '';
+    list.slice((page - 1) * PER_PAGE, page * PER_PAGE).forEach(function (p) {
+      grid.appendChild(buildProductCard(p));
+    });
+    pag.querySelectorAll('[data-pg]').forEach(function (b) {
+      b.classList.toggle('is-active', Number(b.dataset.pg) === page);
+    });
+  }
+  function goPage(p) {
+    page = Math.min(totalPages, Math.max(1, p));
+    renderProducts();
+  }
+
+  // Dựng nút phân trang: ‹ 1 2 … ›
+  const prevBtn = el('button', '', '');
+  prevBtn.innerHTML = ICONS.arrowLeft;
+  prevBtn.addEventListener('click', function () { goPage(page - 1); });
+  pag.appendChild(prevBtn);
+  for (let i = 1; i <= totalPages; i++) {
+    const b = el('button', '', String(i));
+    b.dataset.pg = i;
+    b.addEventListener('click', function () { goPage(i); });
+    pag.appendChild(b);
+  }
+  const nextBtn = el('button', '', '');
+  nextBtn.innerHTML = ICONS.arrowRight;
+  nextBtn.addEventListener('click', function () { goPage(page + 1); });
+  pag.appendChild(nextBtn);
+
+  renderProducts();
+}
+
 function initPromoPage() {
   const grid = document.getElementById('promo-grid');
   if (grid) {
@@ -1459,30 +1688,7 @@ function initPromoPage() {
 
 /* ============ 15. TÌM KIẾM BẰNG CHATBOX AI ============ */
 
-const CHAT_PRODUCTS = [
-  ['Bàn ăn Minimal Oak', 'Gỗ sồi tự nhiên,<br>120 × 75 × 75 cm', 4890000, 'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Honey Oak', 'Gỗ sồi vàng cao cấp,<br>120 × 70 × 75 cm', 5290000, 'https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Nordic Light', 'Phong cách Bắc Âu,<br>120 × 80 × 75 cm', 5790000, 'https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Urban 4S', 'Thiết kế hiện đại,<br>130 × 80 × 75 cm', 6190000, 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Japandi Home', 'Tối giản tinh tế,<br>120 × 75 × 75 cm', 6490000, 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Compact Plus', 'Tiết kiệm diện tích,<br>110 × 70 × 75 cm', 6890000, 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn White Harmony', 'Sang trọng,<br>120 × 75 × 75 cm', 7290000, 'https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Walnut Classic', 'Gỗ óc chó hiện đại,<br>140 × 80 × 75 cm', 7890000, 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Nordic Prime', 'Gỗ sồi Mỹ bền đẹp,<br>140 × 80 × 75 cm', 8490000, 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Cozy Living', 'Phù hợp căn hộ nhỏ,<br>120 × 75 × 75 cm', 8990000, 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Milano Wood', 'Mặt chống trầy xước,<br>140 × 80 × 75 cm', 9490000, 'https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Osaka Modern', 'Gỗ tần bì tự nhiên,<br>140 × 80 × 75 cm', 9990000, 'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Stockholm', 'Scandinavian cao cấp,<br>150 × 80 × 75 cm', 10490000, 'https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Elegant Oak', 'Gỗ sồi nguyên khối,<br>150 × 80 × 75 cm', 11290000, 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Verona', 'Chân thép phối gỗ,<br>140 × 80 × 75 cm', 11990000, 'https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Copenhagen', 'Gỗ cao su tự nhiên,<br>150 × 85 × 75 cm', 12790000, 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Signature Walnut', 'Gỗ óc chó cao cấp,<br>160 × 85 × 75 cm', 14100000, 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Premium Nordic', 'Gỗ sồi nhập khẩu,<br>160 × 90 × 75 cm', 15490000, 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Luxury Wood', 'Mặt gỗ dày 30mm,<br>180 × 90 × 75 cm', 17490000, 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=420&q=80'],
-  ['Bàn ăn Royal Walnut', 'Gỗ óc chó nguyên khối,<br>180 × 90 × 75 cm', 19890000, 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=420&q=80']
-].map(function (item, index) {
-  return { id: index + 101, name: item[0], desc: item[1], price: item[2], img: item[3] };
-});
+/* CHAT_PRODUCTS được nạp từ data/chat-products.json (xem js/data.js) */
 
 function initChatboxAiPage() {
   const grid = document.getElementById('chat-product-grid');
@@ -1801,19 +2007,7 @@ function initChatboxProductDetailPage() {
 
 /* ============ 16. QUẢN LÝ TÀI KHOẢN ============ */
 
-const ACCOUNT_USER = {
-  name: 'Hoàng Huy Tiến',
-  birthday: '08/09/2006',
-  gender: 'Nam',
-  email: 'tienhhk24411@st.uel.edu.vn',
-  phone: '0919120176',
-  address: 'Số 18, đường Hoàng Diệu, Tân An, Phường Lagi, tỉnh Lâm Đồng'
-};
-
-const ACCOUNT_ORDERS = [
-  { id: 'HHT080906', date: '30/06/2026', total: 123000, status: 'Đang giao' },
-  { id: 'TPBH110306', date: '08/09/2025', total: 113000, status: 'Đã giao' }
-];
+/* ACCOUNT_USER và ACCOUNT_ORDERS được nạp từ data/account.json (xem js/data.js) */
 
 const ACCOUNT_STEP_ICONS = {
   clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>',
@@ -1947,8 +2141,7 @@ function initAccountPage() {
 /* ============ 14. KHỞI CHẠY ============ */
 
 document.addEventListener('DOMContentLoaded', function () {
-  renderHeader();
-  renderFooter();
+  // Các phần không phụ thuộc dữ liệu — chạy ngay
   initPasswordToggles();
 
   // Xóa trạng thái lỗi khi người dùng gõ lại
@@ -1960,19 +2153,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  const page = document.body.dataset.page;
-  if (page === 'home') initHomePage();
-  if (page === 'products') initProductsPage();
-  if (page === 'product-detail') initProductDetailPage();
-  if (page === 'cart') initCartPage();
-  if (page === 'checkout') initCheckoutPage();
-  if (page === 'payment-method') initPaymentMethodPage();
-  if (page === 'payment-gateway') initGatewayPage();
-  if (page === 'order-success') initOrderSuccessPage();
-  if (page === 'login') initLoginPage();
-  if (page === 'register') initRegisterPage();
-  if (page === 'promo') initPromoPage();
-  if (page === 'chatbox-ai') initChatboxAiPage();
-  if (page === 'chatbox-product-detail') initChatboxProductDetailPage();
-  if (page && page.indexOf('account') === 0) initAccountPage();
+  // Chờ dữ liệu JSON tải xong rồi mới render các phần phụ thuộc dữ liệu
+  APP_DATA_READY.then(function () {
+    initCartState();
+    renderHeader();
+    renderFooter();
+
+    const page = document.body.dataset.page;
+    if (page === 'home') initHomePage();
+    if (page === 'products') initProductsPage();
+    if (page === 'product-detail') initProductDetailPage();
+    if (page === 'cart') initCartPage();
+    if (page === 'checkout') initCheckoutPage();
+    if (page === 'payment-method') initPaymentMethodPage();
+    if (page === 'payment-gateway') initGatewayPage();
+    if (page === 'order-success') initOrderSuccessPage();
+    if (page === 'login') initLoginPage();
+    if (page === 'register') initRegisterPage();
+    if (page === 'promo') initPromoPage();
+    if (page === 'room') initRoomPage();
+    if (page === 'style') initStylePage();
+    if (page === 'chatbox-ai') initChatboxAiPage();
+    if (page === 'chatbox-product-detail') initChatboxProductDetailPage();
+    if (page && page.indexOf('account') === 0) initAccountPage();
+  }).catch(function (err) {
+    console.error('CaraVeso — Không tải được dữ liệu JSON:', err);
+    alert('Không tải được dữ liệu website.\n\nHãy chạy trang qua server (VD: VS Code Live Server / http://localhost) thay vì mở trực tiếp file .html.');
+  });
 });

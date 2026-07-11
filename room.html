@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Các phòng — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<!-- Trang dùng chung cho 4 phòng: ?room=phong-ngu | phong-khach | phong-an | phong-lam-viec -->
+<body data-page="room">
+
+  <div id="site-header"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="room.html?room=phong-ngu">Các phòng</a></li>
+        <li id="room-breadcrumb-name">Phòng ngủ</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main id="room-root">
+    <!-- ===== HERO: CHỮ NỀN XÁM + ẢNH PHÒNG ===== -->
+    <section class="room-hero">
+      <div class="room-hero__text">
+        <h1 id="room-title">Phòng ngủ</h1>
+        <p id="room-desc"></p>
+      </div>
+      <div class="room-hero__img">
+        <img id="room-hero-img" src="" alt="">
+      </div>
+    </section>
+
+    <!-- ===== DANH MỤC SẢN PHẨM ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Danh mục sản phẩm</h2>
+        </div>
+        <div class="cat-row" id="room-categories"></div>
+      </div>
+    </section>
+
+    <!-- ===== Ý TƯỞNG PHONG CÁCH (KHÁM PHÁ -> style.html) ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" id="room-idea-title">Ý tưởng cho phòng của bạn</h2>
+        </div>
+        <div class="idea-carousel" id="idea-carousel">
+          <button class="slider-arrow slider-arrow--prev" aria-label="Trước">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="idea-row" id="idea-row"></div>
+          <button class="slider-arrow slider-arrow--next" aria-label="Sau">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COLLAGE 1 (ảnh có hotspot tooltip) ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head2">
+          <div>
+            <h2 id="collage1-title"></h2>
+            <p id="collage1-sub"></p>
+          </div>
+          <a class="btn-viewmore" href="products.html">XEM THÊM</a>
+        </div>
+        <div class="collage collage--a" id="collage-1"></div>
+      </div>
+    </section>
+
+    <!-- ===== COLLAGE 2 (ảnh có hotspot tooltip) ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head2">
+          <div>
+            <h2 id="collage2-title"></h2>
+            <p id="collage2-sub"></p>
+          </div>
+          <a class="btn-viewmore" href="products.html">XEM THÊM</a>
+        </div>
+        <div class="collage collage--b" id="collage-2"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

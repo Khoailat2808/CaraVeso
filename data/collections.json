@@ -1,0 +1,20 @@
+[
+  {
+    "id": "oda",
+    "name": "ODA",
+    "tagline": "Đa dạng lựa chọn, vẻ đẹp sang trọng",
+    "img": "https://picsum.photos/seed/caraveso-col1/1280/603"
+  },
+  {
+    "id": "nordic",
+    "name": "NORDIC LIVING",
+    "tagline": "Tối giản Bắc Âu, ấm áp từng góc nhỏ",
+    "img": "https://picsum.photos/seed/caraveso-col2/1280/603"
+  },
+  {
+    "id": "indochine",
+    "name": "INDOCHINE",
+    "tagline": "Hoài niệm Đông Dương, tinh tế vượt thời gian",
+    "img": "https://picsum.photos/seed/caraveso-col3/1280/603"
+  }
+]
