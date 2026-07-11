@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Địa chỉ - CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="account-addresses">
+  <div id="site-header"></div>
+  <main class="account-shell">
+    <aside class="account-sidebar"><nav class="account-menu" aria-label="Tài khoản">
+      <a class="account-menu__item" href="account.html"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.4 0-8 2.7-8 6v1h16v-1c0-3.3-3.6-6-8-6z"/></svg>Tài khoản của tôi</a>
+      <a class="account-menu__item" href="account-orders.html"><svg viewBox="0 0 24 24"><path d="M7 3h10v3h3v15H4V6h3V3zm2 3h6V5H9v1zm-1 5h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>Đơn hàng</a>
+      <a class="account-menu__item" href="account-service-detail.html"><svg viewBox="0 0 24 24"><path d="M22 19.6l-6.3-6.3a6.7 6.7 0 01-8.4-8.4l4 4 2.8-2.8-4-4a6.7 6.7 0 018.4 8.4l6.3 6.3-2.8 2.8z"/></svg>Dịch vụ hậu mãi</a>
+      <a class="account-menu__item is-active" href="account-addresses.html"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>Danh sách địa chỉ</a>
+      <a class="account-menu__item" href="account-favorites.html"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1a5.5 5.5 0 10-7.8 7.8L12 21.3l8.8-8.8a5.5 5.5 0 000-7.9z"/></svg>Danh sách yêu thích</a>
+      <hr class="account-menu__divider"><a class="account-menu__item" href="account-review.html"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6 6.6.9-4.8 4.7 1.1 6.6L12 17.1l-5.8 3.1 1.1-6.6-4.8-4.7 6.6-.9L12 2z"/></svg>Đánh giá</a>
+      <a class="account-menu__item" href="login.html"><svg viewBox="0 0 24 24"><path d="M10 17v-3H3v-4h7V7l5 5-5 5zm3-13h8v16h-8v-2h6V6h-6V4z"/></svg>Đăng xuất</a>
+    </nav></aside>
+    <section class="account-content">
+      <h1 class="account-title account-title--navy">Thông tin địa chỉ</h1>
+      <div class="address-card"><table class="address-table"><thead><tr><th>Họ tên</th><th>Địa chỉ</th><th>Số điện thoại</th><th>Thay đổi</th></tr></thead><tbody><tr>
+        <td>Anh Tình Lagi</td><td><div class="address-type"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3V11z"/></svg>Nhà riêng <span class="address-badge">Mặc định</span></div><p class="address-detail">Số 18, đường Hoàng Diệu, phường Tân An, thị xã LaGi, tỉnh Bình Thuận</p></td><td>0919120176</td><td><a class="address-edit" href="#">Chỉnh sửa</a></td>
+      </tr></tbody></table></div>
+      <div class="account-actions"><button class="btn-primary" type="button">Thêm địa chỉ mới</button></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script><script src="js/main.js"></script>
+</body>
+</html>

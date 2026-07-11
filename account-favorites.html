@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yêu thích - CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="account-favorites">
+  <div id="site-header"></div>
+  <main class="account-shell">
+    <aside class="account-sidebar"><nav class="account-menu" aria-label="Tài khoản">
+      <a class="account-menu__item" href="account.html"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.4 0-8 2.7-8 6v1h16v-1c0-3.3-3.6-6-8-6z"/></svg>Tài khoản của tôi</a>
+      <a class="account-menu__item" href="account-orders.html"><svg viewBox="0 0 24 24"><path d="M7 3h10v3h3v15H4V6h3V3zm2 3h6V5H9v1zm-1 5h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>Đơn hàng</a>
+      <a class="account-menu__item" href="account-service-detail.html"><svg viewBox="0 0 24 24"><path d="M22 19.6l-6.3-6.3a6.7 6.7 0 01-8.4-8.4l4 4 2.8-2.8-4-4a6.7 6.7 0 018.4 8.4l6.3 6.3-2.8 2.8z"/></svg>Dịch vụ hậu mãi</a>
+      <a class="account-menu__item" href="account-addresses.html"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>Danh sách địa chỉ</a>
+      <a class="account-menu__item is-active" href="account-favorites.html"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1a5.5 5.5 0 10-7.8 7.8L12 21.3l8.8-8.8a5.5 5.5 0 000-7.9z"/></svg>Danh sách yêu thích</a>
+      <hr class="account-menu__divider"><a class="account-menu__item" href="account-review.html"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6 6.6.9-4.8 4.7 1.1 6.6L12 17.1l-5.8 3.1 1.1-6.6-4.8-4.7 6.6-.9L12 2z"/></svg>Đánh giá</a>
+      <a class="account-menu__item" href="login.html"><svg viewBox="0 0 24 24"><path d="M10 17v-3H3v-4h7V7l5 5-5 5zm3-13h8v16h-8v-2h6V6h-6V4z"/></svg>Đăng xuất</a>
+    </nav></aside>
+    <section class="account-content">
+      <h1 class="account-title account-title--navy">Danh sách yêu thích</h1>
+      <div class="favorite-grid">
+        <article class="favorite-card"><div class="favorite-card__img"></div><h2 class="favorite-card__name">Bàn ăn Minimal Oak</h2><p class="favorite-card__desc">Gỗ sồi tự nhiên,<br>120 x 75 x 75 cm</p><p class="favorite-card__price">4.890.000 VND</p><div class="favorite-card__actions"><button class="btn-add-cart" data-favorite-cart="8">THÊM VÀO GIỎ</button><span class="favorite-heart">♥</span></div></article>
+        <article class="favorite-card"><div class="favorite-card__img"></div><h2 class="favorite-card__name">Bàn ăn Minimal Oak</h2><p class="favorite-card__desc">Gỗ sồi tự nhiên,<br>120 x 75 x 75 cm</p><p class="favorite-card__price">4.890.000 VND</p><div class="favorite-card__actions"><button class="btn-add-cart" data-favorite-cart="8">THÊM VÀO GIỎ</button><span class="favorite-heart">♥</span></div></article>
+        <article class="favorite-card"><div class="favorite-card__img"></div><h2 class="favorite-card__name">Bàn ăn Minimal Oak</h2><p class="favorite-card__desc">Gỗ sồi tự nhiên,<br>120 x 75 x 75 cm</p><p class="favorite-card__price">4.890.000 VND</p><div class="favorite-card__actions"><button class="btn-add-cart" data-favorite-cart="8">THÊM VÀO GIỎ</button><span class="favorite-heart">♥</span></div></article>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script><script src="js/main.js"></script>
+</body>
+</html>

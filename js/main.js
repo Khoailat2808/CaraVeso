@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    CARAVESO — MAIN.JS
    Toàn bộ logic Frontend thuần (Vanilla JS).
    Không API, không localStorage (giỏ hàng giữ trong bộ nhớ phiên).
@@ -173,7 +173,7 @@ function renderHeader() {
   right.appendChild(chatbox);
 
   const account = el('a', 'header__icon');
-  account.href = 'login.html';
+  account.href = 'account.html';
   account.setAttribute('aria-label', 'Tài khoản');
   account.innerHTML = ICONS.user;
   right.appendChild(account);
@@ -1461,6 +1461,151 @@ function initPromoPage() {
   setInterval(tick, 1000);
 }
 
+/* ============ 15. QUẢN LÝ TÀI KHOẢN ============ */
+
+const ACCOUNT_USER = {
+  name: 'Hoàng Huy Tiến',
+  birthday: '08/09/2006',
+  gender: 'Nam',
+  email: 'tienhhk24411@st.uel.edu.vn',
+  phone: '0919120176',
+  address: 'Số 18, đường Hoàng Diệu, Tân An, Phường Lagi, tỉnh Lâm Đồng'
+};
+
+const ACCOUNT_ORDERS = [
+  { id: 'HHT080906', date: '30/06/2026', total: 123000, status: 'Đang giao' },
+  { id: 'TPBH110306', date: '08/09/2025', total: 113000, status: 'Đã giao' }
+];
+
+const ACCOUNT_STEP_ICONS = {
+  clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>',
+  doc: '<svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h5"/><path d="M10 15l2 2 4-5"/></svg>',
+  truck: '<svg viewBox="0 0 24 24"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>',
+  cancel: '<svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h5"/><path d="M10 14l5 5M15 14l-5 5"/></svg>'
+};
+
+function accountStepMarkup(steps, activeCount) {
+  return '<div class="account-steps">' + steps.map(function (step, index) {
+    const active = index < activeCount;
+    return '<div class="account-step' + (active ? ' is-active' : '') + '">' +
+      '<span class="account-step__dot">' + ACCOUNT_STEP_ICONS[step.icon] + '</span>' +
+      '<span class="account-step__label">' + step.label + '</span>' +
+    '</div>';
+  }).join('') + '</div>';
+}
+
+function initAccountPage() {
+  const page = document.body.dataset.page;
+
+  if (page === 'account') {
+    document.getElementById('acc-name').textContent = ACCOUNT_USER.name;
+    document.getElementById('acc-birthday').textContent = ACCOUNT_USER.birthday;
+    document.getElementById('acc-gender').textContent = ACCOUNT_USER.gender;
+    document.getElementById('acc-email').textContent = ACCOUNT_USER.email;
+    document.getElementById('acc-phone').textContent = ACCOUNT_USER.phone;
+    return;
+  }
+
+  if (page === 'account-edit') {
+    const form = document.getElementById('account-edit-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const ok = validateForm([
+        { id: 'ae-name', check: function (v) { return v.length >= 2; }, msg: 'Họ tên tối thiểu 2 ký tự.' },
+        { id: 'ae-phone', check: function (v) { return /^(0|\+84)\d{9,10}$/.test(v.replace(/\s/g, '')); }, msg: 'Số điện thoại không hợp lệ.' }
+      ]);
+      if (ok) showToast('Đã lưu thông tin tài khoản');
+    });
+    return;
+  }
+
+  if (page === 'account-password') {
+    const form = document.getElementById('account-password-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const ok = validateForm([
+        { id: 'ap-current', check: function (v) { return v.length >= 6; }, msg: 'Mật khẩu tối thiểu 6 ký tự.' },
+        { id: 'ap-new', check: function (v) { return v.length >= 6; }, msg: 'Mật khẩu mới tối thiểu 6 ký tự.' },
+        { id: 'ap-confirm', check: function (v) { return v === document.getElementById('ap-new').value.trim(); }, msg: 'Mật khẩu xác nhận không khớp.' }
+      ]);
+      if (ok) showToast('Đã cập nhật mật khẩu');
+    });
+    return;
+  }
+
+  if (page === 'account-orders') {
+    const body = document.getElementById('account-orders-body');
+    ACCOUNT_ORDERS.forEach(function (order) {
+      const row = el('tr');
+      row.innerHTML = '<td>' + order.id + '</td><td>' + order.date + '</td><td>' + fmtVND(order.total) +
+        '</td><td>' + order.status + '</td><td><a href="account-order-detail.html?order=' + order.id + '">Chi tiết</a></td>';
+      body.appendChild(row);
+    });
+    return;
+  }
+
+  if (page === 'account-order-detail') {
+    document.getElementById('order-steps').innerHTML = accountStepMarkup([
+      { label: 'Chờ xác nhận', icon: 'clock' },
+      { label: 'Đã xác nhận', icon: 'doc' },
+      { label: 'Đang giao hàng', icon: 'truck' },
+      { label: 'Đã giao hàng', icon: 'truck' },
+      { label: 'Đã hủy', icon: 'cancel' }
+    ], 2);
+    document.querySelectorAll('[data-buy-again]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        cartAdd(2, 1);
+        showToast('Đã thêm sản phẩm vào giỏ hàng');
+      });
+    });
+    return;
+  }
+
+  if (page === 'account-service-detail') {
+    document.getElementById('service-steps').innerHTML = accountStepMarkup([
+      { label: 'Chờ xác nhận', icon: 'clock' },
+      { label: 'Đã xác nhận', icon: 'doc' },
+      { label: 'Chờ phản hồi', icon: 'truck' },
+      { label: 'Đang xử lý', icon: 'truck' },
+      { label: 'Xử lý thành công', icon: 'doc' }
+    ], 2);
+    return;
+  }
+
+  if (page === 'account-favorites') {
+    document.querySelectorAll('[data-favorite-cart]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        cartAdd(Number(btn.dataset.favoriteCart), 1);
+        showToast('Đã thêm sản phẩm vào giỏ hàng');
+      });
+    });
+    return;
+  }
+
+  if (page === 'account-review') {
+    const stars = Array.prototype.slice.call(document.querySelectorAll('.review-star'));
+    const ratingInput = document.getElementById('review-rating');
+    const text = document.getElementById('review-text');
+    const counter = document.getElementById('review-count');
+    function paint(n) {
+      stars.forEach(function (star, index) { star.classList.toggle('is-active', index < n); });
+      ratingInput.value = n;
+    }
+    stars.forEach(function (star, index) {
+      star.addEventListener('click', function () { paint(index + 1); });
+    });
+    text.addEventListener('input', function () { counter.textContent = text.value.length + '/1000'; });
+    document.getElementById('review-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!Number(ratingInput.value)) { showToast('Vui lòng chọn số sao đánh giá'); return; }
+      if (text.value.trim().length < 10) { showToast('Vui lòng chia sẻ cảm nhận tối thiểu 10 ký tự'); return; }
+      showToast('Đã gửi đánh giá của bạn');
+    });
+  }
+}
+
 /* ============ 14. KHỞI CHẠY ============ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -1489,4 +1634,5 @@ document.addEventListener('DOMContentLoaded', function () {
   if (page === 'login') initLoginPage();
   if (page === 'register') initRegisterPage();
   if (page === 'promo') initPromoPage();
+  if (page && page.indexOf('account') === 0) initAccountPage();
 });
