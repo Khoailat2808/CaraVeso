@@ -27,6 +27,13 @@ function getProduct(id) {
   return PRODUCTS.find(function (p) { return p.id === Number(id); });
 }
 
+/** Thoát ký tự HTML (dùng khi ghép chuỗi innerHTML từ dữ liệu/nhập liệu) */
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
+
 /* ============ 2. THƯ VIỆN ICON SVG ============ */
 const ICONS = {
   chevronDown: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>',
@@ -50,7 +57,8 @@ const ICONS = {
   cod: '<svg width="44" height="44" viewBox="0 0 24 24" fill="#111"><path d="M12 2a4 4 0 014 4c0 .7-.2 1.4-.5 2H17a1 1 0 011 1v1H6V9a1 1 0 011-1h1.5A4 4 0 0112 2zm0 2a2 2 0 00-2 2c0 1.1.9 2 2 2s2-.9 2-2a2 2 0 00-2-2zM3 13.5c2-1.2 3.8-1.1 5.4-.3l2.8 1.3c.9.4 1.2 1.4.8 2.2l4.6-1.5c1-.3 2 .2 2.4 1.1.3.9-.1 1.9-1 2.3l-6.5 2.9c-1 .5-2.2.5-3.2 0L3 19v-5.5z"/><text x="12" y="7.4" font-size="3.4" text-anchor="middle" fill="#fff" font-weight="bold">$</text></svg>',
   ewallet: '<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.7"><rect x="5" y="2.5" width="14" height="19" rx="2.4"/><path d="M9 2.5h6M10 18.8h4"/><rect x="8" y="7" width="8" height="5.6" rx="1" fill="#111" stroke="none"/><path d="M9.5 9.8h5" stroke="#fff" stroke-width="1.2"/></svg>',
   eye: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7.5 11-7.5S23 12 23 12s-4 7.5-11 7.5S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>',
-  eyeOff: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17.9 17.9A10.6 10.6 0 0112 19.5C5 19.5 1 12 1 12a19.8 19.8 0 015.1-5.9M9.9 4.7A10 10 0 0112 4.5C19 4.5 23 12 23 12a19.9 19.9 0 01-3.2 4.3M14.1 14.1a3 3 0 11-4.2-4.2"/><path d="M2 2l20 20"/></svg>'
+  eyeOff: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17.9 17.9A10.6 10.6 0 0112 19.5C5 19.5 1 12 1 12a19.8 19.8 0 015.1-5.9M9.9 4.7A10 10 0 0112 4.5C19 4.5 23 12 23 12a19.9 19.9 0 01-3.2 4.3M14.1 14.1a3 3 0 11-4.2-4.2"/><path d="M2 2l20 20"/></svg>',
+  clock: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'
 };
 
 /* ============ 3. TRẠNG THÁI GIỎ HÀNG (trong bộ nhớ) ============ */
@@ -95,23 +103,148 @@ function cartAdd(productId, qty) {
 
 /* ============ 4. HEADER / FOOTER DÙNG CHUNG ============ */
 
+/** Thêm 1 từ khóa vào lịch sử tìm kiếm (trong bộ nhớ, mới nhất lên đầu) */
+function addRecentSearch(term) {
+  term = (term || '').trim();
+  if (!term) return;
+  const recent = SEARCH_SUGGESTIONS.recent || (SEARCH_SUGGESTIONS.recent = []);
+  const i = recent.findIndex(function (t) { return t.toLowerCase() === term.toLowerCase(); });
+  if (i !== -1) recent.splice(i, 1);
+  recent.unshift(term);
+  if (recent.length > 8) recent.length = 8;
+}
+
 function buildSearchBox(extraClass) {
-  const form = el('form', 'search ' + (extraClass || ''));
+  const wrap = el('div', 'search-wrap ' + (extraClass || ''));
+
+  const form = el('form', 'search');
   form.setAttribute('role', 'search');
   form.innerHTML =
     '<button class="search__btn" type="submit" aria-label="Tìm kiếm">' + ICONS.search + '</button>' +
     '<input class="search__input" type="text" placeholder="Nhập sản phẩm, chất liệu, phong cách,..." aria-label="Tìm kiếm sản phẩm">' +
     '<button class="search__camera" type="button" aria-label="Tìm bằng hình ảnh">' + ICONS.camera + '</button>';
+  const input = form.querySelector('.search__input');
+
+  /* Panel gợi ý: lịch sử + phổ biến (Yêu cầu 2) */
+  const panel = el('div', 'search-suggest');
+
+  function renderPanel() {
+    const recent = SEARCH_SUGGESTIONS.recent || [];
+    const popular = SEARCH_SUGGESTIONS.popular || [];
+    let html = '';
+    if (recent.length) {
+      html += '<div class="search-suggest__head">' +
+        '<span class="search-suggest__title">Lịch sử tìm kiếm</span>' +
+        '<button type="button" class="search-suggest__clear">Xoá tất cả</button></div>';
+      html += '<ul class="search-suggest__list">' + recent.map(function (t) {
+        return '<li><button type="button" class="search-suggest__item search-suggest__item--recent" data-term="' +
+          esc(t) + '">' + ICONS.clock + '<span>' + esc(t) + '</span></button></li>';
+      }).join('') + '</ul>';
+    }
+    if (popular.length) {
+      html += '<div class="search-suggest__head"><span class="search-suggest__title">Tìm kiếm phổ biến</span></div>';
+      html += '<ul class="search-suggest__list">' + popular.map(function (t) {
+        return '<li><button type="button" class="search-suggest__item" data-term="' +
+          esc(t) + '">' + esc(t) + '</button></li>';
+      }).join('') + '</ul>';
+    }
+    panel.innerHTML = html || '<p class="search-suggest__empty">Chưa có gợi ý tìm kiếm.</p>';
+  }
+
+  function openPanel() { renderPanel(); wrap.classList.add('is-open'); }
+  function closePanel() { wrap.classList.remove('is-open'); }
+
+  function doSearch(q) {
+    q = (q || '').trim();
+    if (!q) { showToast('Vui lòng nhập từ khóa tìm kiếm'); return; }
+    addRecentSearch(q);
+    window.location.href = 'products.html?q=' + encodeURIComponent(q);
+  }
+
+  input.addEventListener('focus', openPanel);
+  input.addEventListener('click', openPanel);
+
+  panel.addEventListener('click', function (e) {
+    if (e.target.closest('.search-suggest__clear')) {
+      SEARCH_SUGGESTIONS.recent = [];
+      renderPanel();
+      input.focus();
+      return;
+    }
+    const item = e.target.closest('.search-suggest__item');
+    if (item) doSearch(item.dataset.term);
+  });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    const q = form.querySelector('.search__input').value.trim();
-    if (!q) { showToast('Vui lòng nhập từ khóa tìm kiếm'); return; }
-    window.location.href = 'products.html?q=' + encodeURIComponent(q);
+    doSearch(input.value);
   });
   form.querySelector('.search__camera').addEventListener('click', function () {
     showToast('Tính năng tìm kiếm bằng hình ảnh đang phát triển');
   });
-  return form;
+
+  /* Đóng panel khi click ra ngoài ô tìm kiếm */
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) closePanel();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePanel();
+  });
+
+  wrap.appendChild(form);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+/** Link cho 1 mục danh mục:
+    - Sản phẩm → lưới products.html đã lọc theo danh mục
+    - Các phòng → trang phòng room.html?room=<slug> */
+function catalogHref(key, g, label) {
+  if (key === 'rooms') return 'room.html?room=' + encodeURIComponent(g.slug);
+  return 'products.html?category=' + encodeURIComponent(g.cat) +
+    '&label=' + encodeURIComponent(label);
+}
+
+/** Tên hiển thị của danh mục sản phẩm theo slug (VD 'sofa' → 'Ghế') */
+function getCategoryName(catSlug) {
+  const groups = (CATALOG.products && CATALOG.products.groups) || [];
+  const g = groups.find(function (x) { return x.cat === catSlug; });
+  return g ? g.label : '';
+}
+
+/** Cấu hình phân loại (nhãn + tùy chọn) theo danh mục sản phẩm */
+function getTypeConfig(category) {
+  const cfg = PRODUCT_TYPES[category] || PRODUCT_TYPES._default;
+  return cfg && cfg.options && cfg.options.length
+    ? cfg
+    : { label: 'Phân loại', options: ['Tiêu chuẩn'] };
+}
+
+/** Panel mega-menu nhiều cột dựng từ CATALOG[key] (Yêu cầu 3, ảnh 3) */
+function buildMegaPanel(cat, key) {
+  const panel = el('div', 'mega');
+  const cols = el('div', 'mega__cols');
+  (cat.groups || []).forEach(function (g) {
+    const col = el('div', 'mega__col');
+    const head = el('a', 'mega__group', g.label);
+    head.href = catalogHref(key, g, g.label);
+    col.appendChild(head);
+    const ul = el('ul', 'mega__list');
+    (g.children || []).forEach(function (child) {
+      const li = el('li');
+      const link = el('a', '', child);
+      link.href = catalogHref(key, g, child);
+      li.appendChild(link);
+      ul.appendChild(li);
+    });
+    col.appendChild(ul);
+    cols.appendChild(col);
+  });
+  panel.appendChild(cols);
+  const all = el('a', 'mega__all', cat.allLabel + ' →');
+  all.href = cat.allHref;
+  panel.appendChild(all);
+  return panel;
 }
 
 function renderHeader() {
@@ -143,12 +276,23 @@ function renderHeader() {
 
   const nav = el('nav', 'nav');
   NAV_ITEMS.forEach(function (item) {
-    const li = el('div', 'nav__item');
+    const hasMega = item.mega && CATALOG[item.mega];
+    const li = el('div', 'nav__item' + (hasMega ? ' nav__item--mega' : ''));
     const a = el('a', 'nav__link');
-    a.href = item.href;
-    a.innerHTML = item.label + (item.dropdown ? ICONS.chevronDown : '');
+    a.href = item.href || '#';
+    a.innerHTML = item.label + ((item.dropdown || hasMega) ? ICONS.chevronDown : '');
     li.appendChild(a);
-    if (item.dropdown) {
+
+    if (hasMega) {
+      // Mega-menu nhiều cột — mở/đóng bằng click (Yêu cầu 3)
+      li.appendChild(buildMegaPanel(CATALOG[item.mega], item.mega));
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        const willOpen = !li.classList.contains('is-open');
+        nav.querySelectorAll('.nav__item--mega.is-open').forEach(function (x) { x.classList.remove('is-open'); });
+        if (willOpen) li.classList.add('is-open');
+      });
+    } else if (item.dropdown) {
       const dd = el('div', 'nav__dropdown');
       item.dropdown.forEach(function (sub) {
         // Mục con có thể là chuỗi hoặc object {label, href}
@@ -161,6 +305,16 @@ function renderHeader() {
     nav.appendChild(li);
   });
   left.appendChild(nav);
+
+  // Đóng mega-menu khi click ra ngoài hoặc nhấn Esc
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav__item--mega')) {
+      nav.querySelectorAll('.nav__item--mega.is-open').forEach(function (x) { x.classList.remove('is-open'); });
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') nav.querySelectorAll('.nav__item--mega.is-open').forEach(function (x) { x.classList.remove('is-open'); });
+  });
 
   // Giữa: logo
   const logo = el('a', 'logo', 'CaraVeso');
@@ -365,6 +519,13 @@ function openQuickAddModal(product) {
       '</span></button>';
   }).join('');
 
+  // Phân loại theo danh mục (nhãn + tùy chọn chọn được)
+  const qaType = getTypeConfig(product.category);
+  const typeChips = qaType.options.map(function (opt, i) {
+    return '<button type="button" class="qa__chip' + (i === 0 ? ' is-active' : '') +
+      '" data-type="' + esc(opt) + '">' + esc(opt) + '</button>';
+  }).join('');
+
   openModal(
     '<div class="qa">' +
       '<div class="qa__left">' +
@@ -376,8 +537,9 @@ function openQuickAddModal(product) {
         '<p class="qa__meta"><b>SKU:</b> ' + product.sku + '</p>' +
         '<p class="qa__meta"><b>Tình trạng:</b> Còn ' + product.stock + ' sản phẩm</p>' +
         '<div class="qa__sect">' +
-          '<p class="qa__sect-label">Loại ghế <small>(5)</small></p>' +
-          '<p class="qa__sect-value">2 chỗ ngồi</p>' +
+          '<p class="qa__sect-label">' + esc(qaType.label) + ' <small>(' + qaType.options.length + ')</small></p>' +
+          '<p class="qa__sect-value" id="qa-type-label">' + esc(qaType.options[0]) + '</p>' +
+          '<div class="qa__chips">' + typeChips + '</div>' +
         '</div>' +
         '<div class="qa__sect">' +
           '<p class="qa__sect-label">Màu sắc <small>(' + product.colors.length + ')</small></p>' +
@@ -400,6 +562,15 @@ function openQuickAddModal(product) {
   );
 
   const modal = modalOverlay.querySelector('.modal');
+
+  // Chọn loại (phân loại theo danh mục)
+  modal.querySelectorAll('.qa__chip').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      modal.querySelectorAll('.qa__chip').forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      modal.querySelector('#qa-type-label').textContent = btn.dataset.type;
+    });
+  });
 
   // Chọn màu
   modal.querySelectorAll('.qa__variant').forEach(function (btn) {
@@ -751,6 +922,43 @@ function initHomePage() {
 
 /* ============ 8. TRANG DANH SÁCH SẢN PHẨM ============ */
 
+/* ============ TRANG DANH MỤC (accordion — ảnh 4, 5) ============ */
+function initCategoryIndexPage() {
+  const root = document.getElementById('catalog-root');
+  if (!root) return;
+  const key = document.body.dataset.catalog;
+  const cat = CATALOG[key];
+  if (!cat) return;
+
+  document.title = cat.title + ' — CaraVeso';
+  const bc = document.getElementById('catalog-breadcrumb-name');
+  if (bc) bc.textContent = cat.breadcrumb;
+  const titleEl = document.getElementById('catalog-title');
+  if (titleEl) titleEl.textContent = cat.title;
+
+  const acc = el('div', 'cat-acc');
+  (cat.groups || []).forEach(function (g) {
+    const item = el('div', 'cat-acc__item');
+
+    const head = el('button', 'cat-acc__head');
+    head.type = 'button';
+    head.innerHTML = '<span>' + esc(g.label) + '</span>' + ICONS.arrowRight;
+
+    const body = el('div', 'cat-acc__body');
+    (g.children || []).forEach(function (child) {
+      const link = el('a', 'cat-acc__link', child);
+      link.href = catalogHref(key, g, child);
+      body.appendChild(link);
+    });
+
+    head.addEventListener('click', function () { item.classList.toggle('is-open'); });
+    item.appendChild(head);
+    item.appendChild(body);
+    acc.appendChild(item);
+  });
+  root.appendChild(acc);
+}
+
 function initProductsPage() {
   const grid = document.getElementById('product-grid');
   if (!grid) return;
@@ -758,19 +966,39 @@ function initProductsPage() {
   const PAGE_SIZE = 8;
   let visibleCount = PAGE_SIZE;
 
+  const params = new URLSearchParams(window.location.search);
+  const catParam = params.get('category');
+
   // Trạng thái bộ lọc
   const state = {
-    q: new URLSearchParams(window.location.search).get('q') || '',
-    categories: [],
+    q: params.get('q') || '',
+    categories: catParam ? [catParam] : [],
     color: null,
     priceMin: null,
     priceMax: null,
     sort: 'default'
   };
 
-  if (state.q) {
-    const titleEl = document.querySelector('.page-title');
-    if (titleEl) titleEl.innerHTML = 'Kết quả cho "' + state.q + '"<small id="result-count"></small>';
+  // Tiêu đề trang theo nhãn danh mục (từ mega-menu/accordion) hoặc từ khóa tìm kiếm
+  const titleEl = document.querySelector('.page-title');
+  const labelParam = params.get('label');
+  if (labelParam && titleEl) {
+    titleEl.innerHTML = esc(labelParam) + '<small id="result-count"></small>';
+  } else if (state.q && titleEl) {
+    titleEl.innerHTML = 'Kết quả cho "' + esc(state.q) + '"<small id="result-count"></small>';
+  }
+
+  // Breadcrumb: Trang chủ › Sản phẩm › <Tên danh mục / từ khóa>
+  const bcCat = document.getElementById('products-breadcrumb-cat');
+  if (bcCat) {
+    if (labelParam) bcCat.textContent = labelParam;
+    else if (state.q) bcCat.textContent = 'Kết quả cho "' + state.q + '"';
+  }
+
+  // Tích sẵn checkbox danh mục tương ứng nếu vào từ mega-menu/accordion
+  if (catParam) {
+    const cb = document.querySelector('input[name="category"][value="' + catParam + '"]');
+    if (cb) cb.checked = true;
   }
 
   function applyFilters() {
@@ -847,23 +1075,73 @@ function initProductsPage() {
     });
   });
 
-  // Khoảng giá
+  // Khoảng giá — slider 2 node đồng bộ với 2 ô nhập (Yêu cầu 1)
   const priceMinInput = document.getElementById('price-min');
   const priceMaxInput = document.getElementById('price-max');
-  const priceRange = document.getElementById('price-range');
-  function onPriceChange() {
-    state.priceMin = priceMinInput.value ? Number(priceMinInput.value) : null;
-    state.priceMax = priceMaxInput.value ? Number(priceMaxInput.value) : null;
-    visibleCount = PAGE_SIZE;
-    render();
-  }
-  if (priceMinInput) priceMinInput.addEventListener('change', onPriceChange);
-  if (priceMaxInput) priceMaxInput.addEventListener('change', onPriceChange);
-  if (priceRange) {
-    priceRange.addEventListener('input', function () {
-      priceMaxInput.value = priceRange.value;
-      onPriceChange();
+  const rangeMin = document.getElementById('price-range-min');
+  const rangeMax = document.getElementById('price-range-max');
+  const priceFill = document.getElementById('price-fill');
+
+  if (rangeMin && rangeMax) {
+    const P_MIN = Number(rangeMin.min);
+    const P_MAX = Number(rangeMin.max);
+    const P_GAP = Number(rangeMin.step) || 500000;
+
+    function parsePrice(s) {
+      const d = String(s).replace(/[^\d]/g, '');
+      return d ? Number(d) : null;
+    }
+    function updateFill() {
+      const span = P_MAX - P_MIN || 1;
+      const lo = Number(rangeMin.value);
+      const hi = Number(rangeMax.value);
+      priceFill.style.left = ((lo - P_MIN) / span * 100) + '%';
+      priceFill.style.right = ((P_MAX - hi) / span * 100) + '%';
+    }
+    // Đồng bộ ô nhập + trạng thái lọc từ vị trí 2 node, rồi render
+    function syncFromSliders(doRender) {
+      const lo = Number(rangeMin.value);
+      const hi = Number(rangeMax.value);
+      priceMinInput.value = lo.toLocaleString('vi-VN');
+      priceMaxInput.value = hi.toLocaleString('vi-VN');
+      updateFill();
+      state.priceMin = lo > P_MIN ? lo : null;
+      state.priceMax = hi < P_MAX ? hi : null;
+      if (doRender) { visibleCount = PAGE_SIZE; render(); }
+    }
+
+    rangeMin.addEventListener('input', function () {
+      // Không cho node min vượt node max (giữ khoảng cách tối thiểu 1 bước)
+      if (Number(rangeMin.value) > Number(rangeMax.value) - P_GAP) {
+        rangeMin.value = Number(rangeMax.value) - P_GAP;
+      }
+      syncFromSliders(true);
     });
+    rangeMax.addEventListener('input', function () {
+      if (Number(rangeMax.value) < Number(rangeMin.value) + P_GAP) {
+        rangeMax.value = Number(rangeMin.value) + P_GAP;
+      }
+      syncFromSliders(true);
+    });
+
+    // Gõ giá trực tiếp vào ô input → cập nhật node tương ứng
+    priceMinInput.addEventListener('change', function () {
+      let v = parsePrice(priceMinInput.value);
+      if (v === null) v = P_MIN;
+      v = Math.max(P_MIN, Math.min(v, Number(rangeMax.value) - P_GAP));
+      rangeMin.value = v;
+      syncFromSliders(true);
+    });
+    priceMaxInput.addEventListener('change', function () {
+      let v = parsePrice(priceMaxInput.value);
+      if (v === null) v = P_MAX;
+      v = Math.min(P_MAX, Math.max(v, Number(rangeMin.value) + P_GAP));
+      rangeMax.value = v;
+      syncFromSliders(true);
+    });
+
+    // Khởi tạo hiển thị (không render lại — render() gọi ở cuối hàm)
+    syncFromSliders(false);
   }
 
   // Sắp xếp
@@ -902,6 +1180,18 @@ function initProductDetailPage() {
   document.getElementById('pd-sku').textContent = product.sku;
   document.getElementById('pd-stock').textContent = 'Còn ' + product.stock + ' sản phẩm';
   document.getElementById('pd-price').textContent = fmtVND(product.price);
+
+  /* Breadcrumb: Trang chủ › Sản phẩm › <Danh mục> › <Tên sản phẩm> */
+  const bcCat = document.getElementById('pd-breadcrumb-cat');
+  const catName = getCategoryName(product.category);
+  if (bcCat) {
+    if (catName) {
+      bcCat.innerHTML = '<a href="' +
+        catalogHref('products', { cat: product.category }, catName) + '">' + esc(catName) + '</a>';
+    } else {
+      bcCat.remove();
+    }
+  }
   document.getElementById('pd-breadcrumb-name').textContent = product.name;
 
   /* --- Gallery: ảnh chính + 6 thumbnail --- */
@@ -922,6 +1212,25 @@ function initProductDetailPage() {
       mainImg.src = src;
     });
     thumbsWrap.appendChild(btn);
+  });
+
+  /* --- Chọn loại (nhãn + tùy chọn theo danh mục sản phẩm) --- */
+  const typeCfg = getTypeConfig(product.category);
+  const typeWrap = document.getElementById('pd-types');
+  const typeValue = document.getElementById('pd-type-value');
+  document.getElementById('pd-type-label').firstChild.textContent = typeCfg.label + ' ';
+  document.getElementById('pd-type-count').textContent = '(' + typeCfg.options.length + ')';
+  typeValue.textContent = typeCfg.options[0];
+  typeWrap.textContent = '';
+  typeCfg.options.forEach(function (opt, i) {
+    const chip = el('button', 'pd__chip' + (i === 0 ? ' is-active' : ''), opt);
+    chip.type = 'button';
+    chip.addEventListener('click', function () {
+      typeWrap.querySelectorAll('.pd__chip').forEach(function (c) { c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      typeValue.textContent = opt;
+    });
+    typeWrap.appendChild(chip);
   });
 
   /* --- Chọn màu --- */
@@ -2325,6 +2634,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const page = document.body.dataset.page;
     if (page === 'home') initHomePage();
+    if (page === 'category-index') initCategoryIndexPage();
     if (page === 'products') initProductsPage();
     if (page === 'product-detail') initProductDetailPage();
     if (page === 'cart') initCartPage();

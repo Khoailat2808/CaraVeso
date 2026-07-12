@@ -18,7 +18,8 @@
     <div class="container">
       <ol>
         <li><a href="index.html">Trang chủ</a></li>
-        <li><a href="products.html">Sản phẩm</a></li>
+        <li><a href="danh-muc-san-pham.html">Sản phẩm</a></li>
+        <li id="pd-breadcrumb-cat"></li>
         <li id="pd-breadcrumb-name">Chi tiết</li>
       </ol>
     </div>
@@ -43,10 +44,11 @@
 
         <div class="pd__options">
           <div class="pd__option-row">
-            <span class="pd__option-label">Loại ghế <small>(5)</small></span>
-            <span class="pd__option-value">2 chỗ ngồi</span>
+            <span class="pd__option-label" id="pd-type-label">Phân loại <small id="pd-type-count"></small></span>
+            <span class="pd__option-value" id="pd-type-value"></span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
           </div>
+          <div class="pd__chips" id="pd-types"></div>
           <div class="pd__option-row">
             <span class="pd__option-label">Màu sắc <small id="pd-color-count"></small></span>
             <span class="pd__option-value" id="pd-color-label"></span>

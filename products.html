@@ -18,8 +18,8 @@
     <div class="container">
       <ol>
         <li><a href="index.html">Trang chủ</a></li>
-        <li><a href="products.html">Sản phẩm</a></li>
-        <li>Tất cả sản phẩm</li>
+        <li><a href="danh-muc-san-pham.html">Sản phẩm</a></li>
+        <li id="products-breadcrumb-cat">Tất cả sản phẩm</li>
       </ol>
     </div>
   </nav>
@@ -54,12 +54,17 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 15l-6-6-6 6"/></svg>
           </button>
           <div class="filter-group__body">
-            <input type="range" class="price-range" id="price-range" min="500000" max="35000000" step="500000" value="35000000" aria-label="Giá tối đa">
+            <div class="range-slider" id="price-slider">
+              <div class="range-slider__track"></div>
+              <div class="range-slider__fill" id="price-fill"></div>
+              <input type="range" id="price-range-min" min="500000" max="35000000" step="500000" value="500000" aria-label="Giá tối thiểu">
+              <input type="range" id="price-range-max" min="500000" max="35000000" step="500000" value="35000000" aria-label="Giá tối đa">
+            </div>
             <div class="price-scale"><span>500.000</span><span>35.000.000</span></div>
             <div class="price-inputs">
-              <input type="number" id="price-min" placeholder="650.000" min="0" aria-label="Giá từ">
+              <input type="text" id="price-min" inputmode="numeric" placeholder="500.000" aria-label="Giá từ">
               <span>—</span>
-              <input type="number" id="price-max" placeholder="800.000" min="0" aria-label="Giá đến">
+              <input type="text" id="price-max" inputmode="numeric" placeholder="35.000.000" aria-label="Giá đến">
             </div>
           </div>
         </div>

@@ -1,0 +1,10 @@
+{
+  "sofa":      { "label": "Loại ghế",   "options": ["1 chỗ ngồi", "2 chỗ ngồi", "3 chỗ ngồi", "Ghế góc L", "Băng dài"] },
+  "ban":       { "label": "Loại bàn",   "options": ["Bàn trà", "Bàn ăn 4 ghế", "Bàn ăn 6 ghế", "Bàn console", "Bàn làm việc"] },
+  "tu":        { "label": "Loại tủ",    "options": ["Tủ 2 cánh", "Tủ 3 cánh", "Tủ 4 cánh", "Tủ có gương", "Tủ âm tường"] },
+  "ke":        { "label": "Loại kệ",    "options": ["Kệ sách", "Kệ TV", "Kệ treo tường", "Kệ trang trí", "Kệ góc"] },
+  "nem":       { "label": "Kích thước", "options": ["1m x 2m", "1m2 x 2m", "1m6 x 2m", "1m8 x 2m", "2m x 2m2"] },
+  "den":       { "label": "Loại đèn",   "options": ["Đèn trần", "Đèn bàn", "Đèn sàn", "Đèn tường", "Đèn ngủ"] },
+  "trang-tri": { "label": "Kiểu dáng",  "options": ["Cỡ nhỏ", "Cỡ vừa", "Cỡ lớn", "Bộ đôi", "Bộ ba"] },
+  "_default":  { "label": "Phân loại",  "options": ["Tiêu chuẩn", "Cao cấp", "Phiên bản giới hạn"] }
+}

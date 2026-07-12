@@ -1,15 +1,6 @@
 [
-  { "label": "Sản phẩm", "href": "products.html", "dropdown": ["Ghế sofa", "Bàn", "Tủ - Kệ", "Nệm - Chăn ga", "Đèn trang trí"] },
-  {
-    "label": "Các phòng",
-    "href": "room.html?room=phong-ngu",
-    "dropdown": [
-      { "label": "Phòng khách", "href": "room.html?room=phong-khach" },
-      { "label": "Phòng ngủ", "href": "room.html?room=phong-ngu" },
-      { "label": "Phòng ăn", "href": "room.html?room=phong-an" },
-      { "label": "Phòng làm việc", "href": "room.html?room=phong-lam-viec" }
-    ]
-  },
+  { "label": "Sản phẩm", "href": "danh-muc-san-pham.html", "mega": "products" },
+  { "label": "Các phòng", "href": "danh-muc-cac-phong.html", "mega": "rooms" },
   { "label": "Khuyến mãi", "href": "promo.html", "dropdown": ["Khuyến mãi hôm nay", "Voucher của tôi"] },
   { "label": "Hỗ trợ/ Bảo hành", "href": "warranty.html", "dropdown": null }
 ]

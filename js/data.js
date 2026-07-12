@@ -26,11 +26,16 @@ let ACCOUNT_ORDERS = [];
 let CHAT_PRODUCTS = [];
 let ROOMS = {};
 let STYLES = {};
+let CATALOG = {};
+let SEARCH_SUGGESTIONS = { recent: [], popular: [] };
+let PRODUCT_TYPES = {};
 
 /* ---------- Nạp dữ liệu JSON ---------- */
 const APP_DATA_READY = (async function loadAppData() {
   async function loadJSON(path) {
-    const res = await fetch(path);
+    // no-cache: luôn xác thực lại với server (tránh dùng bản JSON cũ trong cache
+    // khi dữ liệu thay đổi — nhất là với server tĩnh không gửi Cache-Control)
+    const res = await fetch(path, { cache: 'no-cache' });
     if (!res.ok) {
       throw new Error('Không tải được ' + path + ' (HTTP ' + res.status + ')');
     }
@@ -40,7 +45,7 @@ const APP_DATA_READY = (async function loadAppData() {
   const [
     products, collections, heroSlides, inspirations, reviews,
     initialCart, vouchers, navItems, locations, footerLinks,
-    account, chatProducts, rooms, styles
+    account, chatProducts, rooms, styles, catalog, searchSuggestions, productTypes
   ] = await Promise.all([
     loadJSON('data/products.json'),
     loadJSON('data/collections.json'),
@@ -55,7 +60,10 @@ const APP_DATA_READY = (async function loadAppData() {
     loadJSON('data/account.json'),
     loadJSON('data/chat-products.json'),
     loadJSON('data/rooms.json'),
-    loadJSON('data/styles.json')
+    loadJSON('data/styles.json'),
+    loadJSON('data/catalog.json'),
+    loadJSON('data/search-suggestions.json'),
+    loadJSON('data/product-types.json')
   ]);
 
   PRODUCTS = products;
@@ -73,4 +81,7 @@ const APP_DATA_READY = (async function loadAppData() {
   CHAT_PRODUCTS = chatProducts;
   ROOMS = rooms;
   STYLES = styles;
+  CATALOG = catalog;
+  SEARCH_SUGGESTIONS = searchSuggestions;
+  PRODUCT_TYPES = productTypes;
 })();
