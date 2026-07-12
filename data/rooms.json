@@ -2,25 +2,33 @@
   "phong-ngu": {
     "name": "Phòng ngủ",
     "desc": "Phòng ngủ là nơi bắt đầu và khép lại một ngày của bạn. CaraVeso mang đến những thiết kế đề cao sự thư thái: chất liệu tự nhiên, gam màu dịu nhẹ và bố cục tối ưu công năng. Từ giường, tủ quần áo đến nệm và chăn ga, mỗi món đồ đều được chọn lọc để nâng niu giấc ngủ, giúp bạn thức dậy tràn đầy năng lượng mỗi sáng.",
-    "img": "https://picsum.photos/seed/caraveso-room-ngu/900/500",
+    "img": "img/rooms/phong-ngu/zen2.jpg",
     "categories": ["giuong", "tu-ao", "ban-lam-viec", "tu-ngan-keo", "tham", "ban-trang-diem"],
     "ideaTitle": "Ý tưởng cho phòng ngủ của bạn",
+    "ideaImages": {
+      "minimalist": "img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "img/rooms/phong-ngu/indochine1.jpg"
+    },
     "collage1": {
       "title": "CaraVeso hiểu và trân trọng giấc ngủ của bạn",
       "sub": "Chúng tôi mang đến những sản phẩm được thiết kế để nâng niu từng giấc ngủ, giúp bạn tận hưởng sự thoải mái và thư giãn mỗi ngày.",
       "images": [
-        { "img": "https://picsum.photos/seed/caraveso-clg1/900/860", "hotspots": [{ "x": 32, "y": 55, "productId": 1 }, { "x": 68, "y": 38, "productId": 5 }] },
-        { "img": "https://picsum.photos/seed/caraveso-clg2/860/420", "hotspots": [{ "x": 40, "y": 62, "productId": 12 }] },
-        { "img": "https://picsum.photos/seed/caraveso-clg3/860/420", "hotspots": [{ "x": 62, "y": 48, "productId": 11 }] }
+        { "img": "img/rooms/phong-ngu/bed_room.jpg", "hotspots": [{ "x": 40, "y": 74, "productId": 12 }, { "x": 90, "y": 38, "productId": 5 }, { "x": 76, "y": 43, "productId": 11 }] },
+        { "img": "img/rooms/phong-ngu/ke.jpg", "hotspots": [] },
+        { "img": "img/rooms/phong-ngu/guong.jpg", "hotspots": [] }
       ]
     },
     "collage2": {
       "title": "Dành cho trẻ",
       "sub": "Khám phá bộ sưu tập nội thất trẻ em với thiết kế đáng yêu và tiện nghi. Giúp bé có không gian vui chơi, học tập và nghỉ ngơi trọn vẹn.",
+      "layout": "slider",
       "images": [
-        { "img": "https://picsum.photos/seed/caraveso-kid1/900/760", "hotspots": [{ "x": 28, "y": 48, "productId": 2 }, { "x": 55, "y": 78, "productId": 13 }] },
-        { "img": "https://picsum.photos/seed/caraveso-kid2/620/760", "hotspots": [{ "x": 45, "y": 55, "productId": 9 }] },
-        { "img": "https://picsum.photos/seed/caraveso-kid3/420/760", "hotspots": [{ "x": 50, "y": 42, "productId": 15 }] }
+        { "img": "img/rooms/phong-ngu/children.jpg", "hotspots": [{ "x": 53, "y": 9, "productId": 15 }] },
+        { "img": "img/rooms/phong-ngu/children3.jpg", "hotspots": [{ "x": 40, "y": 57, "productId": 1 }, { "x": 9, "y": 48, "productId": 6 }] },
+        { "img": "img/rooms/phong-ngu/children4.jpg", "hotspots": [{ "x": 44, "y": 60, "productId": 12 }] },
+        { "img": "img/rooms/phong-ngu/children2.jpg", "hotspots": [{ "x": 60, "y": 50, "productId": 5 }] }
       ]
     }
   },

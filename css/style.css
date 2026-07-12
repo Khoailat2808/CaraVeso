@@ -111,6 +111,12 @@ input[type="password"]::-ms-clear { display: none; }
 .topbar__auth:hover { text-decoration: underline; }
 
 /* ============ 4. HEADER ============ */
+/* Mount #site-header dùng display:contents để không tạo "khối cha" giới hạn
+   phạm vi dính của header — nhờ vậy position:sticky của .header tính theo
+   <body> (cao suốt trang) và header được giữ cố định khi cuộn toàn trang.
+   Top bar khuyến mãi vẫn nằm trong luồng và cuộn đi bình thường. */
+#site-header { display: contents; }
+
 .header {
   height: var(--header-h);
   border-bottom: 1px solid var(--color-border-light);
@@ -1213,6 +1219,85 @@ input[type="password"]::-ms-clear { display: none; }
 }
 .toast.is-show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
+/* Popup giỏ hàng (mini-cart) — hiện khi thêm sản phẩm, tự ẩn sau ~3s */
+.cart-wrap { position: relative; display: flex; align-items: center; }
+.cart-popup {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  width: clamp(300px, 92vw, 384px);
+  background: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, .24);
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+.cart-popup.is-show { opacity: 1; visibility: visible; transform: translateY(0); }
+.cart-popup::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 18px;
+  width: 13px;
+  height: 13px;
+  background: var(--color-primary);
+  transform: rotate(45deg);
+}
+.cart-popup__head {
+  position: relative;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 18px;
+  border-radius: 10px 10px 0 0;
+}
+.cart-popup__list { max-height: 320px; overflow-y: auto; }
+.cart-popup__empty { padding: 28px 18px; text-align: center; color: var(--color-text-muted); font-size: 14px; }
+.cart-popup__item {
+  display: grid;
+  grid-template-columns: 66px 1fr auto;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+.cart-popup__img { width: 66px; height: 66px; background: var(--color-bg-soft); border-radius: 6px; overflow: hidden; }
+.cart-popup__img img { width: 100%; height: 100%; object-fit: cover; }
+.cart-popup__info { min-width: 0; }
+.cart-popup__name { display: block; font-size: 13.5px; font-weight: 700; color: var(--color-black); line-height: 1.35; margin-bottom: 4px; }
+.cart-popup__name:hover { color: var(--color-primary); }
+.cart-popup__meta {
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cart-popup__side { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; gap: 8px; }
+.cart-popup__price { font-size: 13px; font-weight: 700; white-space: nowrap; }
+.cart-popup .qty-stepper { margin: 0; gap: 4px; }
+.cart-popup .qty-stepper button { width: 26px; height: 26px; font-size: 15px; }
+.cart-popup .qty-stepper input { width: 34px; height: 26px; font-size: 13px; }
+.cart-popup__foot { display: flex; gap: 10px; padding: 14px 18px; }
+.cart-popup__btn {
+  flex: 1;
+  text-align: center;
+  padding: 10px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all .2s ease;
+}
+.cart-popup__btn--primary { border: 1px solid var(--color-primary); color: var(--color-primary); }
+.cart-popup__btn--primary:hover { background: var(--color-primary); color: var(--color-white); }
+.cart-popup__btn--ghost { color: var(--color-text-muted); }
+.cart-popup__btn--ghost:hover { color: var(--color-black); }
+
 /* ============ 17. LUỒNG THANH TOÁN (theo Figma) ============ */
 
 /* --- Header tối giản (trang thanh toán / cổng thanh toán) --- */
@@ -1463,6 +1548,8 @@ select.form-control:invalid, select.form-control option[value=""] { color: var(-
   letter-spacing: .5px;
 }
 .momo-logo--sm { width: 44px; height: 44px; font-size: 12px; border-radius: 8px; }
+/* Khi là ảnh logo (img/logo_momo.png) thay cho text vẽ bằng CSS */
+img.momo-logo { background: transparent; object-fit: contain; }
 
 /* --- Trang cổng thanh toán (Momo / Ngân hàng) --- */
 .gw-brandbar {
@@ -1516,12 +1603,13 @@ select.form-control:invalid, select.form-control option[value=""] { color: var(-
 
 /* Khối QR bên phải */
 .gw-qr--momo {
-  background: #b0006d;
   border-radius: 4px;
-  padding: 26px 30px 30px;
   color: var(--color-white);
   text-align: center;
 }
+/* Khối QR MoMo là ảnh nguyên khối (đã có nền hồng, topbar, caption) */
+.gw-qr-box--img { background: transparent; padding: 0; border-radius: 14px; overflow: hidden; }
+.gw-qr-box--img img { width: min(430px, 84vw); height: auto; display: block; }
 .gw-qr--momo .gw-qr-topbar {
   display: flex;
   align-items: center;
@@ -2886,7 +2974,7 @@ select.form-control:invalid, select.form-control option[value=""] { color: var(-
 }
 .room-hero__text h1 { font-size: clamp(24px, 2.4vw, 32px); font-weight: 700; margin-bottom: 14px; }
 .room-hero__text p { font-size: 14px; line-height: 1.7; color: #333; max-width: 560px; }
-.room-hero__img { overflow: hidden; }
+.room-hero__img { overflow: hidden; max-height: 440px; }
 .room-hero__img img { width: 100%; height: 100%; object-fit: cover; min-height: 260px; }
 
 /* Danh mục sản phẩm: hàng ảnh cuộn ngang */
@@ -2911,7 +2999,14 @@ select.form-control:invalid, select.form-control option[value=""] { color: var(-
 
 /* Card ý tưởng phong cách */
 .idea-carousel { position: relative; }
-.idea-carousel .slider-arrow { background: #111; color: var(--color-white); width: 44px; height: 44px; }
+.idea-carousel .slider-arrow {
+  background: #111;
+  color: var(--color-white);
+  width: 44px;
+  height: 44px;
+  /* Neo theo tâm ảnh card (ảnh = width card / 1.08), không phải giữa cả card có chữ */
+  top: calc(clamp(230px, 22.5vw, 300px) / 2.16 + 2px);
+}
 .idea-carousel .slider-arrow:hover { background: #333; }
 .idea-carousel .slider-arrow--prev { left: -14px; }
 .idea-carousel .slider-arrow--next { right: -14px; }
@@ -2969,6 +3064,28 @@ select.form-control:invalid, select.form-control option[value=""] { color: var(-
 .collage--b { grid-template-columns: 1.55fr 1fr .62fr; }
 .collage__cell { position: relative; overflow: hidden; }
 .collage__cell img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Collage dạng slider: ảnh nguyên khung không crop, cuộn ngang */
+.collage-slider { position: relative; }
+.collage-slider .slider-arrow { background: #111; color: var(--color-white); width: 44px; height: 44px; }
+.collage-slider .slider-arrow:hover { background: #333; }
+.collage-slider .slider-arrow--prev { left: -14px; }
+.collage-slider .slider-arrow--next { right: -14px; }
+.collage-slider__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.collage-slider__track::-webkit-scrollbar { display: none; }
+.collage-slide {
+  position: relative;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  height: clamp(340px, 42vw, 600px);
+}
+.collage-slide img { width: auto; height: 100%; display: block; }
 
 /* --- Hotspot: nút tròn trên ảnh + tooltip sản phẩm --- */
 .hotspot-point { position: absolute; transform: translate(-50%, -50%); }

@@ -88,7 +88,7 @@ const COLOR_NAMES = {
 function cartAdd(productId, qty) {
   qty = qty || 1;
   const existing = cartState.find(function (i) { return i.productId === productId; });
-  if (existing) existing.qty += qty;
+  if (existing) { existing.qty += qty; existing.checked = true; }
   else cartState.push({ productId: productId, qty: qty, checked: true });
   updateCartBadge();
 }
@@ -181,11 +181,13 @@ function renderHeader() {
   account.innerHTML = ICONS.user;
   right.appendChild(account);
 
+  const cartWrap = el('div', 'cart-wrap');
   const cartLink = el('a', 'header__icon');
   cartLink.href = 'cart.html';
   cartLink.setAttribute('aria-label', 'Giỏ hàng');
   cartLink.innerHTML = ICONS.cart + '<span class="cart-badge" hidden>0</span>';
-  right.appendChild(cartLink);
+  cartWrap.appendChild(cartLink);
+  right.appendChild(cartWrap);
 
   inner.appendChild(left);
   inner.appendChild(logo);
@@ -426,7 +428,7 @@ function openQuickAddModal(product) {
   modal.querySelector('#qa-add').addEventListener('click', function () {
     cartAdd(product.id, Number(qtyInput.value));
     closeModal();
-    showToast('Đã thêm "' + product.name + '" vào giỏ hàng');
+    openCartPopup();
   });
   modal.querySelector('#qa-buy').addEventListener('click', function () {
     cartAdd(product.id, Number(qtyInput.value));
@@ -468,6 +470,115 @@ function showToast(message) {
   toast.classList.add('is-show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(function () { toast.classList.remove('is-show'); }, 2600);
+}
+
+/* ---- Popup giỏ hàng (mini-cart) hiện cạnh icon giỏ khi thêm sản phẩm ---- */
+let cartPopupTimer = null;
+let cartPopupSuppressOutside = false;  // chặn cú click vừa mở popup tự đóng nó
+
+/** Hẹn giờ tự ẩn popup sau ~3s (gọi lại mỗi lần có tương tác để reset). */
+function scheduleCartPopupClose() {
+  clearTimeout(cartPopupTimer);
+  cartPopupTimer = setTimeout(closeCartPopup, 3000);
+}
+
+function closeCartPopup() {
+  clearTimeout(cartPopupTimer);
+  const popup = document.querySelector('.cart-popup');
+  if (popup) popup.classList.remove('is-show');
+}
+
+/** Mở popup giỏ hàng cạnh icon giỏ. Nếu trang không có header thì fallback toast. */
+function openCartPopup() {
+  const wrap = document.querySelector('.cart-wrap');
+  if (!wrap) { showToast('Đã thêm sản phẩm vào giỏ hàng'); return; }
+
+  let popup = wrap.querySelector('.cart-popup');
+  if (!popup) {
+    popup = el('div', 'cart-popup');
+    wrap.appendChild(popup);
+    // Rê chuột vào popup thì tạm dừng đếm giờ, rời ra thì đếm lại
+    popup.addEventListener('mouseenter', function () { clearTimeout(cartPopupTimer); });
+    popup.addEventListener('mouseleave', scheduleCartPopupClose);
+    // Bấm ra ngoài thì đóng popup (bỏ qua chính cú click vừa mở popup)
+    document.addEventListener('click', function (e) {
+      if (cartPopupSuppressOutside) return;
+      if (popup.classList.contains('is-show') && !wrap.contains(e.target)) closeCartPopup();
+    });
+  }
+
+  renderCartPopup(popup);
+  popup.classList.add('is-show');
+  // Cú click hiện tại vẫn đang bubble lên document — chặn nó đóng popup ngay
+  cartPopupSuppressOutside = true;
+  setTimeout(function () { cartPopupSuppressOutside = false; }, 0);
+  scheduleCartPopupClose();
+}
+
+/** Dựng lại nội dung popup từ trạng thái giỏ hàng hiện tại. */
+function renderCartPopup(popup) {
+  popup.textContent = '';
+  popup.appendChild(el('div', 'cart-popup__head', 'Giỏ hàng (' + cartState.length + ')'));
+
+  const list = el('div', 'cart-popup__list');
+  if (!cartState.length) {
+    list.appendChild(el('p', 'cart-popup__empty', 'Giỏ hàng của bạn đang trống.'));
+  } else {
+    // Hiện sản phẩm mới thêm lên đầu
+    cartState.slice().reverse().forEach(function (item) {
+      const p = getProduct(item.productId);
+      if (!p) return;
+      const row = el('div', 'cart-popup__item');
+      row.innerHTML =
+        '<a class="cart-popup__img" href="product-detail.html?id=' + p.id + '"><img src="' + p.img + '" alt="' + p.name + '"></a>' +
+        '<div class="cart-popup__info">' +
+          '<a class="cart-popup__name" href="product-detail.html?id=' + p.id + '">' + p.name + '</a>' +
+          '<p class="cart-popup__meta">' + p.desc + '</p>' +
+        '</div>';
+
+      const side = el('div', 'cart-popup__side');
+      side.appendChild(el('p', 'cart-popup__price', fmtVND(p.price)));
+
+      const stepper = el('div', 'qty-stepper');
+      const minus = el('button', '', '−');
+      minus.type = 'button';
+      const qty = el('input');
+      qty.type = 'text';
+      qty.value = item.qty;
+      qty.readOnly = true;
+      qty.setAttribute('aria-label', 'Số lượng ' + p.name);
+      const plus = el('button', '', '+');
+      plus.type = 'button';
+      minus.addEventListener('click', function () { setCartPopupQty(item, item.qty - 1, popup); });
+      plus.addEventListener('click', function () { setCartPopupQty(item, item.qty + 1, popup); });
+      stepper.appendChild(minus);
+      stepper.appendChild(qty);
+      stepper.appendChild(plus);
+      side.appendChild(stepper);
+
+      row.appendChild(side);
+      list.appendChild(row);
+    });
+  }
+  popup.appendChild(list);
+
+  const foot = el('div', 'cart-popup__foot');
+  const view = el('a', 'cart-popup__btn cart-popup__btn--primary', 'Xem giỏ hàng');
+  view.href = 'cart.html';
+  const cont = el('button', 'cart-popup__btn cart-popup__btn--ghost', 'Tiếp tục mua sắm');
+  cont.type = 'button';
+  cont.addEventListener('click', closeCartPopup);
+  foot.appendChild(view);
+  foot.appendChild(cont);
+  popup.appendChild(foot);
+}
+
+/** Đổi số lượng 1 dòng từ trong popup (đồng bộ badge + dựng lại popup). */
+function setCartPopupQty(item, newQty, popup) {
+  item.qty = Math.min(99, Math.max(1, newQty));
+  updateCartBadge();
+  renderCartPopup(popup);
+  scheduleCartPopupClose();
 }
 
 /* ============ 6. CARD SẢN PHẨM (dùng chung) ============ */
@@ -799,11 +910,11 @@ function initProductDetailPage() {
   mainImg.alt = product.name;
 
   const thumbsWrap = document.getElementById('pd-thumbs');
-  for (let i = 0; i < 6; i++) {
+  const galleryImgs = (Array.isArray(product.images) && product.images.length)
+    ? product.images
+    : [product.img];
+  galleryImgs.forEach(function (src, i) {
     const btn = el('button', 'pd__thumb' + (i === 0 ? ' is-active' : ''));
-    const src = i === 0
-      ? product.img
-      : 'https://picsum.photos/seed/caraveso-' + product.id + '-thumb' + i + '/300/300';
     btn.innerHTML = '<img src="' + src + '" alt="Ảnh ' + (i + 1) + ' của ' + product.name + '" loading="lazy">';
     btn.addEventListener('click', function () {
       thumbsWrap.querySelectorAll('.pd__thumb').forEach(function (t) { t.classList.remove('is-active'); });
@@ -811,7 +922,7 @@ function initProductDetailPage() {
       mainImg.src = src;
     });
     thumbsWrap.appendChild(btn);
-  }
+  });
 
   /* --- Chọn màu --- */
   const colorWrap = document.getElementById('pd-colors');
@@ -849,7 +960,7 @@ function initProductDetailPage() {
   /* --- Nút hành động (trang chi tiết đã có sẵn thông số nên thêm thẳng) --- */
   document.getElementById('pd-add-cart').addEventListener('click', function () {
     cartAdd(product.id, Number(qtyInput.value));
-    showToast('Đã thêm "' + product.name + '" vào giỏ hàng');
+    openCartPopup();
   });
   document.getElementById('pd-buy-now').addEventListener('click', function () {
     cartAdd(product.id, Number(qtyInput.value));
@@ -930,28 +1041,37 @@ function initProductDetailPage() {
 
 const SHIPPING_FREE_LABEL = 'Miễn phí giao hàng';
 
-function cartTotals() {
-  const selected = cartState.filter(function (i) { return i.checked; });
-  const subtotal = selected.reduce(function (sum, i) {
-    return sum + getProduct(i.productId).price * i.qty;
+/* Tính tiền cho một danh sách mặt hàng bất kỳ (dùng chung cho giỏ + thanh toán).
+   Quy ước để hiển thị nhất quán: Tạm tính (giá gốc) − Giảm giá = Tổng.
+     • subtotal  = Σ giá gốc (oldPrice, nếu không có thì price) × qty
+     • saleDiscount = phần đã giảm sẵn của sản phẩm
+     • voucherDiscount = giảm thêm theo mã (percent tính trên giá bán sau khuyến mãi) */
+function computeTotals(items) {
+  const subtotal = items.reduce(function (sum, i) {
+    const p = getProduct(i.productId);
+    return sum + (p.oldPrice || p.price) * i.qty;
   }, 0);
-  // Giảm giá theo giá gốc (oldPrice) + voucher
-  let saleDiscount = selected.reduce(function (sum, i) {
+  const saleDiscount = items.reduce(function (sum, i) {
     const p = getProduct(i.productId);
     return sum + (p.oldPrice ? (p.oldPrice - p.price) * i.qty : 0);
   }, 0);
   let voucherDiscount = 0;
   if (appliedVoucher) {
     voucherDiscount = appliedVoucher.type === 'percent'
-      ? Math.round(subtotal * appliedVoucher.value / 100)
+      ? Math.round((subtotal - saleDiscount) * appliedVoucher.value / 100)
       : appliedVoucher.value;
   }
+  const discount = saleDiscount + voucherDiscount;
   return {
-    itemCount: selected.length,
+    itemCount: items.length,
     subtotal: subtotal,
-    discount: saleDiscount + voucherDiscount,
-    total: Math.max(0, subtotal - voucherDiscount)
+    discount: discount,
+    total: Math.max(0, subtotal - discount)
   };
+}
+
+function cartTotals() {
+  return computeTotals(cartState.filter(function (i) { return i.checked; }));
 }
 
 function initCartPage() {
@@ -1134,13 +1254,10 @@ function initCheckoutPage() {
   const itemsWrap = document.getElementById('checkout-items');
   const selected = cartState.filter(function (i) { return i.checked; });
   const source = selected.length ? selected : cartState;
+  const totals = computeTotals(source);
 
-  let subtotal = 0;
-  let discount = 0;
   source.forEach(function (item) {
     const p = getProduct(item.productId);
-    subtotal += p.price * item.qty;
-    if (p.oldPrice) discount += (p.oldPrice - p.price) * item.qty;
 
     const row = el('div', 'ck-order-item');
     row.innerHTML =
@@ -1157,9 +1274,9 @@ function initCheckoutPage() {
 
   document.getElementById('ck-count').textContent = source.length;
   document.getElementById('ck-subtotal-label').textContent = 'Tạm tính (' + source.length + ' mặt hàng)';
-  document.getElementById('ck-subtotal').textContent = fmtVND(subtotal);
-  document.getElementById('ck-discount').textContent = fmtVND(discount);
-  document.getElementById('ck-total').textContent = fmtVND(subtotal);
+  document.getElementById('ck-subtotal').textContent = fmtVND(totals.subtotal);
+  document.getElementById('ck-discount').textContent = fmtVND(totals.discount);
+  document.getElementById('ck-total').textContent = fmtVND(totals.total);
 
   /* --- Select Tỉnh / Quận / Phường phụ thuộc nhau --- */
   const citySel = document.getElementById('ck-city');
@@ -1217,7 +1334,7 @@ function initCheckoutPage() {
     ]);
     if (!ok) return;
 
-    const orderQuery = 'order=' + makeOrderId() + '&total=' + subtotal;
+    const orderQuery = 'order=' + makeOrderId() + '&total=' + totals.total;
     const method = document.querySelector('input[name="pay"]:checked').value;
     if (method === 'cod') {
       // COD: hoàn tất luôn
@@ -1255,30 +1372,25 @@ function initGatewayPage() {
   document.getElementById('gw-brand-name').textContent =
     isMomo ? 'Cổng thanh toán Momo' : 'Cổng thanh toán Ngân hàng';
   document.getElementById('gw-brand-icon').innerHTML = isMomo
-    ? '<span class="momo-logo momo-logo--sm">mo<br>mo</span>'
+    ? '<img class="momo-logo momo-logo--sm" src="img/logo_momo.png" alt="MoMo">'
     : ICONS.bank;
   document.getElementById('gw-order-id').textContent = params.order;
   document.getElementById('gw-desc').textContent = 'Payment for order #' + (isMomo ? 'Momo' : 'Bank');
   document.getElementById('gw-amount').textContent = fmtVND(params.total);
 
-  /* Khối QR: Momo (nền hồng) / Ngân hàng (VietQR) */
-  const qrData = encodeURIComponent('CARAVESO|' + params.order + '|' + params.total);
-  const qrImg = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + qrData + '" alt="Mã QR thanh toán">';
+  /* Khối QR: Momo (ảnh khối QR hồng) / Ngân hàng (VietQR) — dùng ảnh nguồn trong /img */
   const qrWrap = document.getElementById('gw-qr');
   if (isMomo) {
     qrWrap.className = 'gw-qr--momo';
     qrWrap.innerHTML =
-      '<div class="gw-qr-topbar"><span class="momo-logo momo-logo--sm" style="width:26px;height:26px;font-size:7px;border-radius:5px">mo<br>mo</span>' +
-      'Tích xu đổi quà cho mọi giao dịch &nbsp;•&nbsp; Ví Trả Sau &nbsp;•&nbsp; VietQR</div>' +
-      '<button class="gw-qr-box" id="gw-pay-demo" title="Nhấn để mô phỏng đã quét mã">' + qrImg + '</button>' +
-      '<p class="gw-qr-caption">Sử dụng <b>App MoMo</b> hoặc <b>ứng dụng ngân hàng</b> để quét mã</p>';
+      '<button class="gw-qr-box gw-qr-box--img" id="gw-pay-demo" title="Nhấn để mô phỏng đã quét mã">' +
+      '<img src="img/qr_momo.png" alt="Mã QR thanh toán MoMo"></button>';
   } else {
     qrWrap.className = 'gw-qr--bank';
     qrWrap.innerHTML =
       '<h3>Quét mã qua App Ngân hàng/ Ví điện tử</h3>' +
-      '<button class="gw-qr-box" id="gw-pay-demo" title="Nhấn để mô phỏng đã quét mã">' + qrImg +
-      '<span class="gw-qr-brands"><span style="color:#d32f2f">Viet<span style="color:#1565c0">QR</span></span>' +
-      '<span style="color:#00a651">napas 247</span></span></button>';
+      '<button class="gw-qr-box" id="gw-pay-demo" title="Nhấn để mô phỏng đã quét mã">' +
+      '<img src="img/qr_bank.png" alt="Mã QR VietQR — napas 247"></button>';
   }
 
   /* Mô phỏng thanh toán thành công: bấm QR hoặc link "Tại đây" */
@@ -1469,7 +1581,7 @@ function buildHotspots(cell, hotspots) {
       e.preventDefault();
       e.stopPropagation();
       cartAdd(p.id, 1);
-      showToast('Đã thêm "' + p.name + '" vào giỏ hàng');
+      openCartPopup();
     });
     tip.querySelector('[data-act="fav"]').addEventListener('click', function (e) {
       e.preventDefault();
@@ -1494,10 +1606,36 @@ function buildHotspots(cell, hotspots) {
   });
 }
 
-/** Dựng 1 khối collage ảnh + hotspot */
-function renderCollage(mountId, images) {
+/** Dựng 1 khối collage ảnh + hotspot.
+    layout = 'slider': ảnh hiện nguyên khung (không crop), cuộn ngang có mũi tên. */
+function renderCollage(mountId, images, layout) {
   const mount = document.getElementById(mountId);
   if (!mount) return;
+  if (layout === 'slider') {
+    mount.className = 'collage-slider';
+    const track = el('div', 'collage-slider__track');
+    images.forEach(function (item) {
+      const slide = el('div', 'collage-slide');
+      const img = el('img');
+      img.src = item.img;
+      img.alt = '';
+      slide.appendChild(img);
+      buildHotspots(slide, item.hotspots);
+      track.appendChild(slide);
+    });
+    const prev = el('button', 'slider-arrow slider-arrow--prev');
+    prev.setAttribute('aria-label', 'Trước');
+    prev.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>';
+    const next = el('button', 'slider-arrow slider-arrow--next');
+    next.setAttribute('aria-label', 'Sau');
+    next.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>';
+    prev.addEventListener('click', function () { track.scrollBy({ left: -520, behavior: 'smooth' }); });
+    next.addEventListener('click', function () { track.scrollBy({ left: 520, behavior: 'smooth' }); });
+    mount.appendChild(prev);
+    mount.appendChild(track);
+    mount.appendChild(next);
+    return;
+  }
   images.forEach(function (item, i) {
     const cell = el('div', 'collage__cell' + (i === 0 ? ' collage__cell--main' : ''));
     const img = el('img');
@@ -1509,6 +1647,30 @@ function renderCollage(mountId, images) {
     mount.appendChild(cell);
   });
 }
+
+/* Ảnh đại diện cho từng danh mục (dùng ảnh sản phẩm thật trong img/products) */
+const CAT_IMAGES = {
+  'giuong': 'giuong.webp',
+  'tu-ao': 'tu-quan-ao-oak-wood-4-canh.webp',
+  'ban-lam-viec': 'ban.webp',
+  'tu-ngan-keo': 'ke.webp',
+  'tham': 'loha.webp',
+  'ban-trang-diem': 'ke.webp',
+  'sofa': 'sofa.webp',
+  'ban-tra': 'ban.webp',
+  'ke-tivi': 'kebep.webp',
+  'den-san': 'den.webp',
+  'tu-trang-tri': 'tu-quan-ao-oak-wood-4-canh.webp',
+  'ban-an': 'ban.webp',
+  'ghe-an': 'ghe-go.webp',
+  'tu-bep': 'kebep.webp',
+  'den-tha': 'den.webp',
+  'ke-ruou': 'kebep.webp',
+  'ghe-xoay': 'ghe.webp',
+  'ke-sach': 'kebep.webp',
+  'den-ban': 'den.webp',
+  'tu-ho-so': 'tu-quan-ao-oak-wood-4-canh.webp'
+};
 
 function initRoomPage() {
   const root = document.getElementById('room-root');
@@ -1531,7 +1693,8 @@ function initRoomPage() {
     const a = el('a', 'cat-card');
     a.href = 'products.html';
     a.setAttribute('aria-label', cat);
-    a.innerHTML = '<img src="https://picsum.photos/seed/caraveso-cat-' + roomId + '-' + i + '/400/400" alt="' + cat + '" loading="lazy">';
+    const catImg = (CAT_IMAGES[cat] || 'sofa.webp');
+    a.innerHTML = '<img src="img/products/' + catImg + '" alt="' + cat + '" loading="lazy">';
     catRow.appendChild(a);
   });
 
@@ -1541,10 +1704,11 @@ function initRoomPage() {
   Object.keys(STYLES).forEach(function (key) {
     const s = STYLES[key];
     const href = 'style.html?style=' + key + '&room=' + roomId;
+    const ideaImg = (room.ideaImages && room.ideaImages[key]) || ('https://picsum.photos/seed/caraveso-idea-' + key + '/620/600');
     const card = el('article', 'idea-card');
     card.innerHTML =
       '<a class="idea-card__img" href="' + href + '">' +
-        '<img src="https://picsum.photos/seed/caraveso-idea-' + key + '/620/600" alt="' + s.display + '" loading="lazy">' +
+        '<img src="' + ideaImg + '" alt="' + s.display + '" loading="lazy">' +
       '</a>' +
       '<h3 class="idea-card__title">' + s.display + '</h3>' +
       '<p class="idea-card__desc">' + s.cardDesc + '</p>' +
@@ -1562,11 +1726,11 @@ function initRoomPage() {
   /* --- 2 khối collage có hotspot --- */
   document.getElementById('collage1-title').textContent = room.collage1.title;
   document.getElementById('collage1-sub').textContent = room.collage1.sub;
-  renderCollage('collage-1', room.collage1.images);
+  renderCollage('collage-1', room.collage1.images, room.collage1.layout);
 
   document.getElementById('collage2-title').textContent = room.collage2.title;
   document.getElementById('collage2-sub').textContent = room.collage2.sub;
-  renderCollage('collage-2', room.collage2.images);
+  renderCollage('collage-2', room.collage2.images, room.collage2.layout);
 
   // Bấm ra ngoài thì đóng tooltip đang mở (cho mobile)
   document.addEventListener('click', function () {
@@ -1883,7 +2047,7 @@ function initChatboxAiPage() {
     grid.querySelectorAll('[data-chat-cart]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         cartAdd(8, 1);
-        showToast('Đã thêm sản phẩm vào giỏ hàng');
+        openCartPopup();
       });
     });
     grid.querySelectorAll('.btn-fav').forEach(function (btn) {
@@ -1981,7 +2145,7 @@ function initChatboxProductDetailPage() {
 
   document.getElementById('chat-pd-add').addEventListener('click', function () {
     cartAdd(8, Number(qtyInput.value) || 1);
-    showToast('Đã thêm Bộ bàn ăn Minimal Oak vào giỏ hàng');
+    openCartPopup();
   });
   document.getElementById('chat-pd-buy').addEventListener('click', function () {
     cartAdd(8, Number(qtyInput.value) || 1);
@@ -1999,7 +2163,7 @@ function initChatboxProductDetailPage() {
       '<div class="chat-product-card__actions"><button class="btn-add-cart" type="button">THÊM VÀO GIỎ</button><button class="btn-fav" type="button" aria-label="Yêu thích">' + ICONS.heart + '</button></div>';
     card.querySelector('.btn-add-cart').addEventListener('click', function () {
       cartAdd(8, 1);
-      showToast('Đã thêm sản phẩm vào giỏ hàng');
+      openCartPopup();
     });
     related.appendChild(card);
   });
@@ -2089,7 +2253,7 @@ function initAccountPage() {
     document.querySelectorAll('[data-buy-again]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         cartAdd(2, 1);
-        showToast('Đã thêm sản phẩm vào giỏ hàng');
+        openCartPopup();
       });
     });
     return;
@@ -2110,7 +2274,7 @@ function initAccountPage() {
     document.querySelectorAll('[data-favorite-cart]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         cartAdd(Number(btn.dataset.favoriteCart), 1);
-        showToast('Đã thêm sản phẩm vào giỏ hàng');
+        openCartPopup();
       });
     });
     return;
