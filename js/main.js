@@ -2696,14 +2696,12 @@ function initChatboxAiPage() {
     return 'Mình nghe được rồi. Bạn có thể nói rõ hơn một chút về loại sản phẩm, ngân sách, màu sắc hoặc kích thước phòng không? Ví dụ: “bàn ăn 6 ghế gỗ sáng dưới 15 triệu”.';
   }
 
-  // Chỉ riêng trang ChatBox AI: mọi sản phẩm dùng chung 1 ảnh (ảnh thật trong dự án)
-  const CHAT_CARD_IMG = 'img/products/ban.webp';
-
   function productCard(product) {
+    const image = product.img || 'img/products/ban.webp';
     const article = el('article', 'chat-product-card');
     article.innerHTML =
       '<a class="chat-product-card__img" href="chatbox-product-detail.html">' +
-        '<img src="' + CHAT_CARD_IMG + '" alt="' + product.name + '" loading="lazy">' +
+        '<img src="' + image + '" alt="' + product.name + '" loading="lazy">' +
       '</a>' +
       '<h3><a href="chatbox-product-detail.html">' + product.name + '</a></h3>' +
       '<p>' + product.desc + '</p>' +

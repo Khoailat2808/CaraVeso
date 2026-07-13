@@ -2061,18 +2061,24 @@ img.momo-logo { background: transparent; object-fit: contain; }
 }
 .chat-product-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(128px, 1fr));
-  gap: 64px 34px;
-  max-width: 830px;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 34px 24px;
+  max-width: 980px;
 }
 .chat-product-card {
   min-width: 0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  align-content: start;
 }
 .chat-product-card__img {
-  display: block;
-  aspect-ratio: 1.22;
-  margin-bottom: 12px;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / .78;
+  margin-bottom: 14px;
   background: var(--color-white);
+  overflow: hidden;
 }
 .chat-product-card__img img {
   width: 100%;
@@ -2084,11 +2090,12 @@ img.momo-logo { background: transparent; object-fit: contain; }
   font-size: 15px;
   font-weight: 700;
   line-height: 1.25;
-  margin-bottom: 3px;
+  min-height: 38px;
+  margin-bottom: 5px;
 }
 .chat-product-card h3 a:hover { color: var(--color-primary); }
 .chat-product-card p {
-  min-height: 42px;
+  min-height: 38px;
   font-size: 14px;
   line-height: 1.24;
 }
@@ -2102,15 +2109,22 @@ img.momo-logo { background: transparent; object-fit: contain; }
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
 }
 .chat-product-card .btn-add-cart {
-  width: auto;
+  flex: 1 1 auto;
+  min-width: 0;
   height: 32px;
   padding: 0 8px;
-  font-size: 13px;
+  font-size: 12px;
   white-space: nowrap;
 }
 .chat-product-card .btn-fav {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  display: inline-grid;
+  place-items: center;
   color: #777;
   opacity: 1;
 }
