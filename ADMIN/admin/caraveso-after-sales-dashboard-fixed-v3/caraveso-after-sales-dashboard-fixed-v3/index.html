@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CaraVeso Management - Quản lý dịch vụ hậu mãi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Thanh điều hướng quản trị">
+      <div class="brand-row">
+        <div>
+          <h1 class="brand-logo">CaraVeso</h1>
+          <p>Management</p>
+        </div>
+        <button class="icon-button bell-button" title="Thông báo">
+          <img src="assets/icon-bell.png" alt="" />
+          <span class="bell-dot"></span>
+        </button>
+      </div>
+
+      <nav class="side-nav" aria-label="Menu quản trị">
+        <a href="#overview" class="nav-item"><img src="assets/icon-overview.png" alt="" /><span>Báo cáo tổng quan</span></a>
+        <a href="#orders" class="nav-item"><img src="assets/icon-orders.png" alt="" /><span>Quản lý đơn hàng</span></a>
+        <a href="#customers" class="nav-item"><img src="assets/icon-customers.png" alt="" /><span>Quản lý khách hàng</span></a>
+        <a href="#products" class="nav-item"><img src="assets/icon-products.png" alt="" /><span>Quản lý sản phẩm</span></a>
+        <a href="#content" class="nav-item"><img src="assets/icon-content.png" alt="" /><span>Quản lý nội dung</span></a>
+        <a href="#vouchers" class="nav-item"><img src="assets/icon-voucher.png" alt="" /><span>Quản lý Voucher và Khuyến mãi</span></a>
+        <a href="#aftersales" class="nav-item active"><img src="assets/icon-aftersale.png" alt="" /><span>Quản lý dịch vụ hậu mãi</span></a>
+        <a href="#support" class="nav-item"><img src="assets/icon-support.png" alt="" /><span>Chăm sóc khách hàng</span></a>
+        <a href="#payment" class="nav-item"><img src="assets/icon-payment.png" alt="" /><span>Quản lý thanh toán</span></a>
+        <a href="#category" class="nav-item"><img src="assets/icon-category.png" alt="" /><span>Quản lý danh mục</span></a>
+      </nav>
+
+      <div class="admin-card">
+        <img class="admin-avatar" src="assets/avatar_admin.png" alt="Ảnh đại diện Anh Khoa" />
+        <div class="admin-meta">
+          <strong>Anh Khoa</strong>
+          <span>Admin</span>
+        </div>
+        <button class="logout-button" id="logoutBtn" title="Đăng xuất">
+          <img src="assets/icon-logout.png" alt="Đăng xuất" />
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <h2>Quản lý dịch vụ hậu mãi</h2>
+      </header>
+
+      <section class="content-wrap" aria-live="polite">
+        <section class="metric-grid" aria-label="Thống kê hậu mãi">
+          <article class="metric-card">
+            <p>Tổng số yêu cầu</p>
+            <div><strong id="metricTotal">0</strong><span class="metric-trend">+12% vs last month</span></div>
+          </article>
+          <article class="metric-card">
+            <p>Chờ xét duyệt</p>
+            <div><strong id="metricPending">0</strong><span>Đơn</span></div>
+          </article>
+          <article class="metric-card">
+            <p>Bị từ chối</p>
+            <div><strong id="metricRejected">0</strong><span>Đơn</span></div>
+          </article>
+          <article class="metric-card">
+            <p>Hoàn thành</p>
+            <div><strong id="metricDone">0</strong><span>Đơn</span></div>
+          </article>
+        </section>
+
+        <section class="tabs" role="tablist" aria-label="Lọc loại hậu mãi">
+          <button class="tab active" data-tab="Tất cả" type="button">Tất cả</button>
+          <button class="tab" data-tab="Đổi trả" type="button">Đổi trả</button>
+          <button class="tab" data-tab="Bảo hành" type="button">Bảo hành</button>
+        </section>
+
+        <section class="filter-bar" aria-label="Bộ lọc nâng cao">
+          <label class="field search-field">
+            <span>Tìm kiếm</span>
+            <input id="searchInput" type="search" placeholder="Tìm kiếm ID hoặc khách hàng..." autocomplete="off" />
+          </label>
+
+          <div class="field">
+            <span>Trạng thái</span>
+            <div class="custom-select" data-select="status">
+              <button class="select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="select-value">Tất cả</span>
+                <span class="chevron"></span>
+              </button>
+              <div class="select-menu" role="listbox">
+                <button type="button" data-value="Tất cả"><span>Tất cả</span></button>
+                <button type="button" data-value="Hoàn thành"><span class="mini-badge status-done">Hoàn thành</span></button>
+                <button type="button" data-value="Chờ xét duyệt"><span class="mini-badge status-pending">Chờ xét duyệt</span></button>
+                <button type="button" data-value="Từ chối"><span class="mini-badge status-rejected">Từ chối</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <span>Thời gian</span>
+            <div class="custom-select" data-select="time">
+              <button class="select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="select-value">Tất cả</span>
+                <span class="calendar-icon" aria-hidden="true"></span>
+              </button>
+              <div class="select-menu compact" role="listbox">
+                <button type="button" data-value="Tất cả"><span>Tất cả</span></button>
+                <button type="button" data-value="Hôm nay"><span>Hôm nay</span></button>
+                <button type="button" data-value="Hôm qua"><span>Hôm qua</span></button>
+                <button type="button" data-value="Tháng 6"><span>Tháng 6</span></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="table-card" aria-label="Danh sách yêu cầu hậu mãi">
+          <div class="table-head grid-row" role="row">
+            <span>ID</span>
+            <span>Thời gian</span>
+            <span>Khách hàng</span>
+            <span>Loại hậu mãi</span>
+            <span>Lý do</span>
+            <span>Trạng thái</span>
+          </div>
+          <div id="tableBody" class="table-body"></div>
+          <div class="table-footer">
+            <em id="paginationText">Hiển thị 0-0 trong tổng 0</em>
+            <div class="pager-actions">
+              <button id="prevPage" type="button" aria-label="Trang trước">‹</button>
+              <button id="nextPage" type="button" aria-label="Trang sau">›</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="detailPanel" class="detail-panel hidden" aria-label="Chi tiết yêu cầu hậu mãi"></section>
+      </section>
+
+      <footer class="footer">
+        <span class="footer-logo">CaraVeso</span>
+        <span>Bản quyền © 2026 CARAVESO FURNITURE.</span>
+      </footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

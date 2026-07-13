@@ -1,0 +1,193 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CaraVeso Management - Voucher & Khuyến mãi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="voucher.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Điều hướng admin">
+    <div class="brand-row">
+      <a class="brand" href="index.html">
+        <span>CaraVeso</span>
+        <small>Management</small>
+      </a>
+      <button class="icon-button notification" type="button" aria-label="Thông báo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
+      </button>
+    </div>
+
+    <nav class="side-nav">
+      <a href="index.html"><span class="nav-icon bars"></span>Báo cáo tổng quan</a>
+      <a href="order.html"><span class="nav-icon receipt"></span>Quản lý đơn hàng</a>
+      <a href="customer.html"><span class="nav-icon user"></span>Quản lý khách hàng</a>
+      <a href="product.html"><span class="nav-icon box"></span>Quản lý sản phẩm</a>
+      <a href="content.html"><span class="nav-icon doc"></span>Quản lý nội dung</a>
+      <a class="is-active" href="voucher.html"><span class="nav-icon ticket"></span>Quản lý Voucher và Khuyến mãi</a>
+      <a href="aftersales.html"><span class="nav-icon medal"></span>Quản lý dịch vụ hậu mãi</a>
+      <a href="support.html"><span class="nav-icon headset"></span>Chăm sóc khách hàng</a>
+      <a href="payment.html"><span class="nav-icon coin"></span>Quản lý thanh toán</a>
+      <a href="category.html"><span class="nav-icon folder"></span>Quản lý danh mục</a>
+    </nav>
+
+    <div class="admin-profile">
+      <div class="avatar photo">AK</div>
+      <div>
+        <strong>Anh Khoa</strong>
+        <span>Admin</span>
+      </div>
+      <button class="icon-button logout" type="button" aria-label="Đăng xuất">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M21 3v18"/></svg>
+      </button>
+    </div>
+  </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <h1>Khuyến mãi &amp; Voucher</h1>
+        <div class="top-actions">
+          <button class="btn outline" id="openVoucherModal">Tạo Voucher</button>
+          <button class="btn primary" id="openPromoModal">Tạo khuyến mãi</button>
+        </div>
+      </header>
+
+      <section class="content">
+        <section class="stats" id="statsGrid"></section>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="voucher">Voucher</button>
+          <button class="tab" data-tab="promotion">Khuyến mãi</button>
+        </div>
+
+        <section class="filters" id="filters"></section>
+
+        <section class="table-card">
+          <table>
+            <thead id="tableHead"></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+          <div class="table-footer">
+            <button class="edit-link" id="editBtn" type="button"><span class="edit-icon">✎</span> Chỉnh sửa</button>
+            <div class="pagination" id="pagination"></div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="footer-admin">
+        <div class="footer-logo">CaraVeso</div>
+        <div>Bản quyền © 2026 CARAVESO FURNITURE.</div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="modal-overlay hidden" id="modalOverlay" aria-hidden="true">
+    <form class="modal-card voucher-form hidden" id="voucherForm">
+      <button type="button" class="modal-close" data-close>×</button>
+      <h2>Tạo Voucher</h2>
+      <section class="form-section">
+        <h3>Thông tin cơ bản</h3>
+        <label class="field full">Mã voucher <b>*</b><input name="code" placeholder="Nhập mã độc nhất cho Voucher" required></label>
+        <div class="radio-line">
+          <span>Loại giảm giá <b>*</b></span>
+          <label><input type="radio" name="discountType" value="percent" checked> Giảm theo phần trăm (%)</label>
+          <label><input type="radio" name="discountType" value="fixed"> Số tiền cố định</label>
+        </div>
+        <div class="form-grid two">
+          <label class="field suffix-percent">Giá trị giảm giá <b>*</b><input name="discount" type="number" min="0"><i>%</i></label>
+          <label class="field suffix-currency">Đơn hàng tối thiểu <b>*</b><input name="minOrder" type="number" min="0"><i>đ</i></label>
+          <label class="field suffix-currency">Giảm giá tối đa <b>*</b><input name="maxDiscount" type="number" min="0"><i>đ</i></label>
+          <label class="field">Số lượng giới hạn <b>*</b><input name="quantity" type="number" min="1"></label>
+        </div>
+        <label class="field full">Giới hạn lượt dùng cho mỗi khách hàng <b>*</b><input name="perCustomer" type="number" min="1"></label>
+      </section>
+      <section class="form-section compact-section">
+        <h3>Hiệu lực</h3>
+        <div class="form-grid two">
+          <label class="field">Ngày bắt đầu <b>*</b><input name="start" type="date"></label>
+          <label class="field">Ngày hết hạn <b>*</b><input name="end" type="date"></label>
+        </div>
+      </section>
+      <section class="form-section compact-section">
+        <h3>Sản phẩm áp dụng</h3>
+        <div class="check-grid five">
+          <label><input type="checkbox" checked> Tất cả sản phẩm</label>
+          <label><input type="checkbox"> Nội thất</label>
+          <label><input type="checkbox"> Sofa</label>
+          <label><input type="checkbox"> Ghế</label>
+          <label><input type="checkbox"> Tủ quần áo</label>
+        </div>
+      </section>
+      <section class="form-section compact-section last-section">
+        <h3>Khách hàng áp dụng</h3>
+        <div class="check-grid four customer-grid">
+          <label><input type="checkbox" checked> Tất cả khách hàng</label>
+          <label><input type="checkbox"> Khách hàng VIP</label>
+          <label><input type="checkbox"> Khách hàng mới</label>
+          <label><input type="checkbox"> Khách hàng hiện tại</label>
+        </div>
+      </section>
+      <div class="modal-actions">
+        <button type="button" class="btn outline large" data-close>Hủy bỏ</button>
+        <button type="submit" class="btn primary large">Tạo Voucher</button>
+      </div>
+    </form>
+
+    <form class="modal-card promotion-form hidden" id="promotionForm">
+      <button type="button" class="modal-close" data-close>×</button>
+      <h2>Tạo khuyến mãi</h2>
+      <section class="form-section">
+        <h3>Thông tin cơ bản</h3>
+        <label class="field full">Tên chương trình <b>*</b><input name="name" placeholder="Nhập tên cho chương trình khuyến mãi" required></label>
+        <div class="promo-type-block">
+          <span>Loại khuyến mãi <b>*</b></span>
+          <div class="promo-type-grid">
+            <label><input type="radio" name="promoKind" value="Category Discount" checked><em class="tag tag-orange">Category Discount</em></label>
+            <label><input type="radio" name="promoKind" value="Flash Sale"><em class="tag tag-purple">Flash Sale</em></label>
+            <label><input type="radio" name="promoKind" value="Buy X Get Y"><em class="tag tag-blue">Buy X Get Y</em></label>
+            <label><input type="radio" name="promoKind" value="Voucher Campaign"><em class="tag tag-green">Voucher Campaign</em></label>
+          </div>
+        </div>
+        <div class="radio-line">
+          <span>Loại giảm giá <b>*</b></span>
+          <label><input type="radio" name="promoDiscountType" checked> Giảm theo phần trăm (%)</label>
+          <label><input type="radio" name="promoDiscountType"> Số tiền cố định</label>
+        </div>
+        <label class="field half suffix-percent">Giá trị giảm giá <b>*</b><input name="promoDiscount" type="number" min="0"><i>%</i></label>
+      </section>
+      <section class="form-section compact-section">
+        <h3>Thời gian diễn ra</h3>
+        <div class="form-grid two">
+          <label class="field">Ngày bắt đầu <b>*</b><input name="promoStart" type="date"></label>
+          <label class="field">Ngày hết hạn <b>*</b><input name="promoEnd" type="date"></label>
+        </div>
+      </section>
+      <section class="form-section compact-section last-section">
+        <h3>Sản phẩm áp dụng <button type="button" class="link-plus">Thêm</button></h3>
+        <div class="check-grid four promo-product-grid">
+          <label><input type="checkbox" checked> Tất cả sản phẩm</label>
+          <label><input type="checkbox"> Nội thất</label>
+          <label><input type="checkbox"> Sofa</label>
+          <label><input type="checkbox"> Ghế</label>
+          <label><input type="checkbox"> Tủ quần áo</label>
+          <label><input type="checkbox"> Bàn ăn</label>
+          <label><input type="checkbox"> Xả kho</label>
+          <label><input type="checkbox"> Khách hàng mới</label>
+        </div>
+      </section>
+      <div class="modal-actions three-actions">
+        <button type="button" class="btn disabled large">Tạo bản nháp</button>
+        <button type="button" class="btn outline large" data-close>Hủy bỏ</button>
+        <button type="submit" class="btn primary large">Tạo chương trình</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="voucher.js"></script>
+</body>
+</html>

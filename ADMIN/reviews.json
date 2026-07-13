@@ -1,0 +1,1184 @@
+﻿[
+  {
+    "id": "#REV-1024",
+    "thoi_gian": "28 Jun, 6:50 PM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bàn ăn Signature Walnut",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ óc chó, 4 ghế",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Mẫu gỗ rất đẹp. Bộ bàn chắc chắn, phù hợp căn hộ 2 phòng ngủ.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1025",
+    "thoi_gian": "30 Jun, 9:53 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa CaraVeso",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Ghế 2 chỗ, Trắng Kem",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Sofa êm, màu đẹp. Nhưng thời gian giao hàng hơi chậm",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1026",
+    "thoi_gian": "Hôm nay, 11:00 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa Milano Shape U",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Sofa chữ U, Trắng Kem",
+      "thumbnail": "support-assets/product-l-sofa.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Thiết kế rất hiện đại, ưa nhìn. Sẽ ủng hộ CaraVeso lâu dài hơn !",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1027",
+    "thoi_gian": "30 Jun, 6:51 AM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Nệm Kymdan",
+      "loai": "Nệm",
+      "phan_loai": "1m8 x 2m, Cao su tự nhiên",
+      "thumbnail": "support-assets/product-mattress.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Mẫu mã đẹp nhưng đệm nằm lại không êm như mong đợi",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1028",
+    "thoi_gian": "Hôm qua, 6:51 PM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bộ bàn học trẻ em",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ sáng, 4 ghế",
+      "thumbnail": "support-assets/product-dining.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Màu gỗ sáng, rất ưa mắt. Có điều mặt bàn có xây xước 1 chút.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1029",
+    "thoi_gian": "01 Jul, 8:15 AM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Giường Zen Oak",
+      "loai": "Giường",
+      "phan_loai": "Gỗ sồi, 1m8 x 2m",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 2,
+    "noi_dung_danh_gia": "Đóng gói cẩn thận, sản phẩm sạch và đúng màu đã đặt.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1030",
+    "thoi_gian": "Hôm nay, 10:24 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Tủ quần áo Minimal",
+      "loai": "Tủ quần áo",
+      "phan_loai": "Trắng kem, 2 cánh",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Sản phẩm hơi khác ảnh, nhưng chất lượng dùng ổn.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1031",
+    "thoi_gian": "Yesterday, 04:15 PM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bàn ăn Signature Walnut",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ óc chó, 4 ghế",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 1,
+    "noi_dung_danh_gia": "Nhân viên hỗ trợ nhiệt tình, giao hàng đúng lịch.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1032",
+    "thoi_gian": "28 Jun, 6:50 PM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa CaraVeso",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Ghế 2 chỗ, Trắng Kem",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Ghế đẹp, chất vải mềm, ngồi lâu không bị mỏi.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1033",
+    "thoi_gian": "30 Jun, 9:53 AM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa Milano Shape U",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Sofa chữ U, Trắng Kem",
+      "thumbnail": "support-assets/product-l-sofa.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Kích thước hơi lệch so với mô tả, shop nên kiểm tra kỹ hơn.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1034",
+    "thoi_gian": "Hôm nay, 11:00 AM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Nệm Kymdan",
+      "loai": "Nệm",
+      "phan_loai": "1m8 x 2m, Cao su tự nhiên",
+      "thumbnail": "support-assets/product-mattress.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Mẫu gỗ rất đẹp. Bộ bàn chắc chắn, phù hợp căn hộ 2 phòng ngủ.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1035",
+    "thoi_gian": "30 Jun, 6:51 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bộ bàn học trẻ em",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ sáng, 4 ghế",
+      "thumbnail": "support-assets/product-dining.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Sofa êm, màu đẹp. Nhưng thời gian giao hàng hơi chậm",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1036",
+    "thoi_gian": "Hôm qua, 6:51 PM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Giường Zen Oak",
+      "loai": "Giường",
+      "phan_loai": "Gỗ sồi, 1m8 x 2m",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Thiết kế rất hiện đại, ưa nhìn. Sẽ ủng hộ CaraVeso lâu dài hơn !",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1037",
+    "thoi_gian": "01 Jul, 8:15 AM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Tủ quần áo Minimal",
+      "loai": "Tủ quần áo",
+      "phan_loai": "Trắng kem, 2 cánh",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Mẫu mã đẹp nhưng đệm nằm lại không êm như mong đợi",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1038",
+    "thoi_gian": "Hôm nay, 10:24 AM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bàn ăn Signature Walnut",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ óc chó, 4 ghế",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Màu gỗ sáng, rất ưa mắt. Có điều mặt bàn có xây xước 1 chút.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1039",
+    "thoi_gian": "Yesterday, 04:15 PM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa CaraVeso",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Ghế 2 chỗ, Trắng Kem",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 2,
+    "noi_dung_danh_gia": "Đóng gói cẩn thận, sản phẩm sạch và đúng màu đã đặt.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1040",
+    "thoi_gian": "28 Jun, 6:50 PM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa Milano Shape U",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Sofa chữ U, Trắng Kem",
+      "thumbnail": "support-assets/product-l-sofa.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Sản phẩm hơi khác ảnh, nhưng chất lượng dùng ổn.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1041",
+    "thoi_gian": "30 Jun, 9:53 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Nệm Kymdan",
+      "loai": "Nệm",
+      "phan_loai": "1m8 x 2m, Cao su tự nhiên",
+      "thumbnail": "support-assets/product-mattress.png"
+    },
+    "so_sao": 1,
+    "noi_dung_danh_gia": "Nhân viên hỗ trợ nhiệt tình, giao hàng đúng lịch.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1042",
+    "thoi_gian": "Hôm nay, 11:00 AM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bộ bàn học trẻ em",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ sáng, 4 ghế",
+      "thumbnail": "support-assets/product-dining.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Ghế đẹp, chất vải mềm, ngồi lâu không bị mỏi.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1043",
+    "thoi_gian": "30 Jun, 6:51 AM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Giường Zen Oak",
+      "loai": "Giường",
+      "phan_loai": "Gỗ sồi, 1m8 x 2m",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Kích thước hơi lệch so với mô tả, shop nên kiểm tra kỹ hơn.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1044",
+    "thoi_gian": "Hôm qua, 6:51 PM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Tủ quần áo Minimal",
+      "loai": "Tủ quần áo",
+      "phan_loai": "Trắng kem, 2 cánh",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Mẫu gỗ rất đẹp. Bộ bàn chắc chắn, phù hợp căn hộ 2 phòng ngủ.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1045",
+    "thoi_gian": "01 Jul, 8:15 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bàn ăn Signature Walnut",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ óc chó, 4 ghế",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Sofa êm, màu đẹp. Nhưng thời gian giao hàng hơi chậm",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1046",
+    "thoi_gian": "Hôm nay, 10:24 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa CaraVeso",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Ghế 2 chỗ, Trắng Kem",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Thiết kế rất hiện đại, ưa nhìn. Sẽ ủng hộ CaraVeso lâu dài hơn !",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1047",
+    "thoi_gian": "Yesterday, 04:15 PM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa Milano Shape U",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Sofa chữ U, Trắng Kem",
+      "thumbnail": "support-assets/product-l-sofa.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Mẫu mã đẹp nhưng đệm nằm lại không êm như mong đợi",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1048",
+    "thoi_gian": "28 Jun, 6:50 PM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Nệm Kymdan",
+      "loai": "Nệm",
+      "phan_loai": "1m8 x 2m, Cao su tự nhiên",
+      "thumbnail": "support-assets/product-mattress.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Màu gỗ sáng, rất ưa mắt. Có điều mặt bàn có xây xước 1 chút.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1049",
+    "thoi_gian": "30 Jun, 9:53 AM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bộ bàn học trẻ em",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ sáng, 4 ghế",
+      "thumbnail": "support-assets/product-dining.png"
+    },
+    "so_sao": 2,
+    "noi_dung_danh_gia": "Đóng gói cẩn thận, sản phẩm sạch và đúng màu đã đặt.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1050",
+    "thoi_gian": "Hôm nay, 11:00 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Giường Zen Oak",
+      "loai": "Giường",
+      "phan_loai": "Gỗ sồi, 1m8 x 2m",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Sản phẩm hơi khác ảnh, nhưng chất lượng dùng ổn.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1051",
+    "thoi_gian": "30 Jun, 6:51 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Tủ quần áo Minimal",
+      "loai": "Tủ quần áo",
+      "phan_loai": "Trắng kem, 2 cánh",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 1,
+    "noi_dung_danh_gia": "Nhân viên hỗ trợ nhiệt tình, giao hàng đúng lịch.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1052",
+    "thoi_gian": "Hôm qua, 6:51 PM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bàn ăn Signature Walnut",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ óc chó, 4 ghế",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Ghế đẹp, chất vải mềm, ngồi lâu không bị mỏi.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1053",
+    "thoi_gian": "01 Jul, 8:15 AM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa CaraVeso",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Ghế 2 chỗ, Trắng Kem",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Kích thước hơi lệch so với mô tả, shop nên kiểm tra kỹ hơn.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1054",
+    "thoi_gian": "Hôm nay, 10:24 AM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa Milano Shape U",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Sofa chữ U, Trắng Kem",
+      "thumbnail": "support-assets/product-l-sofa.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Mẫu gỗ rất đẹp. Bộ bàn chắc chắn, phù hợp căn hộ 2 phòng ngủ.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1055",
+    "thoi_gian": "Yesterday, 04:15 PM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Nệm Kymdan",
+      "loai": "Nệm",
+      "phan_loai": "1m8 x 2m, Cao su tự nhiên",
+      "thumbnail": "support-assets/product-mattress.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Sofa êm, màu đẹp. Nhưng thời gian giao hàng hơi chậm",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1056",
+    "thoi_gian": "28 Jun, 6:50 PM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bộ bàn học trẻ em",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ sáng, 4 ghế",
+      "thumbnail": "support-assets/product-dining.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Thiết kế rất hiện đại, ưa nhìn. Sẽ ủng hộ CaraVeso lâu dài hơn !",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1057",
+    "thoi_gian": "30 Jun, 9:53 AM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Giường Zen Oak",
+      "loai": "Giường",
+      "phan_loai": "Gỗ sồi, 1m8 x 2m",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Mẫu mã đẹp nhưng đệm nằm lại không êm như mong đợi",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1058",
+    "thoi_gian": "Hôm nay, 11:00 AM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Tủ quần áo Minimal",
+      "loai": "Tủ quần áo",
+      "phan_loai": "Trắng kem, 2 cánh",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Màu gỗ sáng, rất ưa mắt. Có điều mặt bàn có xây xước 1 chút.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1059",
+    "thoi_gian": "30 Jun, 6:51 AM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bàn ăn Signature Walnut",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ óc chó, 4 ghế",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 2,
+    "noi_dung_danh_gia": "Đóng gói cẩn thận, sản phẩm sạch và đúng màu đã đặt.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1060",
+    "thoi_gian": "Hôm qua, 6:51 PM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa CaraVeso",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Ghế 2 chỗ, Trắng Kem",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Sản phẩm hơi khác ảnh, nhưng chất lượng dùng ổn.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1061",
+    "thoi_gian": "01 Jul, 8:15 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa Milano Shape U",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Sofa chữ U, Trắng Kem",
+      "thumbnail": "support-assets/product-l-sofa.png"
+    },
+    "so_sao": 1,
+    "noi_dung_danh_gia": "Nhân viên hỗ trợ nhiệt tình, giao hàng đúng lịch.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1062",
+    "thoi_gian": "Hôm nay, 10:24 AM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Nệm Kymdan",
+      "loai": "Nệm",
+      "phan_loai": "1m8 x 2m, Cao su tự nhiên",
+      "thumbnail": "support-assets/product-mattress.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Ghế đẹp, chất vải mềm, ngồi lâu không bị mỏi.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1063",
+    "thoi_gian": "Yesterday, 04:15 PM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bộ bàn học trẻ em",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ sáng, 4 ghế",
+      "thumbnail": "support-assets/product-dining.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Kích thước hơi lệch so với mô tả, shop nên kiểm tra kỹ hơn.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1064",
+    "thoi_gian": "28 Jun, 6:50 PM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Giường Zen Oak",
+      "loai": "Giường",
+      "phan_loai": "Gỗ sồi, 1m8 x 2m",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Mẫu gỗ rất đẹp. Bộ bàn chắc chắn, phù hợp căn hộ 2 phòng ngủ.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1065",
+    "thoi_gian": "30 Jun, 9:53 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Tủ quần áo Minimal",
+      "loai": "Tủ quần áo",
+      "phan_loai": "Trắng kem, 2 cánh",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Sofa êm, màu đẹp. Nhưng thời gian giao hàng hơi chậm",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1066",
+    "thoi_gian": "Hôm nay, 11:00 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bàn ăn Signature Walnut",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ óc chó, 4 ghế",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Thiết kế rất hiện đại, ưa nhìn. Sẽ ủng hộ CaraVeso lâu dài hơn !",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1067",
+    "thoi_gian": "30 Jun, 6:51 AM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa CaraVeso",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Ghế 2 chỗ, Trắng Kem",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Mẫu mã đẹp nhưng đệm nằm lại không êm như mong đợi",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1068",
+    "thoi_gian": "Hôm qua, 6:51 PM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Ghế Sofa Milano Shape U",
+      "loai": "Ghế Sofa",
+      "phan_loai": "Sofa chữ U, Trắng Kem",
+      "thumbnail": "support-assets/product-l-sofa.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Màu gỗ sáng, rất ưa mắt. Có điều mặt bàn có xây xước 1 chút.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1069",
+    "thoi_gian": "01 Jul, 8:15 AM",
+    "khach_hang": {
+      "ho_ten": "Hoàng Huy Tiến",
+      "avatar": "Image/z8035902036779_91f5c3755db42487914a1f8d431c1122.jpg",
+      "email": "tienhhk24411@st.uel.edu.vn",
+      "so_dien_thoai": "0919120176"
+    },
+    "san_pham": {
+      "ten_san_pham": "Nệm Kymdan",
+      "loai": "Nệm",
+      "phan_loai": "1m8 x 2m, Cao su tự nhiên",
+      "thumbnail": "support-assets/product-mattress.png"
+    },
+    "so_sao": 2,
+    "noi_dung_danh_gia": "Đóng gói cẩn thận, sản phẩm sạch và đúng màu đã đặt.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1070",
+    "thoi_gian": "Hôm nay, 10:24 AM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Thành",
+      "avatar": "Image/z8035902214819_031ff1a69d59b3b3287ba9a5e278fef0.jpg",
+      "email": "thanhnt@example.com",
+      "so_dien_thoai": "0901010203"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bộ bàn học trẻ em",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ sáng, 4 ghế",
+      "thumbnail": "support-assets/product-dining.png"
+    },
+    "so_sao": 5,
+    "noi_dung_danh_gia": "Sản phẩm hơi khác ảnh, nhưng chất lượng dùng ổn.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1071",
+    "thoi_gian": "Yesterday, 04:15 PM",
+    "khach_hang": {
+      "ho_ten": "Nguyễn Tiến Đạt",
+      "avatar": "Image/z8035902384682_68d785f2e177f72491431b8f891ecf80.jpg",
+      "email": "datnt@example.com",
+      "so_dien_thoai": "0904040506"
+    },
+    "san_pham": {
+      "ten_san_pham": "Giường Zen Oak",
+      "loai": "Giường",
+      "phan_loai": "Gỗ sồi, 1m8 x 2m",
+      "thumbnail": "support-assets/product-sofa.png"
+    },
+    "so_sao": 1,
+    "noi_dung_danh_gia": "Nhân viên hỗ trợ nhiệt tình, giao hàng đúng lịch.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  },
+  {
+    "id": "#REV-1072",
+    "thoi_gian": "28 Jun, 6:50 PM",
+    "khach_hang": {
+      "ho_ten": "Trần Anh Khoa",
+      "avatar": "Image/z8035902546352_17d1c6a379de5f5a97e86ed7da01083d.jpg",
+      "email": "khoata@example.com",
+      "so_dien_thoai": "0907070809"
+    },
+    "san_pham": {
+      "ten_san_pham": "Tủ quần áo Minimal",
+      "loai": "Tủ quần áo",
+      "phan_loai": "Trắng kem, 2 cánh",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 4,
+    "noi_dung_danh_gia": "Ghế đẹp, chất vải mềm, ngồi lâu không bị mỏi.",
+    "hinh_anh_minh_chung": [
+      "support-assets/proof-sofa-1.png",
+      "support-assets/proof-sofa-2.png",
+      "support-assets/proof-sofa-3.png"
+    ],
+    "trang_thai": "Đã phản hồi",
+    "phan_hoi_cua_he_thong": "Cảm ơn anh/chị đã phản hồi. CaraVeso đã ghi nhận thông tin và sẽ tiếp tục hỗ trợ."
+  },
+  {
+    "id": "#REV-1073",
+    "thoi_gian": "30 Jun, 9:53 AM",
+    "khach_hang": {
+      "ho_ten": "Huỳnh Thất Thảo",
+      "avatar": "Image/z8035902881534_7461087ca3f33524f700b10a1c49ee3e.jpg",
+      "email": "thaoh@example.com",
+      "so_dien_thoai": "0909091011"
+    },
+    "san_pham": {
+      "ten_san_pham": "Bàn ăn Signature Walnut",
+      "loai": "Bàn ăn",
+      "phan_loai": "Gỗ óc chó, 4 ghế",
+      "thumbnail": "support-assets/product-table.png"
+    },
+    "so_sao": 3,
+    "noi_dung_danh_gia": "Kích thước hơi lệch so với mô tả, shop nên kiểm tra kỹ hơn.",
+    "hinh_anh_minh_chung": [],
+    "trang_thai": "Chưa phản hồi",
+    "phan_hoi_cua_he_thong": null
+  }
+]

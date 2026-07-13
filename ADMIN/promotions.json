@@ -1,0 +1,182 @@
+[
+  {
+    "kind": "Category Discount",
+    "program": "Giảm giá mùa hè",
+    "discount": "20%",
+    "applies": "Sofa, bàn ăn, tủ quần áo",
+    "period": "01 Jun - 31 Jul 2026",
+    "status": "Diễn ra",
+    "revenue": 400000000
+  },
+  {
+    "kind": "Flash Sale",
+    "program": "Khuyến mãi chớp nhoáng",
+    "discount": "35%",
+    "applies": "Tất cả sản phẩm",
+    "period": "01 Jul - 15 Jul 2026",
+    "status": "Đã lên lịch",
+    "revenue": 190000000
+  },
+  {
+    "kind": "Buy X Get Y",
+    "program": "Mua 2 tặng 1",
+    "discount": "Mua 2 tặng 1",
+    "applies": "Ghế",
+    "period": "05 Jul - 20 Jul 2026",
+    "status": "Diễn ra",
+    "revenue": 130000000
+  },
+  {
+    "kind": "Category Discount",
+    "program": "Xả hàng cuối mùa",
+    "discount": "50%",
+    "applies": "Các mặt hàng xả kho",
+    "period": "25 Jun - 25 Jul 2026",
+    "status": "Bản nháp",
+    "revenue": 0
+  },
+  {
+    "kind": "Voucher Campaign",
+    "program": "Chào mừng khách hàng mới",
+    "discount": "15%",
+    "applies": "Khách hàng mới",
+    "period": "01 Jun - 31 Oct 2026",
+    "status": "Diễn ra",
+    "revenue": 90000000
+  },
+  {
+    "kind": "Category Discount",
+    "program": "Oda Collection",
+    "discount": "18%",
+    "applies": "Oda Collection",
+    "period": "01 Aug - 31 Aug 2026",
+    "status": "Đã lên lịch",
+    "revenue": 0
+  },
+  {
+    "kind": "Flash Sale",
+    "program": "Cuối tuần rực rỡ",
+    "discount": "25%",
+    "applies": "Sofa, Ghế",
+    "period": "12 Jul - 15 Jul 2026",
+    "status": "Diễn ra",
+    "revenue": 75000000
+  },
+  {
+    "kind": "Buy X Get Y",
+    "program": "Mua ghế nhận gối",
+    "discount": "Tặng phụ kiện",
+    "applies": "Ghế, Sofa",
+    "period": "10 Jul - 30 Jul 2026",
+    "status": "Diễn ra",
+    "revenue": 61000000
+  },
+  {
+    "kind": "Voucher Campaign",
+    "program": "VIP độc quyền",
+    "discount": "20%",
+    "applies": "Khách hàng VIP",
+    "period": "01 Jul - 25 Oct 2026",
+    "status": "Diễn ra",
+    "revenue": 210000000
+  },
+  {
+    "kind": "Category Discount",
+    "program": "Phòng ngủ Zen",
+    "discount": "12%",
+    "applies": "Giường, tủ, đèn",
+    "period": "01 Sep - 30 Sep 2026",
+    "status": "Đã lên lịch",
+    "revenue": 0
+  },
+  {
+    "kind": "Flash Sale",
+    "program": "Flash 7 ngày",
+    "discount": "30%",
+    "applies": "Tất cả sản phẩm",
+    "period": "01 Aug - 07 Aug 2026",
+    "status": "Đã lên lịch",
+    "revenue": 0
+  },
+  {
+    "kind": "Category Discount",
+    "program": "Nội thất phòng trẻ",
+    "discount": "10%",
+    "applies": "Giường trẻ em, kệ sách",
+    "period": "01 Jun - 30 Sep 2026",
+    "status": "Diễn ra",
+    "revenue": 55000000
+  },
+  {
+    "kind": "Voucher Campaign",
+    "program": "Sinh nhật thành viên",
+    "discount": "100.000đ",
+    "applies": "Thành viên",
+    "period": "01 Jan - 31 Dec 2026",
+    "status": "Diễn ra",
+    "revenue": 44000000
+  },
+  {
+    "kind": "Category Discount",
+    "program": "Tủ quần áo mùa mới",
+    "discount": "20%",
+    "applies": "Tủ quần áo",
+    "period": "15 Jul - 31 Aug 2026",
+    "status": "Đã lên lịch",
+    "revenue": 0
+  },
+  {
+    "kind": "Buy X Get Y",
+    "program": "Mua bàn tặng ghế",
+    "discount": "Tặng ghế nhỏ",
+    "applies": "Bàn ăn",
+    "period": "01 Aug - 31 Aug 2026",
+    "status": "Bản nháp",
+    "revenue": 0
+  },
+  {
+    "kind": "Flash Sale",
+    "program": "Deal giữa tháng",
+    "discount": "22%",
+    "applies": "Sofa, Đèn",
+    "period": "15 Jul - 17 Jul 2026",
+    "status": "Diễn ra",
+    "revenue": 69000000
+  },
+  {
+    "kind": "Category Discount",
+    "program": "Indochine Week",
+    "discount": "15%",
+    "applies": "Bộ sưu tập Indochine",
+    "period": "20 Aug - 31 Aug 2026",
+    "status": "Đã lên lịch",
+    "revenue": 0
+  },
+  {
+    "kind": "Voucher Campaign",
+    "program": "Quay lại mua hàng",
+    "discount": "12%",
+    "applies": "Khách hàng hiện tại",
+    "period": "01 Jul - 31 Oct 2026",
+    "status": "Diễn ra",
+    "revenue": 82000000
+  },
+  {
+    "kind": "Category Discount",
+    "program": "Xả kho showroom",
+    "discount": "45%",
+    "applies": "Hàng trưng bày",
+    "period": "20 Jul - 31 Jul 2026",
+    "status": "Đã lên lịch",
+    "revenue": 0
+  },
+  {
+    "kind": "Flash Sale",
+    "program": "Chốt đơn cuối tuần",
+    "discount": "28%",
+    "applies": "Tất cả sản phẩm",
+    "period": "25 Jul - 27 Jul 2026",
+    "status": "Bản nháp",
+    "revenue": 0
+  }
+]
