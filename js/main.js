@@ -151,8 +151,14 @@ function buildSearchBox(extraClass) {
     panel.innerHTML = html || '<p class="search-suggest__empty">Chưa có gợi ý tìm kiếm.</p>';
   }
 
-  function openPanel() { renderPanel(); wrap.classList.add('is-open'); }
-  function closePanel() { wrap.classList.remove('is-open'); }
+  // Chỉ ô tìm kiếm trên header desktop mới "biến hình" thanh header (Yêu cầu 1)
+  function toggleHeaderSearch(on) {
+    const hdr = wrap.closest('.header');
+    if (hdr) hdr.classList.toggle('is-search-active', on);
+  }
+
+  function openPanel() { renderPanel(); wrap.classList.add('is-open'); toggleHeaderSearch(true); }
+  function closePanel() { wrap.classList.remove('is-open'); toggleHeaderSearch(false); }
 
   function doSearch(q) {
     q = (q || '').trim();
@@ -180,7 +186,8 @@ function buildSearchBox(extraClass) {
     doSearch(input.value);
   });
   form.querySelector('.search__camera').addEventListener('click', function () {
-    showToast('Tính năng tìm kiếm bằng hình ảnh đang phát triển');
+    closePanel();
+    openImageSearchModal();
   });
 
   /* Đóng panel khi click ra ngoài ô tìm kiếm */
@@ -194,6 +201,88 @@ function buildSearchBox(extraClass) {
   wrap.appendChild(form);
   wrap.appendChild(panel);
   return wrap;
+}
+
+/** Popup "Tìm kiếm bằng hình ảnh" — mở khi bấm icon camera trên ô tìm kiếm (Yêu cầu 2) */
+function openImageSearchModal() {
+  openModal(
+    '<div class="imgsearch">' +
+      '<h3 class="imgsearch__title">' + ICONS.camera + ' Tìm kiếm bằng hình ảnh</h3>' +
+      '<button type="button" class="imgsearch__drop" id="imgsearch-drop">' +
+        '<svg class="imgsearch__drop-ic" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">' +
+          '<rect x="3" y="4" width="18" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/>' +
+          '<path d="M4 18l5-5 4 4 2.5-2.5L20 17"/><path d="M18 3v5M15.5 5.5h5" stroke-linecap="round"/></svg>' +
+        '<span class="imgsearch__drop-text">Tải hình ảnh lên</span>' +
+        '<img class="imgsearch__preview" alt="Ảnh đã chọn" hidden>' +
+        '<input type="file" id="imgsearch-file" accept="image/*" hidden>' +
+      '</button>' +
+      '<div class="imgsearch__or"><span>Hoặc</span></div>' +
+      '<div class="imgsearch__url">' +
+        '<input type="text" id="imgsearch-link" placeholder="Dán link sản phẩm vào đây">' +
+        '<button type="button" class="btn-primary" id="imgsearch-go">Tìm kiếm</button>' +
+      '</div>' +
+    '</div>',
+    'modal--imgsearch'
+  );
+
+  const modal = modalOverlay.querySelector('.modal');
+  const drop = modal.querySelector('#imgsearch-drop');
+  const file = modal.querySelector('#imgsearch-file');
+  const preview = modal.querySelector('.imgsearch__preview');
+  const dropText = modal.querySelector('.imgsearch__drop-text');
+  const dropIc = modal.querySelector('.imgsearch__drop-ic');
+  const linkInput = modal.querySelector('#imgsearch-link');
+  let hasImage = false;
+
+  // Bấm vùng thả để chọn file
+  drop.addEventListener('click', function () { file.click(); });
+
+  // Kéo–thả ảnh vào vùng
+  drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.classList.add('is-drag'); });
+  drop.addEventListener('dragleave', function () { drop.classList.remove('is-drag'); });
+  drop.addEventListener('drop', function (e) {
+    e.preventDefault();
+    drop.classList.remove('is-drag');
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) showPreview(e.dataTransfer.files[0]);
+  });
+
+  file.addEventListener('change', function () {
+    if (file.files && file.files[0]) showPreview(file.files[0]);
+  });
+
+  function showPreview(f) {
+    if (!f.type || f.type.indexOf('image/') !== 0) {
+      showToast('Vui lòng chọn tệp hình ảnh');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function (ev) {
+      preview.src = ev.target.result;
+      preview.hidden = false;
+      dropText.hidden = true;
+      if (dropIc) dropIc.style.display = 'none';
+      hasImage = true;
+    };
+    reader.readAsDataURL(f);
+  }
+
+  // Thực hiện tìm kiếm: cần có ảnh hoặc link sản phẩm
+  function runImageSearch() {
+    const link = linkInput.value.trim();
+    if (!hasImage && !link) {
+      showToast('Hãy tải ảnh lên hoặc dán link sản phẩm');
+      return;
+    }
+    closeModal();
+    showToast('Đang tìm những sản phẩm tương tự…');
+    const q = link ? '?q=' + encodeURIComponent(link) : '?imgsearch=1';
+    setTimeout(function () { window.location.href = 'products.html' + q; }, 700);
+  }
+
+  modal.querySelector('#imgsearch-go').addEventListener('click', runImageSearch);
+  linkInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); runImageSearch(); }
+  });
 }
 
 /** Link cho 1 mục danh mục:
@@ -220,8 +309,34 @@ function getTypeConfig(category) {
     : { label: 'Phân loại', options: ['Tiêu chuẩn'] };
 }
 
+/** Panel dropdown "Các phòng" — lưới thẻ ảnh từng phòng (Yêu cầu 4, ảnh 4) */
+function buildRoomsPanel(cat) {
+  const panel = el('div', 'mega mega--rooms');
+  const grid = el('div', 'mega-rooms');
+  (cat.groups || []).forEach(function (g) {
+    const room = ROOMS[g.slug] || {};
+    const card = el('a', 'mega-room');
+    card.href = 'room.html?room=' + encodeURIComponent(g.slug);
+    const thumb = el('span', 'mega-room__thumb');
+    const img = el('img');
+    img.src = room.img || '';
+    img.alt = g.label;
+    img.loading = 'lazy';
+    thumb.appendChild(img);
+    card.appendChild(thumb);
+    card.appendChild(el('span', 'mega-room__name', g.label));
+    grid.appendChild(card);
+  });
+  panel.appendChild(grid);
+  const all = el('a', 'mega__all', cat.allLabel + ' →');
+  all.href = cat.allHref;
+  panel.appendChild(all);
+  return panel;
+}
+
 /** Panel mega-menu nhiều cột dựng từ CATALOG[key] (Yêu cầu 3, ảnh 3) */
 function buildMegaPanel(cat, key) {
+  if (key === 'rooms') return buildRoomsPanel(cat);
   const panel = el('div', 'mega');
   const cols = el('div', 'mega__cols');
   (cat.groups || []).forEach(function (g) {
@@ -264,10 +379,7 @@ function renderHeader() {
   const inner = el('div', 'header__inner');
 
   // Cột trái: hamburger (mobile) + nav (desktop)
-  const left = el('div');
-  left.style.display = 'flex';
-  left.style.alignItems = 'center';
-  left.style.gap = '14px';
+  const left = el('div', 'header__left');
 
   const burger = el('button', 'hamburger');
   burger.setAttribute('aria-label', 'Mở menu');
@@ -469,6 +581,81 @@ function renderFooter() {
   container.appendChild(bottom);
   footer.appendChild(container);
   mount.appendChild(footer);
+}
+
+/** Widget chat hỗ trợ nổi ở góc phải — icon + khung chat (Yêu cầu 3, ảnh 3/5) */
+function renderSupportChat() {
+  if (document.querySelector('.support-chat')) return;  // tránh tạo trùng
+
+  const root = el('div', 'support-chat');
+
+  // Nút nổi mở chat
+  const launcher = el('button', 'support-launcher');
+  launcher.setAttribute('aria-label', 'Chat với CaraVeso');
+  launcher.innerHTML =
+    '<span class="support-launcher__bubble">' +
+      '<svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
+        '<path d="M12 3C6.5 3 2 6.6 2 11c0 2.4 1.3 4.5 3.4 6-.2 1-.8 2.3-1.7 3.3-.2.2 0 .6.3.5 1.9-.4 3.4-1.1 4.5-1.8 1.1.3 2.3.5 3.5.5 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/>' +
+        '<circle cx="8" cy="11" r="1.3" fill="#fff"/><circle cx="12" cy="11" r="1.3" fill="#fff"/><circle cx="16" cy="11" r="1.3" fill="#fff"/>' +
+      '</svg>' +
+    '</span>' +
+    '<span class="support-launcher__label">Chat với CaraVeso</span>';
+
+  // Khung chat
+  const panel = el('div', 'support-panel');
+  panel.innerHTML =
+    '<div class="support-panel__head">' +
+      '<span class="support-panel__title">' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11.4 11.4 0 003.6.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.58 3.6a1 1 0 01-.25 1l-2.23 2.2z"/></svg>' +
+        'CaraVeso Support' +
+      '</span>' +
+      '<button type="button" class="support-panel__close" aria-label="Đóng">&times;</button>' +
+    '</div>' +
+    '<div class="support-panel__body">' +
+      '<p class="support-panel__from">CaraVeso</p>' +
+      '<div class="support-msg support-msg--bot">Xin chào! Mình là nhân viên hỗ trợ của CaraVeso</div>' +
+      '<div class="support-msg support-msg--bot">Mình có thể giúp gì cho bạn?</div>' +
+    '</div>' +
+    '<form class="support-panel__input">' +
+      '<input type="text" placeholder="Nhập tin nhắn" aria-label="Nhập tin nhắn">' +
+      '<button type="submit" aria-label="Gửi">' +
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3l18 9-18 9 4-9-4-9zm4.7 9L5.6 6.8 16.5 12 5.6 17.2 7.7 12z"/></svg>' +
+      '</button>' +
+    '</form>';
+
+  const body = panel.querySelector('.support-panel__body');
+  const form = panel.querySelector('.support-panel__input');
+  const input = form.querySelector('input');
+
+  function openChat() {
+    root.classList.add('is-open');
+    setTimeout(function () { input.focus(); }, 200);
+  }
+  function closeChat() { root.classList.remove('is-open'); }
+
+  launcher.addEventListener('click', openChat);
+  panel.querySelector('.support-panel__close').addEventListener('click', closeChat);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    const msg = el('div', 'support-msg support-msg--me', text);
+    body.appendChild(msg);
+    input.value = '';
+    body.scrollTop = body.scrollHeight;
+    // Phản hồi tự động (demo)
+    setTimeout(function () {
+      const reply = el('div', 'support-msg support-msg--bot',
+        'Cảm ơn bạn đã liên hệ. Nhân viên CaraVeso sẽ phản hồi trong giây lát ạ!');
+      body.appendChild(reply);
+      body.scrollTop = body.scrollHeight;
+    }, 800);
+  });
+
+  root.appendChild(panel);
+  root.appendChild(launcher);
+  document.body.appendChild(root);
 }
 
 /* ============ 5. MODAL & TOAST ============ */
@@ -890,7 +1077,8 @@ function initHomePage() {
   const colWrap = document.getElementById('collections');
   if (colWrap) {
     let colIndex = 0;
-    const img = colWrap.querySelector('.collections__img img');
+    const imgBox = colWrap.querySelector('.collections__img');
+    const img = imgBox.querySelector('img');
     const name = colWrap.querySelector('.collections__name');
     const tagline = colWrap.querySelector('.collections__tagline');
 
@@ -901,6 +1089,9 @@ function initHomePage() {
       img.alt = 'Bộ sưu tập ' + c.name;
       name.textContent = c.name;
       tagline.textContent = c.tagline;
+      // Dựng lại hotspot cho ảnh bộ sưu tập đang hiển thị (Yêu cầu 3)
+      imgBox.querySelectorAll('.hotspot-point').forEach(function (pt) { pt.remove(); });
+      buildHotspots(imgBox, c.hotspots);
     }
     colWrap.querySelector('.slider-arrow--prev').addEventListener('click', function () { showCollection(colIndex - 1); });
     colWrap.querySelector('.slider-arrow--next').addEventListener('click', function () { showCollection(colIndex + 1); });
@@ -911,11 +1102,15 @@ function initHomePage() {
   const inspMount = document.getElementById('inspirations');
   if (inspMount) {
     INSPIRATIONS.forEach(function (item, i) {
+      // Mỗi ảnh nằm trong 1 cell relative để gắn hotspot (Yêu cầu 3)
+      const cell = el('div', 'inspiration-cell');
       const img = el('img');
       img.src = item.img;
       img.alt = 'Nguồn cảm hứng ' + (i + 1);
       img.loading = 'lazy';
-      inspMount.appendChild(img);
+      cell.appendChild(img);
+      buildHotspots(cell, item.hotspots);
+      inspMount.appendChild(cell);
     });
   }
 }
@@ -1251,6 +1446,19 @@ function initProductDetailPage() {
   });
   colorLabel.textContent = colorNames[product.colors[0]] || product.colors[0];
 
+  /* --- Xổ / thu gọn danh sách lựa chọn khi bấm dấu > (Yêu cầu 2) --- */
+  function bindOptionToggle(row, target) {
+    if (!row || !target) return;
+    target.classList.add('is-collapsed');   // mặc định thu gọn, chỉ mở khi bấm
+    row.classList.remove('is-open');
+    row.addEventListener('click', function () {
+      const collapsed = target.classList.toggle('is-collapsed');
+      row.classList.toggle('is-open', !collapsed);
+    });
+  }
+  bindOptionToggle(document.getElementById('pd-type-label').closest('.pd__option-row'), typeWrap);
+  bindOptionToggle(colorLabel.closest('.pd__option-row'), colorWrap);
+
   /* --- Bộ đếm số lượng --- */
   const qtyInput = document.getElementById('pd-qty');
   document.getElementById('pd-qty-minus').addEventListener('click', function () {
@@ -1299,12 +1507,16 @@ function initProductDetailPage() {
       for (let i = 1; i <= 5; i++) {
         stars += '<span class="' + (i <= r.stars ? 'star--on' : 'star--off') + '">★</span>';
       }
+      // Ảnh đánh giá: dùng ảnh thật của chính sản phẩm đang xem
+      const rvGallery = (product.images && product.images.length) ? product.images : [product.img];
       let imgs = '';
       for (let i = 0; i < r.images; i++) {
-        imgs += '<span><img src="https://picsum.photos/seed/caraveso-rv' + page + idx + i + '/120/120" alt="Ảnh đánh giá" loading="lazy"></span>';
+        imgs += '<span><img src="' + rvGallery[i % rvGallery.length] + '" alt="Ảnh đánh giá" loading="lazy"></span>';
       }
+      // Avatar: dùng ảnh sản phẩm thật trong dự án (xoay vòng cho đa dạng)
+      const avatarImg = PRODUCTS[idx % PRODUCTS.length].img;
       item.innerHTML =
-        '<div class="review__avatar"><img src="https://picsum.photos/seed/caraveso-av' + idx + '/80/80" alt="' + r.name + '"></div>' +
+        '<div class="review__avatar"><img src="' + avatarImg + '" alt="' + r.name + '"></div>' +
         '<div class="review__body">' +
           '<p class="review__name">' + r.name + '</p>' +
           '<p class="review__stars">' + stars + '</p>' +
@@ -1563,7 +1775,7 @@ function initCheckoutPage() {
   const itemsWrap = document.getElementById('checkout-items');
   const selected = cartState.filter(function (i) { return i.checked; });
   const source = selected.length ? selected : cartState;
-  const totals = computeTotals(source);
+  let ckTotals = computeTotals(source);
 
   source.forEach(function (item) {
     const p = getProduct(item.productId);
@@ -1583,9 +1795,48 @@ function initCheckoutPage() {
 
   document.getElementById('ck-count').textContent = source.length;
   document.getElementById('ck-subtotal-label').textContent = 'Tạm tính (' + source.length + ' mặt hàng)';
-  document.getElementById('ck-subtotal').textContent = fmtVND(totals.subtotal);
-  document.getElementById('ck-discount').textContent = fmtVND(totals.discount);
-  document.getElementById('ck-total').textContent = fmtVND(totals.total);
+  document.getElementById('ck-subtotal').textContent = fmtVND(ckTotals.subtotal);
+
+  // Cập nhật lại phần Giảm giá / Tổng tiền (thay đổi khi áp mã giảm giá)
+  function renderCkSummary() {
+    ckTotals = computeTotals(source);
+    document.getElementById('ck-discount').textContent = fmtVND(ckTotals.discount);
+    document.getElementById('ck-total').textContent = fmtVND(ckTotals.total);
+  }
+  renderCkSummary();
+
+  /* --- Mã giảm giá (áp dụng ngay ở trang thanh toán — phục vụ luồng "Mua nhanh") --- */
+  const ckVoucherInput = document.getElementById('ck-voucher-input');
+  const ckVoucherMsg = document.getElementById('ck-voucher-msg');
+  const ckVoucherApply = document.getElementById('ck-voucher-apply');
+  if (ckVoucherApply) {
+    // Nếu đã áp mã từ trang giỏ hàng thì hiển thị lại cho nhất quán
+    if (appliedVoucher) {
+      const applied = Object.keys(VOUCHERS).filter(function (k) { return VOUCHERS[k] === appliedVoucher; })[0];
+      if (applied) ckVoucherInput.value = applied;
+      ckVoucherMsg.textContent = 'Áp dụng thành công: ' + appliedVoucher.label;
+      ckVoucherMsg.classList.add('is-ok');
+    }
+    ckVoucherApply.addEventListener('click', function () {
+      const code = ckVoucherInput.value.trim().toUpperCase();
+      ckVoucherMsg.classList.remove('is-ok', 'is-err');
+      if (!code) {
+        ckVoucherMsg.textContent = 'Vui lòng nhập mã giảm giá.';
+        ckVoucherMsg.classList.add('is-err');
+        return;
+      }
+      if (VOUCHERS[code]) {
+        appliedVoucher = VOUCHERS[code];
+        ckVoucherMsg.textContent = 'Áp dụng thành công: ' + appliedVoucher.label;
+        ckVoucherMsg.classList.add('is-ok');
+      } else {
+        appliedVoucher = null;
+        ckVoucherMsg.textContent = 'Mã "' + code + '" không hợp lệ hoặc đã hết hạn.';
+        ckVoucherMsg.classList.add('is-err');
+      }
+      renderCkSummary();
+    });
+  }
 
   /* --- Select Tỉnh / Quận / Phường phụ thuộc nhau --- */
   const citySel = document.getElementById('ck-city');
@@ -1643,7 +1894,7 @@ function initCheckoutPage() {
     ]);
     if (!ok) return;
 
-    const orderQuery = 'order=' + makeOrderId() + '&total=' + totals.total;
+    const orderQuery = 'order=' + makeOrderId() + '&total=' + ckTotals.total;
     const method = document.querySelector('input[name="pay"]:checked').value;
     if (method === 'cod') {
       // COD: hoàn tất luôn
@@ -2013,7 +2264,7 @@ function initRoomPage() {
   Object.keys(STYLES).forEach(function (key) {
     const s = STYLES[key];
     const href = 'style.html?style=' + key + '&room=' + roomId;
-    const ideaImg = (room.ideaImages && room.ideaImages[key]) || ('https://picsum.photos/seed/caraveso-idea-' + key + '/620/600');
+    const ideaImg = (room.ideaImages && room.ideaImages[key]) || (STYLES[key] && STYLES[key].heroImg) || 'img/rooms/phòng ngủ.jpg';
     const card = el('article', 'idea-card');
     card.innerHTML =
       '<a class="idea-card__img" href="' + href + '">' +
@@ -2076,9 +2327,9 @@ function initStylePage() {
   document.getElementById('style-intro-title').textContent = style.tagline;
   document.getElementById('style-intro-desc').textContent = style.desc;
   const gallery = document.getElementById('style-gallery');
-  style.gallery.forEach(function (seed) {
+  style.gallery.forEach(function (src) {
     const img = el('img');
-    img.src = 'https://picsum.photos/seed/' + seed + '/700/760';
+    img.src = src;
     img.alt = style.display;
     img.loading = 'lazy';
     gallery.appendChild(img);
@@ -2128,9 +2379,145 @@ function initStylePage() {
 function initPromoPage() {
   const grid = document.getElementById('promo-grid');
   if (grid) {
-    PRODUCTS.filter(function (p) { return p.isSale; }).forEach(function (p) {
-      grid.appendChild(buildProductCard(p));
+    const PAGE_SIZE = 8;
+    let visibleCount = PAGE_SIZE;
+
+    // Chỉ lấy sản phẩm đang giảm giá
+    const SALE = PRODUCTS.filter(function (p) { return p.isSale; });
+
+    const state = { categories: [], priceMin: null, priceMax: null, sort: 'default' };
+
+    function applyFilters() {
+      let list = SALE.slice();
+      if (state.categories.length) {
+        list = list.filter(function (p) { return state.categories.indexOf(p.category) !== -1; });
+      }
+      if (state.priceMin !== null) list = list.filter(function (p) { return p.price >= state.priceMin; });
+      if (state.priceMax !== null) list = list.filter(function (p) { return p.price <= state.priceMax; });
+
+      if (state.sort === 'price-asc') list.sort(function (a, b) { return a.price - b.price; });
+      if (state.sort === 'price-desc') list.sort(function (a, b) { return b.price - a.price; });
+      if (state.sort === 'name') list.sort(function (a, b) { return a.name.localeCompare(b.name, 'vi'); });
+      return list;
+    }
+
+    function render() {
+      const list = applyFilters();
+      grid.textContent = '';
+      const countEl = document.getElementById('result-count');
+      if (countEl) countEl.textContent = '(' + list.length + ' sản phẩm)';
+      if (!list.length) {
+        grid.appendChild(el('p', 'grid-empty', 'Không tìm thấy sản phẩm phù hợp với bộ lọc.'));
+      } else {
+        list.slice(0, visibleCount).forEach(function (p) { grid.appendChild(buildProductCard(p)); });
+      }
+      const loadBtn = document.getElementById('btn-load-more');
+      if (loadBtn) loadBtn.style.display = visibleCount >= list.length ? 'none' : '';
+    }
+
+    /* --- Sự kiện bộ lọc --- */
+
+    // Thu gọn / mở rộng nhóm lọc
+    document.querySelectorAll('.filter-group__head').forEach(function (head) {
+      head.addEventListener('click', function () {
+        head.closest('.filter-group').classList.toggle('is-collapsed');
+      });
     });
+
+    // Checkbox phân loại
+    document.querySelectorAll('input[name="category"]').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        state.categories = Array.prototype.slice
+          .call(document.querySelectorAll('input[name="category"]:checked'))
+          .map(function (c) { return c.value; });
+        visibleCount = PAGE_SIZE;
+        render();
+      });
+    });
+
+    // Khoảng giá — slider 2 node đồng bộ với 2 ô nhập
+    const priceMinInput = document.getElementById('price-min');
+    const priceMaxInput = document.getElementById('price-max');
+    const rangeMin = document.getElementById('price-range-min');
+    const rangeMax = document.getElementById('price-range-max');
+    const priceFill = document.getElementById('price-fill');
+
+    if (rangeMin && rangeMax) {
+      const P_MIN = Number(rangeMin.min);
+      const P_MAX = Number(rangeMin.max);
+      const P_GAP = Number(rangeMin.step) || 500000;
+
+      function parsePrice(s) {
+        const d = String(s).replace(/[^\d]/g, '');
+        return d ? Number(d) : null;
+      }
+      function updateFill() {
+        const span = P_MAX - P_MIN || 1;
+        const lo = Number(rangeMin.value);
+        const hi = Number(rangeMax.value);
+        priceFill.style.left = ((lo - P_MIN) / span * 100) + '%';
+        priceFill.style.right = ((P_MAX - hi) / span * 100) + '%';
+      }
+      function syncFromSliders(doRender) {
+        const lo = Number(rangeMin.value);
+        const hi = Number(rangeMax.value);
+        priceMinInput.value = lo.toLocaleString('vi-VN');
+        priceMaxInput.value = hi.toLocaleString('vi-VN');
+        updateFill();
+        state.priceMin = lo > P_MIN ? lo : null;
+        state.priceMax = hi < P_MAX ? hi : null;
+        if (doRender) { visibleCount = PAGE_SIZE; render(); }
+      }
+
+      rangeMin.addEventListener('input', function () {
+        if (Number(rangeMin.value) > Number(rangeMax.value) - P_GAP) {
+          rangeMin.value = Number(rangeMax.value) - P_GAP;
+        }
+        syncFromSliders(true);
+      });
+      rangeMax.addEventListener('input', function () {
+        if (Number(rangeMax.value) < Number(rangeMin.value) + P_GAP) {
+          rangeMax.value = Number(rangeMin.value) + P_GAP;
+        }
+        syncFromSliders(true);
+      });
+      priceMinInput.addEventListener('change', function () {
+        let v = parsePrice(priceMinInput.value);
+        if (v === null) v = P_MIN;
+        v = Math.max(P_MIN, Math.min(v, Number(rangeMax.value) - P_GAP));
+        rangeMin.value = v;
+        syncFromSliders(true);
+      });
+      priceMaxInput.addEventListener('change', function () {
+        let v = parsePrice(priceMaxInput.value);
+        if (v === null) v = P_MAX;
+        v = Math.min(P_MAX, Math.max(v, Number(rangeMin.value) + P_GAP));
+        rangeMax.value = v;
+        syncFromSliders(true);
+      });
+
+      syncFromSliders(false);
+    }
+
+    // Sắp xếp
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', function () {
+        state.sort = sortSelect.value;
+        render();
+      });
+    }
+
+    // Xem thêm
+    const loadMoreBtn = document.getElementById('btn-load-more');
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', function () {
+        visibleCount += PAGE_SIZE;
+        render();
+      });
+    }
+
+    render();
   }
 
   /* Đồng hồ đếm ngược đến 0h ngày hôm sau */
@@ -2309,11 +2696,14 @@ function initChatboxAiPage() {
     return 'Mình nghe được rồi. Bạn có thể nói rõ hơn một chút về loại sản phẩm, ngân sách, màu sắc hoặc kích thước phòng không? Ví dụ: “bàn ăn 6 ghế gỗ sáng dưới 15 triệu”.';
   }
 
+  // Chỉ riêng trang ChatBox AI: mọi sản phẩm dùng chung 1 ảnh (ảnh thật trong dự án)
+  const CHAT_CARD_IMG = 'img/products/ban.webp';
+
   function productCard(product) {
     const article = el('article', 'chat-product-card');
     article.innerHTML =
       '<a class="chat-product-card__img" href="chatbox-product-detail.html">' +
-        '<img src="' + product.img + '" alt="' + product.name + '" loading="lazy">' +
+        '<img src="' + CHAT_CARD_IMG + '" alt="' + product.name + '" loading="lazy">' +
       '</a>' +
       '<h3><a href="chatbox-product-detail.html">' + product.name + '</a></h3>' +
       '<p>' + product.desc + '</p>' +
@@ -2405,6 +2795,34 @@ function initChatboxAiPage() {
       compose.requestSubmit();
     }
   });
+
+  /* Đính kèm ảnh/tệp: mở hộp chọn tệp, gửi ảnh vào khung chat rồi AI phản hồi */
+  const fileInput = document.getElementById('chat-file');
+  const attachBtn = document.getElementById('chat-attach');
+  if (attachBtn && fileInput) {
+    attachBtn.addEventListener('click', function () { fileInput.click(); });
+    fileInput.addEventListener('change', function () {
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        // Bong bóng người dùng kèm ảnh đính kèm
+        const row = el('div', 'chat-row chat-row--user');
+        row.innerHTML =
+          '<div class="chat-bubble chat-bubble--user">' +
+            '<img class="chat-attach-img" src="' + ev.target.result + '" alt="Ảnh đính kèm">' +
+            '<time>' + chatTime() + '</time>' +
+          '</div>';
+        thread.appendChild(row);
+        thread.scrollTop = thread.scrollHeight;
+        window.setTimeout(function () {
+          appendAiMessage('Mình đã nhận được ảnh của bạn. Dưới đây là những sản phẩm có kiểu dáng tương tự nhé.');
+        }, 260);
+      };
+      reader.readAsDataURL(file);
+      fileInput.value = '';   // cho phép chọn lại cùng một tệp
+    });
+  }
 
   document.getElementById('chat-refresh').addEventListener('click', function () {
     chatState.category = 'table';
@@ -2631,6 +3049,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initCartState();
     renderHeader();
     renderFooter();
+    renderSupportChat();
 
     const page = document.body.dataset.page;
     if (page === 'home') initHomePage();

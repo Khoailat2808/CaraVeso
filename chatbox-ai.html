@@ -68,10 +68,16 @@
 
       <form class="chat-compose" id="chat-compose">
         <label class="visually-hidden" for="chat-message">Nhập mô tả sản phẩm</label>
-        <textarea id="chat-message" rows="3" placeholder="Nhập mô tả đơn giản về sản phẩm,..."></textarea>
-        <button type="submit" aria-label="Gửi tin nhắn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20V4l19 8-19 8zm3-4.5L15.7 12 6 8.5v3l7 0.5-7 0.5v3z"/></svg>
-        </button>
+        <textarea id="chat-message" rows="2" placeholder="Nhập mô tả đơn giản về sản phẩm,..."></textarea>
+        <div class="chat-compose__actions">
+          <input type="file" id="chat-file" accept="image/*" hidden>
+          <button type="button" class="chat-attach" id="chat-attach" aria-label="Đính kèm ảnh hoặc tệp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a5 5 0 01-7.07-7.07l9.19-9.19a3 3 0 014.24 4.24l-9.2 9.19a1 1 0 01-1.41-1.41l8.49-8.49"/></svg>
+          </button>
+          <button type="submit" class="chat-send" aria-label="Gửi tin nhắn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20V4l19 8-19 8zm3-4.5L15.7 12 6 8.5v3l7 0.5-7 0.5v3z"/></svg>
+          </button>
+        </div>
       </form>
     </aside>
 

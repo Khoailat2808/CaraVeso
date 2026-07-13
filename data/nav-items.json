@@ -1,6 +1,6 @@
 [
   { "label": "Sản phẩm", "href": "danh-muc-san-pham.html", "mega": "products" },
   { "label": "Các phòng", "href": "danh-muc-cac-phong.html", "mega": "rooms" },
-  { "label": "Khuyến mãi", "href": "promo.html", "dropdown": ["Khuyến mãi hôm nay", "Voucher của tôi"] },
+  { "label": "Khuyến mãi", "href": "promo.html", "dropdown": null },
   { "label": "Hỗ trợ/ Bảo hành", "href": "warranty.html", "dropdown": null }
 ]

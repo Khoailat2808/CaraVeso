@@ -1,7 +1,72 @@
 [
-  { "img": "https://picsum.photos/seed/caraveso-insp1/630/630", "wide": true },
-  { "img": "https://picsum.photos/seed/caraveso-insp2/411/630", "wide": false },
-  { "img": "https://picsum.photos/seed/caraveso-insp3/630/630", "wide": true },
-  { "img": "https://picsum.photos/seed/caraveso-insp4/411/630", "wide": false },
-  { "img": "https://picsum.photos/seed/caraveso-insp5/630/630", "wide": true }
+  {
+    "img": "img/rooms/Phòng ăn/phòng ăn 1.jpg",
+    "wide": true,
+    "hotspots": [
+      {
+        "x": 50,
+        "y": 56,
+        "productId": 8
+      },
+      {
+        "x": 30,
+        "y": 34,
+        "productId": 15
+      }
+    ]
+  },
+  {
+    "img": "img/rooms/phòng làm việc.jpg",
+    "wide": false,
+    "hotspots": [
+      {
+        "x": 45,
+        "y": 52,
+        "productId": 5
+      }
+    ]
+  },
+  {
+    "img": "img/rooms/Phòng tắm/phòng tắm 1.jpg",
+    "wide": true,
+    "hotspots": [
+      {
+        "x": 48,
+        "y": 52,
+        "productId": 11
+      },
+      {
+        "x": 70,
+        "y": 40,
+        "productId": 14
+      }
+    ]
+  },
+  {
+    "img": "img/rooms/trang trí.jpg",
+    "wide": false,
+    "hotspots": [
+      {
+        "x": 52,
+        "y": 50,
+        "productId": 16
+      }
+    ]
+  },
+  {
+    "img": "img/rooms/trẻ em.jpg",
+    "wide": true,
+    "hotspots": [
+      {
+        "x": 50,
+        "y": 56,
+        "productId": 1
+      },
+      {
+        "x": 72,
+        "y": 44,
+        "productId": 12
+      }
+    ]
+  }
 ]
