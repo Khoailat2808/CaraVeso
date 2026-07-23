@@ -1,0 +1,5 @@
+[
+  { "productId": 1, "qty": 1, "checked": true },
+  { "productId": 2, "qty": 1, "checked": true },
+  { "productId": 7, "qty": 1, "checked": false }
+]

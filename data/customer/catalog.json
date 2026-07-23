@@ -1,0 +1,41 @@
+{
+  "products": {
+    "title": "Danh mục sản phẩm",
+    "breadcrumb": "Sản phẩm",
+    "allLabel": "Xem tất cả sản phẩm",
+    "allHref": "../danh-muc-san-pham/",
+    "groups": [
+      { "label": "Ghế", "cat": "sofa", "children": ["Ghế sofa", "Ghế bành", "Ghế ăn", "Ghế văn phòng", "Ghế thư giãn", "Ghế quầy bar"] },
+      { "label": "Bàn", "cat": "ban", "children": ["Bàn trà", "Bàn ăn", "Bàn trang điểm", "Bàn console", "Bàn đầu giường", "Bàn ngoài trời"] },
+      { "label": "Giường", "cat": "giuong", "children": ["Giường đơn", "Giường đôi", "Giường trẻ em", "Giường bọc đệm"] },
+      { "label": "Tủ", "cat": "tu", "children": ["Tủ quần áo", "Tủ TV", "Tủ đầu giường", "Tủ bếp", "Tủ lavabo", "Tủ giày", "Tủ hồ sơ"] },
+      { "label": "Kệ", "cat": "ke", "children": ["Kệ sách", "Kệ TV", "Kệ treo tường", "Kệ trang trí", "Kệ bếp"] },
+      { "label": "Đệm và chăn ga", "cat": "nem", "children": ["Đệm", "Topper", "Chăn", "Ga trải giường", "Gối", "Bộ chăn ga"] },
+      { "label": "Đèn", "cat": "den", "children": ["Đèn trần", "Đèn bàn", "Đèn sàn", "Đèn ngủ", "Đèn tường"] },
+      { "label": "Gương", "cat": "guong", "children": ["Gương toàn thân", "Gương treo tường", "Gương trang điểm", "Gương phòng tắm"] },
+      { "label": "Thảm", "cat": "tham", "children": ["Thảm phòng khách", "Thảm phòng ngủ", "Thảm trang trí", "Thảm trải sàn"] },
+      { "label": "Rèm cửa", "cat": "rem", "children": ["Rèm vải", "Rèm cuộn", "Rèm sáo", "Rèm roman"] },
+      { "label": "Trang trí", "cat": "trang-tri", "children": ["Tranh treo tường", "Bình hoa", "Tượng trang trí", "Đồng hồ treo tường", "Nến thơm", "Chậu cây"] },
+      { "label": "Nội thất ngoài trời", "cat": "ngoai-troi", "children": ["Bộ bàn ghế sân vườn", "Ghế hồ bơi", "Xích đu", "Bàn ngoài trời"] },
+      { "label": "Phụ kiện nội thất", "cat": "phu-kien", "children": ["Tay nắm tủ", "Móc treo", "Giá treo", "Hộp lưu trữ", "Phụ kiện lắp đặt"] }
+    ]
+  },
+  "rooms": {
+    "title": "Danh mục các phòng",
+    "breadcrumb": "Các phòng",
+    "allLabel": "Xem tất cả các phòng",
+    "allHref": "../danh-muc-cac-phong/",
+    "groups": [
+      { "label": "Phòng khách", "slug": "phong-khach", "children": ["Ghế sofa", "Bàn trà", "Kệ TV", "Thảm phòng khách", "Đèn sàn"] },
+      { "label": "Phòng ngủ", "slug": "phong-ngu", "children": ["Giường ngủ", "Đệm", "Tủ quần áo", "Bàn đầu giường", "Đèn ngủ"] },
+      { "label": "Phòng ăn", "slug": "phong-an", "children": ["Bàn ăn", "Ghế ăn", "Tủ rượu", "Đèn thả trần"] },
+      { "label": "Phòng bếp", "slug": "phong-bep", "children": ["Tủ bếp", "Kệ bếp", "Bàn đảo bếp", "Ghế quầy bar"] },
+      { "label": "Phòng làm việc", "slug": "phong-lam-viec", "children": ["Bàn làm việc", "Ghế văn phòng", "Tủ hồ sơ", "Kệ sách", "Bàn máy tính"] },
+      { "label": "Phòng tắm", "slug": "phong-tam", "children": ["Tủ lavabo", "Gương phòng tắm", "Kệ phòng tắm", "Thảm chống trượt"] },
+      { "label": "Ngoài trời", "slug": "ngoai-troi", "children": ["Bộ bàn ghế sân vườn", "Ghế hồ bơi", "Xích đu", "Đèn sân vườn"] },
+      { "label": "Đồ trang trí", "slug": "do-trang-tri", "children": ["Tranh treo tường", "Bình hoa", "Tượng trang trí", "Nến thơm", "Chậu cây"] },
+      { "label": "Lưu trữ", "slug": "luu-tru", "children": ["Kệ sách", "Tủ giày", "Hộp lưu trữ", "Kệ treo tường"] },
+      { "label": "Nội thất cho trẻ", "slug": "noi-that-tre", "children": ["Giường trẻ em", "Bàn học", "Ghế trẻ em", "Kệ đồ chơi"] }
+    ]
+  }
+}

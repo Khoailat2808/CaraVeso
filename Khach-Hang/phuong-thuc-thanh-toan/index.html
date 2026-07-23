@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chọn phương thức thanh toán — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/style.css">
+</head>
+<body data-page="payment-method">
+
+  <!-- ===== HEADER TỐI GIẢN ===== -->
+  <div class="topbar">
+    <div class="topbar__inner">
+      <p class="topbar__promo">Chỉ duy nhất 1 lần, tặng voucher 100.000 VNĐ cho khách hàng mới của CaraVeso</p>
+    </div>
+  </div>
+  <header class="mini-header">
+    <div class="mini-header__inner">
+      <span></span>
+      <a class="logo" href="../trang-chu/">CaraVeso</a>
+      <span></span>
+    </div>
+  </header>
+
+  <main class="pm-wrap">
+    <!-- ===== CARD CHỌN PHƯƠNG THỨC ===== -->
+    <div class="pm-card">
+      <div class="pm-card__head">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.7"><rect x="5" y="2.5" width="14" height="19" rx="2.4"/><path d="M9 2.5h6M10 18.8h4"/><rect x="8" y="7" width="8" height="5.6" rx="1" fill="#111" stroke="none"/><path d="M9.5 9.8h5" stroke="#fff" stroke-width="1.2"/></svg>
+        Chọn phương thức thanh toán
+      </div>
+
+      <div class="pm-card__body">
+        <label class="pm-option">
+          <img class="momo-logo" src="../shared/img/logo_momo.png" alt="Ví MoMo">
+          Thanh toán bằng Ví Momo
+          <input type="radio" name="pm" value="momo" checked>
+        </label>
+
+        <label class="pm-option">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="#22344a"><path d="M12 1L2 6v2h20V6L12 1zm-8 9v7h2.6v-7H4zm6.7 0v7h2.6v-7h-2.6zm6.7 0v7H20v-7h-2.6zM2 19v2h20v-2H2z"/></svg>
+          Thanh toán bằng Ngân hàng
+          <input type="radio" name="pm" value="bank">
+        </label>
+      </div>
+
+      <div class="pm-card__foot">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6L22 7"/></svg>
+        caravesodesign@.com.vn
+      </div>
+    </div>
+
+    <button class="btn-primary pm-submit" id="pm-submit">Thanh Toán</button>
+    <p class="pm-credit">Phát triển bởi @CaraVeso</p>
+  </main>
+
+  <script src="../shared/js/data.js"></script>
+  <script src="../shared/js/main.js"></script>
+</body>
+</html>

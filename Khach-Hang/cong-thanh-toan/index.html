@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cổng thanh toán — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/style.css">
+</head>
+<!-- Trang dùng chung: ?method=momo (theme hồng) | ?method=bank (theme vàng) -->
+<body data-page="payment-gateway">
+
+  <!-- ===== HEADER: topbar + Quay lại + logo ===== -->
+  <div class="topbar">
+    <div class="topbar__inner">
+      <p class="topbar__promo">Chỉ duy nhất 1 lần, tặng voucher 100.000 VNĐ cho khách hàng mới của CaraVeso</p>
+    </div>
+  </div>
+  <header class="mini-header">
+    <div class="mini-header__inner">
+      <a class="back-link" href="../phuong-thuc-thanh-toan/">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+        Quay lại
+      </a>
+      <a class="logo" href="../trang-chu/">CaraVeso</a>
+      <span></span>
+    </div>
+  </header>
+
+  <main class="container" id="gw-root">
+    <!-- ===== TÊN CỔNG THANH TOÁN ===== -->
+    <div class="gw-brandbar">
+      <span id="gw-brand-icon"></span>
+      <span id="gw-brand-name">Cổng thanh toán</span>
+    </div>
+
+    <div class="gw-layout">
+      <!-- ===== CỘT TRÁI: THÔNG TIN ĐƠN HÀNG + ĐẾM NGƯỢC ===== -->
+      <section>
+        <div class="gw-info">
+          <h2>Thông tin đơn hàng</h2>
+
+          <div class="gw-row">
+            <p class="gw-row__label">Nhà cung cấp</p>
+            <p class="gw-provider"><span class="gw-provider__logo"></span> CaraVeso</p>
+          </div>
+          <div class="gw-row">
+            <p class="gw-row__label">Mã đơn hàng</p>
+            <p class="gw-row__value" id="gw-order-id">H000000000</p>
+          </div>
+          <div class="gw-row">
+            <p class="gw-row__label">Mô tả</p>
+            <p class="gw-row__value" id="gw-desc">Payment for order</p>
+          </div>
+          <div class="gw-row">
+            <p class="gw-row__label">Số tiền</p>
+            <p class="gw-amount" id="gw-amount">0 VNĐ</p>
+            <p class="gw-amount-note">(Đã bao gồm VAT)</p>
+          </div>
+        </div>
+
+        <div class="gw-expire">
+          Đơn hàng sẽ hết hạn sau:
+          <div class="gw-expire__cells">
+            <div class="gw-expire__cell">
+              <div class="gw-expire__num" id="gw-min">10</div>
+              <div class="gw-expire__label">Phút</div>
+            </div>
+            <div class="gw-expire__cell">
+              <div class="gw-expire__num" id="gw-sec">00</div>
+              <div class="gw-expire__label">Giây</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CỘT PHẢI: QR + HƯỚNG DẪN ===== -->
+      <section>
+        <div id="gw-qr"></div>
+        <p class="gw-help">Gặp khó khăn khi thanh toán ? <a href="#">Xem hướng dẫn</a></p>
+        <div class="gw-note">
+          Quý khách vui lòng không tắt trình duyệt cho đến khi nhận được kết quả giao dịch trên website.
+          Trường hợp đã thanh toán nhưng chưa nhận kết quả giao dịch, vui lòng bấm
+          <a href="#" id="gw-result-link">“Tại đây”</a> để nhận kết quả. Xin cảm ơn!
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER RÚT GỌN ===== -->
+  <footer class="gw-footer">
+    <div class="container gw-footer__inner">
+      <span class="footer__logo">CaraVeso</span>
+      <div class="gw-footer__support">
+        <p class="muted">Hỗ trợ khách hàng:</p>
+        <p>caravesodesign@.com.vn</p>
+        <p>0818357074</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared/js/data.js"></script>
+  <script src="../shared/js/main.js"></script>
+</body>
+</html>

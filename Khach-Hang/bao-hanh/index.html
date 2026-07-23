@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yêu cầu đổi trả/ Bảo hành — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <link rel="stylesheet" href="../shared/css/warranty.css">
+</head>
+<body data-page="warranty">
+
+  <!-- ===== SITE HEADER ===== -->
+  <div id="site-header"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb" id="warranty-breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="../trang-chu/">Trang chủ</a></li>
+        <li>Đổi trả/ Bảo hành</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="warranty-wrap">
+
+      <!-- ==================== STATE 1: LOOKUP & SELECTION ==================== -->
+      <div id="lookup-state">
+        <h1 class="warranty-title">Yêu cầu Đổi trả/ Bảo hành</h1>
+        <p class="warranty-subtitle">Hướng dẫn đổi trả/ bảo hành</p>
+
+        <!-- Progress Steps (5 Steps) -->
+        <div class="warranty-steps">
+          <div class="warranty-step is-active">
+            <div class="warranty-step__circle">1</div>
+            <span class="warranty-step__title">Tìm kiếm sản phẩm</span>
+            <span class="warranty-step__desc">Tìm kiếm sản phẩm cần đổi trả/ bảo hành</span>
+          </div>
+          <div class="warranty-step__arrow">
+            <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h22M16 1l5 5-5 5"/></svg>
+          </div>
+          <div class="warranty-step">
+            <div class="warranty-step__circle">2</div>
+            <span class="warranty-step__title">Chọn đổi trả/ bảo hành</span>
+            <span class="warranty-step__desc">Chọn sản phẩm cần đổi trả/ bảo hành</span>
+          </div>
+          <div class="warranty-step__arrow">
+            <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h22M16 1l5 5-5 5"/></svg>
+          </div>
+          <div class="warranty-step">
+            <div class="warranty-step__circle">3</div>
+            <span class="warranty-step__title">Tạo đơn yêu cầu</span>
+            <span class="warranty-step__desc">Nhận tạo đơn yêu cầu</span>
+          </div>
+          <div class="warranty-step__arrow">
+            <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h22M16 1l5 5-5 5"/></svg>
+          </div>
+          <div class="warranty-step">
+            <div class="warranty-step__circle">4</div>
+            <span class="warranty-step__title">Điền form yêu cầu</span>
+            <span class="warranty-step__desc">Cung cấp thông tin, tình trạng mặt hàng</span>
+          </div>
+          <div class="warranty-step__arrow">
+            <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h22M16 1l5 5-5 5"/></svg>
+          </div>
+          <div class="warranty-step">
+            <div class="warranty-step__circle">5</div>
+            <span class="warranty-step__title">Xử lý bảo hành</span>
+            <span class="warranty-step__desc">CaraVeso xét duyệt yêu cầu bảo hành</span>
+          </div>
+        </div>
+
+        <!-- Search Card -->
+        <div class="warranty-search-card">
+          <h2 class="warranty-search-title">Tra cứu sản phẩm Đổi trả/ Bảo hành</h2>
+          <form id="search-warranty-form">
+            <div class="warranty-search-grid">
+              <div class="warranty-search-field">
+                <label for="search-order-id">Mã sản phẩm</label>
+                <input type="text" id="search-order-id" placeholder="Nhập mã đơn hàng">
+              </div>
+              <div class="warranty-search-divider">Hoặc</div>
+              <div class="warranty-search-field">
+                <label for="search-product-name">Tên sản phẩm</label>
+                <input type="text" id="search-product-name" placeholder="Nhập tên sản phẩm">
+              </div>
+              <button class="warranty-search-btn" type="submit">Tìm kiếm</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Purchased Products -->
+        <div class="recent-products-title">Sản phẩm đã mua gần đây</div>
+        <div id="product-list-container">
+          <!-- Dynamic product rows populate here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="warranty-pagination">
+          <a id="prev-page">&lt;</a>
+          <span class="is-active">1</span>
+          <span>2</span>
+          <span>3</span>
+          <a id="next-page">&gt;</a>
+        </div>
+
+        <!-- Bottom Actions -->
+        <div class="warranty-action-bottom">
+          <button class="btn-large-navy" id="btn-create-request">Tạo đơn yêu cầu</button>
+        </div>
+      </div>
+
+      <!-- ==================== STATE 2: SUCCESS ==================== -->
+      <div id="success-state" style="display: none;">
+        <section class="success" style="padding: 20px 24px;">
+          <div class="success__icon">
+            <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="#2ecc40" stroke-width="1.4">
+              <circle cx="12" cy="12" r="10.5"/>
+              <path d="M7.5 12.5l3 3 6-6.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h1 id="success-title">Yêu cầu bảo hành thành công</h1>
+          <p class="success__order">Mã đơn hàng: <span id="success-order-code" style="color: var(--color-danger); text-decoration: underline; font-weight: 700;">#HHT080906</span></p>
+          <p class="success__text">
+            Cám ơn bạn đã đăng ký bảo hành tại CaraVeso. Chúng tôi đã tiếp nhận thông
+            tin của bạn và sẽ gửi xác nhận cũng như các cập nhật về quá trình xử lý bảo
+            hành qua email. Nếu không nhận được email, vui lòng liên hệ với đội ngũ hỗ
+            trợ để được hỗ trợ kịp thời.
+          </p>
+          <p class="success__text">
+            Bạn có thể kiểm tra trạng thái xử lý bảo hành trong <a href="../chi-tiet-dich-vu/" style="color: var(--color-danger); text-decoration: underline;">Dịch vụ hậu mãi</a><br>
+            sau khi cập nhật.
+          </p>
+          <a class="btn-primary" href="../san-pham/" style="display: inline-block;">Tiếp tục mua hàng</a>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== SITE FOOTER ===== -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="../shared/js/data.js"></script>
+  <script src="../shared/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const isSuccess = urlParams.get('success') === 'true';
+      const orderCode = urlParams.get('order') || 'HHT080906';
+      const reqType = urlParams.get('type') || 'warranty';
+
+      const lookupState = document.getElementById('lookup-state');
+      const successState = document.getElementById('success-state');
+      const successTitle = document.getElementById('success-title');
+      const successOrderCode = document.getElementById('success-order-code');
+      const breadcrumb = document.getElementById('warranty-breadcrumb');
+
+      // 1. Check if we should display Success page
+      if (isSuccess) {
+        lookupState.style.display = 'none';
+        successState.style.display = 'block';
+        successOrderCode.textContent = '#' + orderCode;
+        
+        // Dynamically adjust success text if it was a return request
+        if (reqType === 'return') {
+          successTitle.textContent = 'Yêu cầu đổi trả thành công';
+          const texts = successState.querySelectorAll('.success__text');
+          if (texts.length > 0) {
+            texts[0].innerHTML = 'Cám ơn bạn đã đăng ký đổi trả tại CaraVeso. Chúng tôi đã tiếp nhận thông tin của bạn và sẽ gửi xác nhận cũng như các cập nhật về quá trình xử lý đổi trả qua email. Nếu không nhận được email, vui lòng liên hệ với đội ngũ hỗ trợ để được hỗ trợ kịp thời.';
+          }
+        }
+        return; // Stop execution here
+      }
+
+      // 2. Populate and manage recently purchased products list
+      const productContainer = document.getElementById('product-list-container');
+      
+      // We will create some mock order-items using products from data.js
+      // Let's create an array of purchased items to simulate recently purchased products
+      const purchasedItems = [
+        {
+          id: 1,
+          name: 'Nệm Kymdan Long Thành',
+          img: '../shared/img/products/nem-kymdan-long-thanh.webp',
+          size: '1m8 x 2m',
+          material: 'Cao su tự nhiên',
+          qty: 1,
+          orderId: 'HHT080906'
+        },
+        {
+          id: 2,
+          name: 'Ghế Sofa Milano Shape U',
+          img: '../shared/img/products/ghe.webp',
+          size: 'Ghế 2 chỗ, Trắng kem',
+          material: 'Vải boucle cao cấp',
+          qty: 1,
+          orderId: 'HHT080906'
+        },
+        {
+          id: 3,
+          name: 'Ghế Sofa CaraVeso Vintage',
+          img: '../shared/img/products/ghe-sofa-caraveso-vintage.webp',
+          size: 'Bọc da, Đen than',
+          material: 'Da thật cao cấp',
+          qty: 1,
+          orderId: 'TPBH110306'
+        },
+        {
+          id: 4,
+          name: 'Bàn Trà Đá Marble Tròn',
+          img: '../shared/img/products/ke.webp',
+          size: 'D80cm, Trắng đá',
+          material: 'Đá cẩm thạch tự nhiên',
+          qty: 1,
+          orderId: 'TPBH110306'
+        }
+      ];
+
+      let displayedItems = [...purchasedItems];
+
+      function renderProducts(items) {
+        productContainer.innerHTML = '';
+        if (items.length === 0) {
+          productContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--color-text-muted);">Không tìm thấy sản phẩm phù hợp.</div>';
+          return;
+        }
+
+        items.forEach((item, index) => {
+          const card = document.createElement('div');
+          card.className = 'product-row-card';
+          card.setAttribute('data-selected-type', 'return'); // default selection is return (Đổi trả)
+          card.innerHTML = `
+            <div class="product-row-select">
+              <input type="radio" name="select-product" value="${item.id}">
+            </div>
+            <div class="product-row-image">
+              <img src="${item.img}" alt="${item.name}">
+            </div>
+            <div class="product-row-info">
+              <h3 class="product-row-name">${item.name}</h3>
+              <p class="product-row-meta">Kích thước: ${item.size}</p>
+              <p class="product-row-meta">Chất liệu: ${item.material}</p>
+              <p class="product-row-meta">Số lượng: ${item.qty}</p>
+              <a href="../thong-tin-bao-hanh/?id=${item.id}&order=${item.orderId}" class="product-row-warranty-link">Xem thông tin bảo hành</a>
+            </div>
+            <div class="product-row-actions">
+              <button type="button" class="btn-row-action btn-row-action--primary btn-toggle-type" data-type="return">Đổi trả</button>
+              <button type="button" class="btn-row-action btn-row-action--outline btn-toggle-type" data-type="warranty">Bảo hành</button>
+            </div>
+          `;
+          productContainer.appendChild(card);
+        });
+      }
+
+      renderProducts(displayedItems);
+
+      // 2.5. Handle radio button change to reveal buttons
+      productContainer.addEventListener('change', function (e) {
+        if (e.target && e.target.name === 'select-product') {
+          const cards = productContainer.querySelectorAll('.product-row-card');
+          cards.forEach(card => card.classList.remove('is-selected'));
+          
+          const selectedCard = e.target.closest('.product-row-card');
+          if (selectedCard) {
+            selectedCard.classList.add('is-selected');
+          }
+        }
+      });
+
+      // 2.6. Handle click on type selection buttons inside product rows
+      productContainer.addEventListener('click', function (e) {
+        const toggleBtn = e.target.closest('.btn-toggle-type');
+        if (toggleBtn) {
+          e.preventDefault();
+          const card = toggleBtn.closest('.product-row-card');
+          const type = toggleBtn.getAttribute('data-type');
+          
+          card.setAttribute('data-selected-type', type);
+          
+          // Toggle active classes on buttons in this card
+          const buttons = card.querySelectorAll('.btn-toggle-type');
+          buttons.forEach(btn => {
+            if (btn === toggleBtn) {
+              btn.classList.add('btn-row-action--primary');
+              btn.classList.remove('btn-row-action--outline');
+            } else {
+              btn.classList.add('btn-row-action--outline');
+              btn.classList.remove('btn-row-action--primary');
+            }
+          });
+        }
+      });
+
+      // 3. Search action handling
+      const searchForm = document.getElementById('search-warranty-form');
+      searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const orderIdVal = document.getElementById('search-order-id').value.trim().toLowerCase();
+        const productNameVal = document.getElementById('search-product-name').value.trim().toLowerCase();
+
+        displayedItems = purchasedItems.filter(item => {
+          let matchOrder = true;
+          let matchName = true;
+          
+          if (orderIdVal) {
+            matchOrder = item.orderId.toLowerCase().includes(orderIdVal);
+          }
+          if (productNameVal) {
+            matchName = item.name.toLowerCase().includes(productNameVal);
+          }
+          return matchOrder && matchName;
+        });
+
+        renderProducts(displayedItems);
+      });
+
+      // 4. "Tạo đơn yêu cầu" action bottom
+      const btnCreateRequest = document.getElementById('btn-create-request');
+      btnCreateRequest.addEventListener('click', function () {
+        const selectedRadio = document.querySelector('input[name="select-product"]:checked');
+        if (!selectedRadio) {
+          alert('Vui lòng chọn sản phẩm cần yêu cầu bảo hành/đổi trả.');
+          return;
+        }
+
+        const productId = selectedRadio.value;
+        const card = selectedRadio.closest('.product-row-card');
+        const selectedType = card.getAttribute('data-selected-type') || 'return';
+        const selectedItem = purchasedItems.find(item => item.id == productId);
+        
+        // Redirect to return form page with selected type and product info
+        window.location.href = `../yeu-cau-doi-tra/?type=${selectedType}&id=${productId}&order=${selectedItem.orderId}`;
+      });
+
+      // 5. Pagination active styling helper
+      const paginationBtns = document.querySelectorAll('.warranty-pagination span');
+      paginationBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          paginationBtns.forEach(b => b.classList.remove('is-active'));
+          this.classList.add('is-active');
+          // Simple visual simulation: shuffle products
+          displayedItems.reverse();
+          renderProducts(displayedItems);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

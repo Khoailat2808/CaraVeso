@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt hàng thành công — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/style.css">
+</head>
+<body data-page="order-success">
+
+  <!-- ===== HEADER ĐẦY ĐỦ (theo Figma: trang này có nav + search) ===== -->
+  <div id="site-header"></div>
+
+  <main>
+    <section class="success">
+      <div class="success__icon">
+        <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="#2ecc40" stroke-width="1.4">
+          <circle cx="12" cy="12" r="10.5"/>
+          <path d="M7.5 12.5l3 3 6-6.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1>Đặt hàng thành công!</h1>
+      <p class="success__order">Mã đơn hàng: <a href="#" id="success-order-id">#H000000000</a></p>
+      <p class="success__text">
+        Cảm ơn bạn đã mua sắm cùng chúng tôi tại CaraVeso. Bạn có thể nhận thông tin
+        xác nhận đơn hàng và cập nhật trạng thái đơn hàng qua email. Nếu không nhận
+        được email vui lòng liên hệ với đội ngũ hỗ trợ của chúng tôi.
+      </p>
+      <p class="success__text">
+        Bạn có thể kiểm tra trạng thái đơn hàng trong <a href="#">Lịch sử mua hàng</a><br>
+        sau khi cập nhật.
+      </p>
+      <a class="btn-primary" href="../san-pham/">Tiếp tục mua hàng</a>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ĐẦY ĐỦ ===== -->
+  <div id="site-footer"></div>
+
+  <script src="../shared/js/data.js"></script>
+  <script src="../shared/js/main.js"></script>
+</body>
+</html>

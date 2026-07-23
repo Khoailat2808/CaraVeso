@@ -1,0 +1,981 @@
+{
+  "phong-ngu": {
+    "name": "Phòng ngủ",
+    "desc": "Phòng ngủ là nơi bắt đầu và khép lại một ngày của bạn. CaraVeso mang đến những thiết kế đề cao sự thư thái: chất liệu tự nhiên, gam màu dịu nhẹ và bố cục tối ưu công năng. Từ giường, tủ quần áo đến nệm và chăn ga, mỗi món đồ đều được chọn lọc để nâng niu giấc ngủ, giúp bạn thức dậy tràn đầy năng lượng mỗi sáng.",
+    "img": "../shared/img/rooms/phòng ngủ.jpg",
+    "categories": [
+      "giuong",
+      "tu-ao",
+      "ban-lam-viec",
+      "tu-ngan-keo",
+      "tham",
+      "ban-trang-diem"
+    ],
+    "ideaTitle": "Ý tưởng cho phòng ngủ của bạn",
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    },
+    "collage1": {
+      "title": "CaraVeso hiểu và trân trọng giấc ngủ của bạn",
+      "sub": "Chúng tôi mang đến những sản phẩm được thiết kế để nâng niu từng giấc ngủ, giúp bạn tận hưởng sự thoải mái và thư giãn mỗi ngày.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/phong-ngu/bed_room.jpg",
+          "hotspots": [
+            {
+              "x": 40,
+              "y": 74,
+              "productId": 12
+            },
+            {
+              "x": 90,
+              "y": 38,
+              "productId": 5
+            },
+            {
+              "x": 76,
+              "y": 43,
+              "productId": 11
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/phong-ngu/ke.jpg",
+          "hotspots": []
+        },
+        {
+          "img": "../shared/img/rooms/phong-ngu/guong.jpg",
+          "hotspots": []
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Dành cho trẻ",
+      "sub": "Khám phá bộ sưu tập nội thất trẻ em với thiết kế đáng yêu và tiện nghi. Giúp bé có không gian vui chơi, học tập và nghỉ ngơi trọn vẹn.",
+      "layout": "slider",
+      "images": [
+        {
+          "img": "../shared/img/rooms/phong-ngu/children.jpg",
+          "hotspots": [
+            {
+              "x": 53,
+              "y": 9,
+              "productId": 15
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/phong-ngu/children3.jpg",
+          "hotspots": [
+            {
+              "x": 40,
+              "y": 57,
+              "productId": 1
+            },
+            {
+              "x": 9,
+              "y": 48,
+              "productId": 6
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/phong-ngu/children4.jpg",
+          "hotspots": [
+            {
+              "x": 44,
+              "y": 60,
+              "productId": 12
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/phong-ngu/children2.jpg",
+          "hotspots": [
+            {
+              "x": 60,
+              "y": 50,
+              "productId": 5
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "phong-khach": {
+    "name": "Phòng khách",
+    "desc": "Phòng khách là trái tim của ngôi nhà — nơi gắn kết gia đình và đón tiếp bạn bè. CaraVeso đem đến những bộ sofa êm ái, bàn trà tinh tế và kệ tivi hiện đại, giúp bạn kiến tạo một không gian tiếp khách vừa sang trọng vừa ấm cúng, phản chiếu trọn vẹn cá tính của gia chủ.",
+    "img": "../shared/img/rooms/phòng khách.jpg",
+    "categories": [
+      "sofa",
+      "ban-tra",
+      "ke-tivi",
+      "den-san",
+      "tham",
+      "tu-trang-tri"
+    ],
+    "ideaTitle": "Ý tưởng cho phòng khách của bạn",
+    "collage1": {
+      "title": "Không gian tiếp khách đậm dấu ấn riêng",
+      "sub": "Những thiết kế sofa và bàn trà được tuyển chọn giúp phòng khách của bạn luôn là nơi ấm áp nhất trong nhà.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Phòng khách/Phòng khách 1.jpg",
+          "hotspots": [
+            {
+              "x": 45,
+              "y": 60,
+              "productId": 2
+            },
+            {
+              "x": 72,
+              "y": 42,
+              "productId": 6
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng khách/Phòng khách 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 4
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng khách/Phòng khách 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 9
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Góc thư giãn cho cả nhà",
+      "sub": "Armchair, đèn đọc sách và thảm trải sàn — bộ ba hoàn hảo cho những buổi tối quây quần.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Phòng khách/Phòng khách 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 13
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng khách/phòng khách 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 6
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 1.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 16
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  },
+  "phong-an": {
+    "name": "Phòng ăn",
+    "desc": "Bữa cơm gia đình ngon hơn trong một không gian được chăm chút. Bàn ăn gỗ óc chó, đèn thả rattan và tủ bếp gọn gàng của CaraVeso giúp phòng ăn của bạn trở thành nơi mọi người muốn nán lại lâu hơn sau mỗi bữa ăn.",
+    "img": "../shared/img/rooms/Phòng ăn/phòng ăn.jpg",
+    "categories": [
+      "ban-an",
+      "ghe-an",
+      "tu-bep",
+      "den-tha",
+      "ke-ruou",
+      "tham"
+    ],
+    "ideaTitle": "Ý tưởng cho phòng ăn của bạn",
+    "collage1": {
+      "title": "Bữa ăn ngon bắt đầu từ không gian đẹp",
+      "sub": "Bàn ăn và ánh sáng được phối hợp để mỗi bữa cơm đều là một trải nghiệm ấm cúng.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Phòng ăn/phòng ăn 1.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 58,
+              "productId": 8
+            },
+            {
+              "x": 30,
+              "y": 30,
+              "productId": 15
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng ăn/phòng ăn 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 15
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng ăn/phòng ăn 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 4
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Góc bếp gọn gàng",
+      "sub": "Giải pháp lưu trữ thông minh cho căn bếp luôn ngăn nắp và tiện dụng.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Phòng ăn/phòng ăn 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 14
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng ăn/phòng ăn 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 9
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 11
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  },
+  "phong-lam-viec": {
+    "name": "Phòng làm việc",
+    "desc": "Một góc làm việc tốt giúp bạn tập trung và sáng tạo hơn. CaraVeso mang đến bàn làm việc công thái học, ghế êm ái và hệ kệ lưu trữ khoa học — để mỗi giờ làm việc tại nhà đều hiệu quả như ở văn phòng.",
+    "img": "../shared/img/rooms/phòng làm việc.jpg",
+    "categories": [
+      "ban-lam-viec",
+      "ghe-xoay",
+      "ke-sach",
+      "den-ban",
+      "tu-ho-so",
+      "tham"
+    ],
+    "ideaTitle": "Ý tưởng cho phòng làm việc của bạn",
+    "collage1": {
+      "title": "Góc làm việc truyền cảm hứng",
+      "sub": "Bố trí ánh sáng và nội thất hợp lý giúp bạn duy trì năng lượng suốt ngày dài.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 1.jpg",
+          "hotspots": [
+            {
+              "x": 44,
+              "y": 56,
+              "productId": 5
+            },
+            {
+              "x": 70,
+              "y": 35,
+              "productId": 6
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 9
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 11
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Lưu trữ khoa học",
+      "sub": "Kệ sách và tủ hồ sơ được thiết kế để mọi tài liệu luôn trong tầm tay.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 14
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 5
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 6.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 15
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  },
+  "phong-bep": {
+    "name": "Phòng bếp",
+    "desc": "Căn bếp là nơi giữ lửa cho tổ ấm. CaraVeso mang đến hệ tủ bếp thông minh, kệ lưu trữ tối ưu và bàn đảo tiện nghi — giúp bạn nấu nướng thoải mái và giữ không gian luôn gọn gàng, sạch đẹp.",
+    "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 1.jpg",
+    "categories": [
+      "tu-bep",
+      "ke-sach",
+      "ban-an",
+      "ghe-an",
+      "den-tha",
+      "tham"
+    ],
+    "ideaTitle": "Ý tưởng cho phòng bếp của bạn",
+    "collage1": {
+      "title": "Gian bếp tiện nghi mỗi ngày",
+      "sub": "Tủ bếp và kệ lưu trữ được bố trí khoa học để mọi thứ luôn trong tầm tay.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 2.jpg",
+          "hotspots": [
+            {
+              "x": 46,
+              "y": 58,
+              "productId": 14
+            },
+            {
+              "x": 72,
+              "y": 40,
+              "productId": 9
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 8
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 15
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Góc ăn sáng ấm cúng",
+      "sub": "Bàn đảo và ghế quầy bar tạo nên không gian quây quần tiện lợi cho cả nhà.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 8
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 6.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 4
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 1.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 11
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  },
+  "phong-tam": {
+    "name": "Phòng tắm",
+    "desc": "Một phòng tắm được chăm chút mang lại cảm giác thư giãn như spa tại nhà. CaraVeso đem đến tủ lavabo tinh tế, gương sáng và giải pháp lưu trữ chống ẩm — cho không gian luôn khô thoáng và sang trọng.",
+    "img": "../shared/img/rooms/Phòng tắm/phòng tắm.jpg",
+    "categories": [
+      "tu-ao",
+      "tu-ngan-keo",
+      "tham",
+      "den-ban",
+      "ke-sach",
+      "tu-trang-tri"
+    ],
+    "ideaTitle": "Ý tưởng cho phòng tắm của bạn",
+    "collage1": {
+      "title": "Thư giãn như spa tại gia",
+      "sub": "Tủ lavabo và gương được thiết kế để tối ưu ánh sáng và không gian lưu trữ.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Phòng tắm/phòng tắm 1.jpg",
+          "hotspots": [
+            {
+              "x": 44,
+              "y": 56,
+              "productId": 11
+            },
+            {
+              "x": 70,
+              "y": 38,
+              "productId": 12
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng tắm/phòng tắm 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 14
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng tắm/phòng tắm 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 9
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Lưu trữ khô thoáng",
+      "sub": "Kệ và tủ chống ẩm giúp khăn và vật dụng luôn sạch sẽ, ngăn nắp.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Phòng tắm/phòng tắm 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 14
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Phòng tắm/phòng tắm 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 9
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 11
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  },
+  "ngoai-troi": {
+    "name": "Ngoài trời",
+    "desc": "Sân vườn và ban công là nơi tận hưởng thiên nhiên ngay tại nhà. CaraVeso mang đến bộ bàn ghế sân vườn bền bỉ, ghế hồ bơi và xích đu thư giãn — chịu được thời tiết mà vẫn giữ nét thẩm mỹ tinh tế.",
+    "img": "../shared/img/rooms/ngoài trời.jpg",
+    "categories": [
+      "sofa",
+      "ban-tra",
+      "den-san",
+      "tham",
+      "tu-trang-tri",
+      "ghe-an"
+    ],
+    "ideaTitle": "Ý tưởng cho không gian ngoài trời của bạn",
+    "collage1": {
+      "title": "Tận hưởng thiên nhiên tại gia",
+      "sub": "Bộ bàn ghế ngoài trời bền bỉ cho những buổi thư giãn cuối tuần.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 1.jpg",
+          "hotspots": [
+            {
+              "x": 45,
+              "y": 58,
+              "productId": 2
+            },
+            {
+              "x": 72,
+              "y": 40,
+              "productId": 6
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 4
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 13
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Góc thư giãn ngoài hiên",
+      "sub": "Ghế hồ bơi và xích đu tạo nên điểm nghỉ ngơi lý tưởng cho cả gia đình.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 13
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 6
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 6.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 16
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  },
+  "do-trang-tri": {
+    "name": "Đồ trang trí",
+    "desc": "Những chi tiết nhỏ tạo nên linh hồn cho ngôi nhà. CaraVeso tuyển chọn tranh treo tường, bình hoa, tượng và nến thơm — giúp bạn cá nhân hoá không gian và thổi hồn vào từng góc sống.",
+    "img": "../shared/img/rooms/trang trí.jpg",
+    "categories": [
+      "tu-trang-tri",
+      "tham",
+      "den-ban",
+      "ke-sach",
+      "ban-tra",
+      "sofa"
+    ],
+    "ideaTitle": "Ý tưởng trang trí cho ngôi nhà của bạn",
+    "collage1": {
+      "title": "Thổi hồn vào từng góc nhỏ",
+      "sub": "Tranh, bình hoa và ánh sáng phối hợp để mỗi góc nhà đều có câu chuyện riêng.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 1.jpg",
+          "hotspots": [
+            {
+              "x": 45,
+              "y": 58,
+              "productId": 16
+            },
+            {
+              "x": 72,
+              "y": 40,
+              "productId": 6
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 13
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 9
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Điểm nhấn tinh tế",
+      "sub": "Nến thơm và chậu cây mang thiên nhiên và sự ấm áp vào không gian sống.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 16
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 6
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 6.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 13
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  },
+  "luu-tru": {
+    "name": "Lưu trữ",
+    "desc": "Ngôi nhà gọn gàng bắt đầu từ giải pháp lưu trữ thông minh. CaraVeso mang đến kệ sách, tủ giày và hộp lưu trữ đa năng — giúp bạn sắp xếp mọi vật dụng khoa học mà vẫn thẩm mỹ.",
+    "img": "../shared/img/rooms/phong-ngu/ke.jpg",
+    "categories": [
+      "ke-sach",
+      "tu-ao",
+      "tu-ngan-keo",
+      "tu-ho-so",
+      "tu-trang-tri",
+      "ban-lam-viec"
+    ],
+    "ideaTitle": "Ý tưởng lưu trữ cho ngôi nhà của bạn",
+    "collage1": {
+      "title": "Gọn gàng trong tầm tay",
+      "sub": "Hệ kệ và tủ được thiết kế để tận dụng tối đa không gian mà vẫn tinh gọn.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 1.jpg",
+          "hotspots": [
+            {
+              "x": 45,
+              "y": 58,
+              "productId": 14
+            },
+            {
+              "x": 72,
+              "y": 40,
+              "productId": 5
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 11
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 9
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Mỗi món một chỗ",
+      "sub": "Hộp lưu trữ và tủ đa năng giúp nhà luôn ngăn nắp, dễ tìm.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 14
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 5
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 6.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 15
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  },
+  "noi-that-tre": {
+    "name": "Nội thất cho trẻ",
+    "desc": "Không gian riêng giúp bé phát triển và sáng tạo. CaraVeso mang đến giường trẻ em an toàn, bàn học tiện dụng và kệ đồ chơi vui nhộn — thiết kế đáng yêu, chất liệu thân thiện, đồng hành cùng bé mỗi ngày.",
+    "img": "../shared/img/rooms/trẻ em.jpg",
+    "categories": [
+      "giuong",
+      "ban-lam-viec",
+      "ke-sach",
+      "tu-ngan-keo",
+      "tham",
+      "tu-trang-tri"
+    ],
+    "ideaTitle": "Ý tưởng cho phòng của bé",
+    "collage1": {
+      "title": "Không gian mơ ước của bé",
+      "sub": "Giường và bàn học được thiết kế an toàn, truyền cảm hứng học tập và vui chơi.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 1.jpg",
+          "hotspots": [
+            {
+              "x": 45,
+              "y": 58,
+              "productId": 1
+            },
+            {
+              "x": 72,
+              "y": 40,
+              "productId": 15
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 2.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 12
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 3.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 6
+            }
+          ]
+        }
+      ]
+    },
+    "collage2": {
+      "title": "Góc học tập vui nhộn",
+      "sub": "Kệ đồ chơi và bàn học gọn gàng giúp bé tự lập và sáng tạo mỗi ngày.",
+      "images": [
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 4.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 5
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 5.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 15
+            }
+          ]
+        },
+        {
+          "img": "../shared/img/rooms/Ảnh không gian/ảnh không gian 6.jpg",
+          "hotspots": [
+            {
+              "x": 50,
+              "y": 50,
+              "productId": 1
+            }
+          ]
+        }
+      ]
+    },
+    "ideaImages": {
+      "minimalist": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "zen": "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "neoclassic": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "indochine": "../shared/img/rooms/phong-ngu/indochine1.jpg"
+    }
+  }
+}

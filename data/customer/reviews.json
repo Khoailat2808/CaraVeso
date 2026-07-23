@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Hoàng Huy Tiến",
+    "stars": 4,
+    "date": "26/06/2026 11:43",
+    "variant": "Sofa 2 chỗ, Trắng kem",
+    "comment": "Màu đẹp, nhìn rất cưng phù hợp decor phòng, thiết kế độc đáo",
+    "images": 4
+  },
+  {
+    "name": "Trần Ngọc Minh Anh",
+    "stars": 5,
+    "date": "18/06/2026 09:12",
+    "variant": "Sofa 3 chỗ, Xanh navy",
+    "comment": "Giao hàng nhanh, đóng gói kỹ. Ngồi rất êm, vải boucle sờ thích tay. Sẽ ủng hộ shop tiếp!",
+    "images": 3
+  },
+  {
+    "name": "Lê Quốc Bảo",
+    "stars": 4,
+    "date": "02/06/2026 20:37",
+    "variant": "Sofa 2 chỗ, Cam đất",
+    "comment": "Sofa đẹp đúng hình, lắp đặt tận nơi chuyên nghiệp. Trừ 1 sao vì giao trễ 1 ngày.",
+    "images": 2
+  }
+]

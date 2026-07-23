@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết sản phẩm — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/style.css">
+</head>
+<body data-page="product-detail">
+
+  <div id="site-header"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="../trang-chu/">Trang chủ</a></li>
+        <li><a href="../danh-muc-san-pham/">Sản phẩm</a></li>
+        <li id="pd-breadcrumb-cat"></li>
+        <li id="pd-breadcrumb-name">Chi tiết</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="container" id="pd-root">
+    <!-- ===== KHỐI CHI TIẾT: GALLERY + THÔNG TIN ===== -->
+    <div class="pd">
+      <!-- Gallery bên trái -->
+      <div class="pd__gallery">
+        <div class="pd__gallery-main">
+          <img id="pd-main-img" src="" alt="Ảnh sản phẩm">
+        </div>
+        <div class="pd__thumbs" id="pd-thumbs"></div>
+      </div>
+
+      <!-- Thông tin bên phải -->
+      <div class="pd__info">
+        <h1 class="pd__title" id="pd-title">Đang tải...</h1>
+        <p class="pd__meta"><b>SKU:</b> <span id="pd-sku"></span></p>
+        <p class="pd__meta"><b>Tình trạng:</b> <span id="pd-stock"></span></p>
+
+        <div class="pd__options">
+          <div class="pd__option-row">
+            <span class="pd__option-label" id="pd-type-label">Phân loại <small id="pd-type-count"></small></span>
+            <span class="pd__option-value" id="pd-type-value"></span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+          <div class="pd__chips" id="pd-types"></div>
+          <div class="pd__option-row">
+            <span class="pd__option-label">Màu sắc <small id="pd-color-count"></small></span>
+            <span class="pd__option-value" id="pd-color-label"></span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+        </div>
+        <div class="pd__color-thumbs" id="pd-colors"></div>
+
+        <p class="pd__price" id="pd-price"></p>
+
+        <!-- Bộ đếm số lượng -->
+        <div class="qty-stepper">
+          <button id="pd-qty-minus" aria-label="Giảm số lượng">−</button>
+          <input type="text" id="pd-qty" value="1" aria-label="Số lượng">
+          <button id="pd-qty-plus" aria-label="Tăng số lượng">+</button>
+        </div>
+
+        <div class="pd__cta">
+          <button class="btn-primary" id="pd-add-cart">Thêm vào giỏ</button>
+          <button class="btn-outline" id="pd-buy-now">Mua nhanh</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TABS: MÔ TẢ / THÔNG SỐ / BẢO HÀNH ===== -->
+    <div class="tabs">
+      <div class="tabs__nav" role="tablist">
+        <button class="tabs__btn is-active" data-tab="tab-desc" role="tab">Mô tả sản phẩm</button>
+        <button class="tabs__btn" data-tab="tab-spec" role="tab">Thông số kĩ thuật</button>
+        <button class="tabs__btn" data-tab="tab-warranty" role="tab">Thông tin bảo hành</button>
+      </div>
+
+      <div class="tabs__panel is-active" id="tab-desc" role="tabpanel">
+        <p><b>Sofa Góc Milano L-Shape</b></p>
+        <p><b>Chất liệu:</b> Khung gỗ sồi tự nhiên, đệm foam D40 cao cấp, bọc vải Bouclé nhập khẩu.</p>
+        <p>Mang phong cách Ý hiện đại, Sofa Góc Milano L-Shape sở hữu thiết kế tối giản với các đường nét thanh lịch,
+          tạo điểm nhấn sang trọng cho không gian phòng khách. Đệm ngồi có độ đàn hồi cao, mang lại cảm giác êm ái
+          và thoải mái trong quá trình sử dụng. Chất liệu vải Bouclé mềm mại, bền đẹp và dễ dàng vệ sinh,
+          phù hợp với nhiều phong cách nội thất khác nhau.</p>
+        <p><b>Lưu ý:</b> Màu sắc thực tế của sản phẩm có thể chênh lệch nhẹ so với hình ảnh hiển thị do điều kiện
+          ánh sáng và thiết bị hiển thị. Để duy trì độ bền và tính thẩm mỹ của sản phẩm, nên vệ sinh định kỳ bằng
+          khăn mềm hoặc dụng cụ chuyên dụng.</p>
+        <p>Tránh đặt sản phẩm tại nơi có ánh nắng trực tiếp hoặc độ ẩm cao trong thời gian dài.</p>
+      </div>
+
+      <div class="tabs__panel" id="tab-spec" role="tabpanel">
+        <table>
+          <tr><td>Kích thước</td><td>100 × 180 × 120 cm</td></tr>
+          <tr><td>Khung</td><td>Gỗ sồi tự nhiên sấy khô</td></tr>
+          <tr><td>Đệm</td><td>Foam D40 cao cấp</td></tr>
+          <tr><td>Vải bọc</td><td>Bouclé nhập khẩu (Ý)</td></tr>
+          <tr><td>Chân ghế</td><td>Kim loại sơn tĩnh điện</td></tr>
+          <tr><td>Trọng lượng</td><td>48 kg</td></tr>
+          <tr><td>Xuất xứ</td><td>Việt Nam</td></tr>
+        </table>
+      </div>
+
+      <div class="tabs__panel" id="tab-warranty" role="tabpanel">
+        <p><b>Chính sách bảo hành CaraVeso:</b></p>
+        <p>• Bảo hành khung ghế: 5 năm.<br>
+           • Bảo hành đệm và vải bọc: 2 năm.<br>
+           • Đổi trả miễn phí trong 30 ngày nếu lỗi do nhà sản xuất.<br>
+           • Hỗ trợ vệ sinh sofa miễn phí 1 lần/năm trong thời gian bảo hành.</p>
+        <p>Liên hệ hotline <b>1900 080906</b> để được hỗ trợ nhanh nhất.</p>
+      </div>
+    </div>
+
+    <!-- ===== ĐÁNH GIÁ SẢN PHẨM ===== -->
+    <section class="reviews">
+      <h2 class="reviews__title">Đánh giá sản phẩm</h2>
+      <div id="pd-reviews"></div>
+      <div class="pagination">
+        <button id="rv-prev" aria-label="Trang trước">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button data-page="1" class="is-active">1</button>
+        <button data-page="2">2</button>
+        <button data-page="3">3</button>
+        <button id="rv-next" aria-label="Trang sau">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== SẢN PHẨM TƯƠNG TỰ ===== -->
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">Sản phẩm tương tự</h2>
+      </div>
+      <div id="pd-related"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../shared/js/data.js"></script>
+  <script src="../shared/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý nội dung - CaraVeso Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body data-page="content">
+  <aside class="sidebar" aria-label="Điều hướng admin">
+    <div class="brand-row">
+      <a class="brand" href="../tong-quan/"><span>CaraVeso</span><small>Management</small></a>
+      <button class="icon-button notification" type="button" aria-label="Thông báo"><img src="../shared/assets/icon-bell.png" alt="" aria-hidden="true"></button>
+    </div>
+    <nav class="side-nav">
+      <a href="../tong-quan/"><img class="nav-icon bars" src="../shared/assets/icon-overview.png" alt="" aria-hidden="true">Báo cáo tổng quan</a>
+      <a href="../quan-ly-don-hang/"><img class="nav-icon receipt" src="../shared/assets/icon-orders.png" alt="" aria-hidden="true">Quản lý đơn hàng</a>
+      <a href="../quan-ly-khach-hang/"><img class="nav-icon user" src="../shared/assets/icon-customers.png" alt="" aria-hidden="true">Quản lý khách hàng</a>
+      <a href="../quan-ly-san-pham/"><img class="nav-icon box" src="../shared/assets/icon-products.png" alt="" aria-hidden="true">Quản lý sản phẩm</a>
+      <div class="content-nav-item">
+        <button class="content-nav-toggle is-active" type="button" aria-expanded="false">
+          <img class="nav-icon doc" src="../shared/assets/icon-content.png" alt="" aria-hidden="true"><span>Quản lý nội dung</span><span class="dropdown-chev"></span>
+        </button>
+        <div class="content-submenu">
+          <a class="sub-link is-sub-active" href="#" data-content-section="home">Trang chủ</a>
+          <a class="sub-link" href="#" data-content-section="rooms">Các phòng</a>
+        </div>
+      </div>
+      <a href="../quan-ly-voucher/"><img class="nav-icon ticket" src="../shared/assets/icon-voucher.png" alt="" aria-hidden="true">Quản lý Voucher và Khuyến mãi</a>
+      <a href="../quan-ly-hau-mai/"><img class="nav-icon medal" src="../shared/assets/icon-aftersale.png" alt="" aria-hidden="true">Quản lý dịch vụ hậu mãi</a>
+      <a href="../cham-soc-khach-hang/"><img class="nav-icon headset" src="../shared/assets/icon-support.png" alt="" aria-hidden="true">Chăm sóc khách hàng</a>
+      <a href="../quan-ly-thanh-toan/"><img class="nav-icon coin" src="../shared/assets/icon-payment.png" alt="" aria-hidden="true">Quản lý thanh toán</a>
+      <a href="../quan-ly-danh-muc/"><img class="nav-icon folder" src="../shared/assets/icon-category.png" alt="" aria-hidden="true">Quản lý danh mục</a>
+    </nav>
+    <div class="admin-profile">
+      <img class="avatar photo" src="../shared/assets/avatar-anh-khoa.png" alt="Anh Khoa">
+      <div><strong>Anh Khoa</strong><span>Admin</span></div>
+      <button class="icon-button logout" type="button" aria-label="Đăng xuất"><img src="../shared/assets/icon-logout.png" alt="" aria-hidden="true"></button>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="top-header content-header">
+      <div>
+        <h1>Quản lý nội dung</h1>
+        <p id="contentSubtitle">Trang chủ</p>
+      </div>
+    </header>
+
+    <main class="content content-manager">
+      <section id="homeContentView">
+        <div class="content-layout">
+          <section class="content-card">
+            <div class="content-tabs">
+              <button class="is-active" type="button" data-home-tab="banner">Banner</button>
+              <button type="button" data-home-tab="collections">CaraVeso Collections</button>
+              <button type="button" data-home-tab="inspirations">Nguồn cảm hứng</button>
+            </div>
+            <table class="content-table">
+              <thead id="contentHead"></thead>
+              <tbody id="contentRows"></tbody>
+            </table>
+          </section>
+          <aside class="website-preview">
+            <h2>Xem trước trên Website</h2>
+            <div id="contentPreview"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="roomsContentView" hidden>
+        <div class="room-strip" id="roomStrip"></div>
+        <hr class="room-divider">
+        <div class="room-editor">
+          <section>
+            <label>Giới thiệu:<textarea placeholder="Nhập giới thiệu căn phòng"></textarea></label>
+            <div class="upload-drop room-upload">
+              <strong>▧</strong>
+              <span>Kéo thả hình ảnh vào đây (1440px x 679px)</span>
+              <small>Định dạng: JPG, PNG (tối đa 20MB/tệp)</small>
+              <button type="button" id="roomBannerChoose">Chọn tệp</button>
+              <input id="roomBannerInput" type="file" accept="image/png,image/jpeg" hidden>
+            </div>
+            <section class="content-card idea-card">
+              <div class="content-card-head"><h2>Ý tưởng</h2><button type="button" data-action="open-content-form" data-form="idea">Thêm ý tưởng</button></div>
+              <table class="content-table"><tbody id="ideaRows"></tbody></table>
+            </section>
+            <section class="content-card blog-card">
+              <div class="content-card-head"><h2>Blog sản phẩm</h2><button type="button" data-action="open-content-form" data-form="blog">Thêm Blog</button></div>
+              <table class="content-table"><tbody id="blogRows"></tbody></table>
+            </section>
+          </section>
+          <aside class="website-preview room-preview"><h2>Xem trước trên Website</h2><div id="roomPreview"></div></aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="admin-footer"><span>CaraVeso</span><small>Bản quyền © 2026 CARAVESO FURNITURE.</small></footer>
+  </div>
+
+  <section class="content-form-screen" id="contentFormScreen" hidden>
+    <button class="content-form-close" type="button" data-action="close-content-form">×</button>
+    <div id="contentFormBody"></div>
+  </section>
+
+  <script src="../shared/data.js"></script>
+  <script src="../shared/app.js"></script>
+</body>
+</html>
+
+
+
+
+

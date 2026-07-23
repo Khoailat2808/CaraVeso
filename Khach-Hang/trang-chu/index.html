@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaraVeso — Nội thất cao cấp cho ngôi nhà Việt</title>
+  <!-- Font theo Figma: Italiana (logo) + Inter (nội dung) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/style.css">
+</head>
+<body data-page="home">
+
+  <!-- ===== TOP BAR + HEADER (render bằng JS — dùng chung mọi trang) ===== -->
+  <div id="site-header"></div>
+
+  <main>
+    <!-- ===== HERO SLIDER (Frame: banner 1440×652) ===== -->
+    <section class="hero" id="hero" aria-label="Banner khuyến mãi">
+      <div class="hero__track"></div>
+      <button class="slider-arrow slider-arrow--prev" aria-label="Slide trước">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="slider-arrow slider-arrow--next" aria-label="Slide sau">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <div class="hero__dots"></div>
+    </section>
+
+    <!-- ===== SẢN PHẨM MỚI ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Sản phẩm mới</h2>
+          <a class="section__more" href="../san-pham/">Xem thêm</a>
+        </div>
+        <div id="row-new"></div>
+      </div>
+    </section>
+
+    <!-- ===== KHUYẾN MÃI HÔM NAY ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Khuyến mãi hôm nay</h2>
+          <a class="section__more" href="../khuyen-mai/">Xem thêm</a>
+        </div>
+        <div id="row-sale"></div>
+      </div>
+    </section>
+
+    <!-- ===== CARAVESO COLLECTIONS ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">CaraVeso Collections</h2>
+        </div>
+        <div class="collections" id="collections">
+          <div class="collections__img">
+            <img src="" alt="Bộ sưu tập CaraVeso">
+          </div>
+          <button class="slider-arrow slider-arrow--prev" aria-label="Bộ sưu tập trước">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="slider-arrow slider-arrow--next" aria-label="Bộ sưu tập sau">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="collections__bar">
+            <span class="collections__name">ODA</span>
+            <span class="collections__tagline">Đa dạng lựa chọn, vẻ đẹp sang trọng</span>
+            <button class="btn-explore" onclick="window.location.href='../san-pham/'">KHÁM PHÁ THÊM</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DÀNH CHO BẠN ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Dành cho bạn</h2>
+        </div>
+        <h3 class="section__subtitle">Có thể bạn sẽ thích</h3>
+        <div id="row-foryou-1"></div>
+        <h3 class="section__subtitle">Hoàn thiện không gian sống của bạn</h3>
+        <div id="row-foryou-2"></div>
+      </div>
+    </section>
+
+    <!-- ===== NGUỒN CẢM HỨNG ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Nguồn cảm hứng</h2>
+        </div>
+        <div class="inspiration-row" id="inspirations"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (render bằng JS) ===== -->
+  <div id="site-footer"></div>
+
+  <script src="../shared/js/data.js"></script>
+  <script src="../shared/js/main.js"></script>
+</body>
+</html>

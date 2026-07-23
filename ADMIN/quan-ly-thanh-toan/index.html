@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý thanh toán - CaraVeso Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body data-page="payment">
+  <aside class="sidebar" aria-label="Điều hướng admin">
+    <div class="brand-row">
+      <a class="brand" href="../tong-quan/">
+        <span>CaraVeso</span>
+        <small>Management</small>
+      </a>
+      <button class="icon-button notification" type="button" aria-label="Thông báo"><img src="../shared/assets/icon-bell.png" alt="" aria-hidden="true"></button>
+    </div>
+
+    <nav class="side-nav">
+      <a href="../tong-quan/"><img class="nav-icon bars" src="../shared/assets/icon-overview.png" alt="" aria-hidden="true">Báo cáo tổng quan</a>
+      <a href="../quan-ly-don-hang/"><img class="nav-icon receipt" src="../shared/assets/icon-orders.png" alt="" aria-hidden="true">Quản lý đơn hàng</a>
+      <a href="../quan-ly-khach-hang/"><img class="nav-icon user" src="../shared/assets/icon-customers.png" alt="" aria-hidden="true">Quản lý khách hàng</a>
+      <a href="../quan-ly-san-pham/"><img class="nav-icon box" src="../shared/assets/icon-products.png" alt="" aria-hidden="true">Quản lý sản phẩm</a>
+      <a href="../quan-ly-noi-dung/"><img class="nav-icon doc" src="../shared/assets/icon-content.png" alt="" aria-hidden="true">Quản lý nội dung</a>
+      <a href="../quan-ly-voucher/"><img class="nav-icon ticket" src="../shared/assets/icon-voucher.png" alt="" aria-hidden="true">Quản lý Voucher và Khuyến mãi</a>
+      <a href="../quan-ly-hau-mai/"><img class="nav-icon medal" src="../shared/assets/icon-aftersale.png" alt="" aria-hidden="true">Quản lý dịch vụ hậu mãi</a>
+      <a href="../cham-soc-khach-hang/"><img class="nav-icon headset" src="../shared/assets/icon-support.png" alt="" aria-hidden="true">Chăm sóc khách hàng</a>
+      <a class="is-active" href="../quan-ly-thanh-toan/"><img class="nav-icon coin" src="../shared/assets/icon-payment.png" alt="" aria-hidden="true">Quản lý thanh toán</a>
+      <a href="../quan-ly-danh-muc/"><img class="nav-icon folder" src="../shared/assets/icon-category.png" alt="" aria-hidden="true">Quản lý danh mục</a>
+    </nav>
+
+    <div class="admin-profile">
+      <img class="avatar photo" src="../shared/assets/avatar-anh-khoa.png" alt="Anh Khoa">
+      <div>
+        <strong>Anh Khoa</strong>
+        <span>Admin</span>
+      </div>
+      <button class="icon-button logout" type="button" aria-label="Đăng xuất"><img src="../shared/assets/icon-logout.png" alt="" aria-hidden="true"></button>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="top-header">
+      <button class="mobile-menu" type="button" aria-label="Mở menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1>Quản lý thanh toán</h1>
+    </header>
+
+    <main class="content">
+      <section class="stats-grid" aria-label="Chỉ số thanh toán">
+        <article class="stat-card">
+          <span>Giao dịch thành công</span>
+          <strong>234</strong>
+          <small>+12% vs last month</small>
+        </article>
+        <article class="stat-card">
+          <span>Chờ thanh toán</span>
+          <strong>36</strong>
+          <small class="muted">COD</small>
+        </article>
+        <article class="stat-card">
+          <span>Yêu cầu hoàn tiền</span>
+          <strong>18</strong>
+          <small class="muted">Đơn</small>
+        </article>
+        <article class="stat-card">
+          <span>Doanh thu hôm nay</span>
+          <strong>60.6tr</strong>
+          <small>+15% vs last day</small>
+        </article>
+      </section>
+
+      <section class="payments-section" aria-labelledby="payment-title">
+        <h2 id="payment-title">Giao dịch thanh toán</h2>
+        <form class="filters" id="paymentFilters">
+          <label class="field search-field">
+            <span>Tìm kiếm</span>
+            <input id="searchInput" type="search" placeholder="Tìm kiếm ID đơn hàng hoặc khách hàng...">
+          </label>
+
+          <label class="field">
+            <span>Trạng thái</span>
+            <select id="statusFilter">
+              <option value="">Tất cả</option>
+              <option value="success">Thành công</option>
+              <option value="pending">Chờ thanh toán</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Phương thức thanh toán</span>
+            <select id="methodFilter">
+              <option value="">Tất cả</option>
+              <option value="Momo">Momo</option>
+              <option value="Thanh toán khi nhận">Thanh toán khi nhận</option>
+              <option value="Ngân hàng">Ngân hàng</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Thời gian</span>
+            <select id="timeFilter">
+              <option value="">Tất cả</option>
+              <option value="today">Hôm nay</option>
+              <option value="june30">30 Jun</option>
+              <option value="june28">28 Jun</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Thời gian</th>
+                <th>Khách hàng</th>
+                <th>Trạng thái</th>
+                <th>Thanh toán</th>
+                <th>Tổng tiền</th>
+              </tr>
+            </thead>
+            <tbody id="paymentRows"></tbody>
+          </table>
+          <div class="table-footer">
+            <em id="paymentCount">Hiển thị 1-5 trong tổng 1518</em>
+            <div class="pager">
+              <button type="button" id="prevPage" aria-label="Trang trước">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button type="button" id="nextPage" aria-label="Trang sau">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="refund-card" aria-labelledby="refund-title">
+        <div class="section-heading">
+          <h2 id="refund-title">Yêu cầu hoàn tiền</h2>
+          <button class="link-button" type="button" id="showAllRefunds">Xem tất cả
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="refund-table-wrap">
+          <table class="refund-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Thời gian</th>
+                <th>Khách hàng</th>
+                <th>Lý do hoàn tiền</th>
+                <th>Trạng thái</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="refundRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="detail-panel" id="refundDetail" hidden aria-live="polite"></section>
+    </main>
+
+    <footer class="admin-footer">
+      <span>CaraVeso</span>
+      <small>Bản quyền © 2026 CARAVESO FURNITURE.</small>
+    </footer>
+  </div>
+
+  <script src="../shared/data.js"></script>
+  <script src="../shared/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+

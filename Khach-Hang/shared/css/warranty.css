@@ -1,0 +1,950 @@
+/* ============================================================
+   CARAVESO — WARRANTY.CSS
+   Styles for Return / Warranty Flow Pages
+   ============================================================ */
+
+/* ---------- 1. COMMON SCHEME & LAYOUT ---------- */
+.warranty-wrap {
+  padding: 40px 0 80px;
+}
+
+.warranty-title {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--color-black);
+  margin-bottom: 8px;
+}
+
+.warranty-subtitle {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  margin-bottom: 40px;
+}
+
+/* ---------- 2. PROGRESS BAR (5 STEPS) ---------- */
+.warranty-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  position: relative;
+  gap: 16px;
+}
+
+.warranty-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.warranty-step__circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.warranty-step__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.warranty-step__desc {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: 1.3;
+  max-width: 140px;
+}
+
+/* Arrow between steps */
+.warranty-step__arrow {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-border);
+  z-index: 1;
+}
+
+.warranty-step__arrow svg {
+  width: 24px;
+  height: 12px;
+}
+
+/* Active State */
+.warranty-step.is-active .warranty-step__circle {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 0 0 4px rgba(11, 48, 86, 0.15);
+}
+
+.warranty-step.is-active .warranty-step__title {
+  color: var(--color-primary);
+}
+
+/* ---------- 3. SEARCH CONTAINER ---------- */
+.warranty-search-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: 24px 30px;
+  margin-bottom: 40px;
+}
+
+.warranty-search-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--color-black);
+}
+
+.warranty-search-grid {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.warranty-search-field {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.warranty-search-field label {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.warranty-search-field input {
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 15px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.warranty-search-field input:focus {
+  border-color: var(--color-primary);
+}
+
+.warranty-search-divider {
+  align-self: flex-end;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+.warranty-search-btn {
+  background: #e0e0e0;
+  color: var(--color-black);
+  padding: 11px 32px;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  align-self: flex-end;
+}
+
+.warranty-search-btn:hover {
+  background: var(--color-border);
+}
+
+/* ---------- 4. RECENT PRODUCTS ---------- */
+.recent-products-title {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.product-row-card {
+  display: flex;
+  align-items: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.product-row-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-color: var(--color-border);
+}
+
+/* Radio Column */
+.product-row-select {
+  flex: 0 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-row-select input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Image Column */
+.product-row-image {
+  flex: 0 0 100px;
+  height: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--color-bg-soft);
+  margin-right: 24px;
+}
+
+.product-row-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Details Column */
+.product-row-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-row-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.product-row-meta {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.product-row-warranty-link {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  margin-top: 4px;
+  align-self: flex-start;
+}
+
+.product-row-warranty-link:hover {
+  color: var(--color-primary);
+}
+
+/* Actions Column */
+.product-row-actions {
+  display: flex;
+  gap: 12px;
+  align-self: center;
+  margin-left: 20px;
+}
+
+.product-row-card:not(.is-selected) .product-row-actions {
+  display: none !important;
+}
+
+.btn-row-action {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  min-width: 110px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.btn-row-action--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-row-action--primary:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-row-action--outline {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-row-action--outline:hover {
+  background: rgba(11, 48, 86, 0.05);
+}
+
+/* Pagination */
+.warranty-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 32px 0 40px;
+  font-size: 15px;
+}
+
+.warranty-pagination a,
+.warranty-pagination span {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: all 0.2s;
+}
+
+.warranty-pagination a:hover {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.warranty-pagination span.is-active {
+  color: var(--color-primary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Bottom submit button */
+.warranty-action-bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.btn-large-navy {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 16px 48px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.btn-large-navy:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn-large-navy:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  color: #777777;
+}
+
+/* ---------- 5. DETAIL WARRANTY INFO PAGE ---------- */
+.warranty-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  margin-bottom: 60px;
+  align-items: center;
+}
+
+.warranty-info-img {
+  background: var(--color-bg-soft);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 360px;
+}
+
+.warranty-info-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.warranty-info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.warranty-info-details h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.warranty-info-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.warranty-info-meta-item {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.warranty-info-meta-item b {
+  width: 140px;
+  font-weight: 600;
+}
+
+.warranty-info-meta-item span {
+  color: var(--color-black);
+}
+
+/* Status Badges */
+.badge-status {
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 12px;
+  display: inline-flex;
+}
+
+.badge-status--green {
+  background: #e6f7ec;
+  color: #1a7f37;
+}
+
+.badge-status--red {
+  background: #fcebeb;
+  color: var(--color-danger);
+}
+
+/* Conditions Section */
+.warranty-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-black);
+}
+
+.warranty-section-subtitle {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  margin-bottom: 30px;
+}
+
+.warranty-conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: 30px 20px;
+  background: var(--color-white);
+  margin-bottom: 60px;
+}
+
+.warranty-condition-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+}
+
+.warranty-condition-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: var(--color-border-light);
+}
+
+.warranty-condition-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-text-gray);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warranty-condition-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.warranty-condition-text {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-black);
+}
+
+/* Exclusions Section */
+.warranty-exclusions-block {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.warranty-exclusions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.warranty-exclusions-list li {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-black);
+  position: relative;
+  padding-left: 20px;
+}
+
+.warranty-exclusions-list li::before {
+  content: '•';
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: 18px;
+  position: absolute;
+  left: 4px;
+  top: -2px;
+}
+
+.warranty-exclusions-graphic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d1d5db;
+}
+
+.warranty-exclusions-graphic svg {
+  width: 120px;
+  height: 120px;
+}
+
+/* ---------- 6. FORM REQUEST PAGE ---------- */
+.form-step-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--color-black);
+}
+
+.form-section-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 32px;
+}
+
+/* Product Info Card inside Form */
+.form-product-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.form-product-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--color-bg-soft);
+}
+
+.form-product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-product-details {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+
+.form-product-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-product-info-col span {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.form-product-info-col p {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.form-product-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+/* Customer & Content Inputs */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+
+.form-group-full {
+  grid-column: span 2;
+}
+
+/* Drag-and-drop file upload */
+.uploader-box {
+  border: 1.5px dashed var(--color-border);
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  background: var(--color-white);
+  transition: all 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.uploader-box:hover,
+.uploader-box.is-dragover {
+  border-color: var(--color-primary);
+  background: rgba(11, 48, 86, 0.02);
+}
+
+.uploader-icon {
+  color: var(--color-text-gray);
+}
+
+.uploader-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.uploader-text {
+  font-size: 14px;
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+.uploader-text span {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.btn-upload-select {
+  background: var(--color-white);
+  color: var(--color-black);
+  border: 1px solid var(--color-border);
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.btn-upload-select:hover {
+  background: var(--color-bg-soft);
+  border-color: var(--color-text-muted);
+}
+
+.upload-preview-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.upload-preview-item {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+}
+
+.upload-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-preview-remove {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(0,0,0,0.6);
+  color: var(--color-white);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Agreement checkbox row */
+.agree-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0;
+  font-size: 15px;
+}
+
+.agree-checkbox-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.agree-checkbox-row a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.agree-checkbox-row a:hover {
+  color: var(--color-primary);
+}
+
+/* Form actions */
+.form-submit-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/* Textarea counter */
+.textarea-wrapper {
+  position: relative;
+}
+
+.textarea-counter {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* Form control invalid states override */
+.form-control.is-invalid {
+  border-color: var(--color-danger) !important;
+}
+
+.form-error {
+  color: var(--color-danger);
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Return Mode specific options */
+.return-type-selector {
+  display: flex;
+  gap: 30px;
+  margin-top: 4px;
+}
+
+.return-type-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.return-type-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+}
+
+/* ---------- 7. RESPONSIVE MEDIA QUERIES ---------- */
+@media (max-width: 1023px) {
+  .warranty-steps {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .warranty-step {
+    flex: 0 0 30%;
+    margin-bottom: 16px;
+  }
+  
+  .warranty-step__arrow {
+    display: none;
+  }
+
+  .warranty-info-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .warranty-info-img {
+    height: 280px;
+  }
+
+  .warranty-conditions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .warranty-condition-card:nth-child(2)::after {
+    display: none;
+  }
+
+  .warranty-exclusions-block {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .warranty-exclusions-graphic {
+    order: -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .warranty-wrap {
+    padding: 24px 0 60px;
+  }
+
+  .warranty-step {
+    flex: 0 0 45%;
+  }
+
+  .warranty-search-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .warranty-search-divider {
+    align-self: center;
+    margin: 0;
+  }
+
+  .warranty-search-btn {
+    align-self: stretch;
+  }
+
+  .product-row-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+
+  .product-row-select {
+    align-self: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .product-row-image {
+    margin-right: 0;
+    margin-bottom: 16px;
+    height: 140px;
+    width: 100%;
+    flex: none;
+  }
+
+  .product-row-info {
+    margin-bottom: 16px;
+  }
+
+  .product-row-actions {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+
+  .form-product-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-product-img {
+    width: 100%;
+    height: 140px;
+  }
+
+  .form-product-details {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group-full {
+    grid-column: span 1;
+  }
+
+  .warranty-conditions-grid {
+    grid-template-columns: 1fr;
+    padding: 20px 10px;
+  }
+
+  .warranty-condition-card::after {
+    display: none !important;
+  }
+
+  .warranty-condition-card {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .warranty-condition-card:last-child {
+    border-bottom: none;
+  }
+}

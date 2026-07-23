@@ -1,0 +1,54 @@
+{
+  "minimalist": {
+    "name": "MINIMALIST",
+    "display": "Minimalist (Tối giản)",
+    "cardDesc": "Không gian gọn gàng với ít đồ nội thất, tập trung vào công năng và sự thoáng đãng.",
+    "tagline": "Ít hơn để sống nhiều hơn",
+    "desc": "Phong cách Minimalist đề cao sự tinh gọn trong từng đường nét. Mỗi món nội thất đều được chọn lọc kỹ lưỡng theo nguyên tắc \"ít nhưng chất\", loại bỏ chi tiết thừa để không gian luôn thoáng đãng. Gam màu trung tính cùng ánh sáng tự nhiên giúp ngôi nhà của bạn trở thành nơi nghỉ ngơi đúng nghĩa.",
+    "heroImg": "../shared/img/rooms/phong-ngu/minimalism.jpg",
+    "gallery": [
+      "../shared/img/rooms/phong-ngu/minimalism.jpg",
+      "../shared/img/rooms/phòng khách.jpg",
+      "../shared/img/rooms/phòng ngủ.jpg"
+    ]
+  },
+  "zen": {
+    "name": "ZEN",
+    "display": "Zen (Thiền)",
+    "cardDesc": "Không gian thanh tịnh với vật liệu tự nhiên, tập trung vào sự cân bằng và cảm giác thư thái.",
+    "tagline": "Chạm vào khoảng lặng, Khơi nguồn an yên",
+    "desc": "Phong cách Zen khơi gợi tinh thần thiền định nhẹ nhàng, kết hợp khéo léo giữa vật liệu tự nhiên mộc mạc cùng những gam màu trung tính dịu nhẹ. Mỗi sản phẩm đều hướng tới việc tối giản hóa không gian để mang lại cảm giác thư giãn tuyệt đối, giúp bạn tìm lại sự cân bằng và kết nối trọn vẹn với thiên nhiên ngay trong chính ngôi nhà của mình.",
+    "heroImg": "../shared/img/rooms/phong-ngu/zen2.jpg",
+    "gallery": [
+      "../shared/img/rooms/phong-ngu/zen1.jpg",
+      "../shared/img/rooms/phong-ngu/zen2.jpg",
+      "../shared/img/rooms/phong-ngu/zen3.jpg"
+    ]
+  },
+  "neoclassic": {
+    "name": "NEOCLASSIC",
+    "display": "NeoClassic (Tân cổ điển)",
+    "cardDesc": "Không gian sang trọng với đường nét phào chỉ tinh tế, tập trung vào tính đối xứng và vẻ đẹp quý phái.",
+    "tagline": "Vẻ đẹp quý phái vượt thời gian",
+    "desc": "Phong cách Tân cổ điển là bản giao hưởng giữa nét sang trọng châu Âu và hơi thở đương đại. Những đường phào chỉ tinh tế, chất liệu cao cấp và bố cục đối xứng chuẩn mực tạo nên một không gian quý phái nhưng không phô trương — nơi mỗi chi tiết đều kể một câu chuyện về gu thẩm mỹ của gia chủ.",
+    "heroImg": "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+    "gallery": [
+      "../shared/img/rooms/phong-ngu/neoclassic.jpg",
+      "../shared/img/rooms/phòng khách.jpg",
+      "../shared/img/rooms/Phòng ăn/phòng ăn.jpg"
+    ]
+  },
+  "indochine": {
+    "name": "INDOCHINE",
+    "display": "Indochine (Đông Dương)",
+    "cardDesc": "Không gian hoài cổ với sự giao thoa văn hóa Á - Âu, tập trung vào vật liệu truyền thống và họa tiết tinh xảo.",
+    "tagline": "Hoài niệm Đông Dương, tinh tế vượt thời gian",
+    "desc": "Phong cách Indochine đưa bạn ngược dòng thời gian về những năm tháng vàng son của kiến trúc Đông Dương. Gỗ tự nhiên trầm ấm, mây tre đan thủ công và họa tiết kỷ hà tinh xảo hòa quyện cùng nhịp sống hiện đại, tạo nên một không gian hoài cổ đầy chất thơ mà vẫn tiện nghi trọn vẹn.",
+    "heroImg": "../shared/img/rooms/phong-ngu/indochine1.jpg",
+    "gallery": [
+      "../shared/img/rooms/phong-ngu/indochine1.jpg",
+      "../shared/img/rooms/trang trí.jpg",
+      "../shared/img/rooms/Phòng ăn/phòng ăn.jpg"
+    ]
+  }
+}

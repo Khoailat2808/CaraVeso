@@ -1,0 +1,22 @@
+[
+  { "id": 101, "name": "Bàn ăn Minimal Oak", "desc": "Gỗ sồi tự nhiên,<br>120 × 75 × 75 cm", "price": 4890000, "img": "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=420&q=80" },
+  { "id": 102, "name": "Bàn ăn Honey Oak", "desc": "Gỗ sồi vàng cao cấp,<br>120 × 70 × 75 cm", "price": 5290000, "img": "https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=420&q=80" },
+  { "id": 103, "name": "Bàn ăn Nordic Light", "desc": "Phong cách Bắc Âu,<br>120 × 80 × 75 cm", "price": 5790000, "img": "https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=420&q=80" },
+  { "id": 104, "name": "Bàn ăn Urban 4S", "desc": "Thiết kế hiện đại,<br>130 × 80 × 75 cm", "price": 6190000, "img": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=420&q=80" },
+  { "id": 105, "name": "Bàn ăn Japandi Home", "desc": "Tối giản tinh tế,<br>120 × 75 × 75 cm", "price": 6490000, "img": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=420&q=80" },
+  { "id": 106, "name": "Bàn ăn Compact Plus", "desc": "Tiết kiệm diện tích,<br>110 × 70 × 75 cm", "price": 6890000, "img": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=420&q=80" },
+  { "id": 107, "name": "Bàn ăn White Harmony", "desc": "Sang trọng,<br>120 × 75 × 75 cm", "price": 7290000, "img": "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=420&q=80" },
+  { "id": 108, "name": "Bàn ăn Walnut Classic", "desc": "Gỗ óc chó hiện đại,<br>140 × 80 × 75 cm", "price": 7890000, "img": "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=420&q=80" },
+  { "id": 109, "name": "Bàn ăn Nordic Prime", "desc": "Gỗ sồi Mỹ bền đẹp,<br>140 × 80 × 75 cm", "price": 8490000, "img": "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=420&q=80" },
+  { "id": 110, "name": "Bàn ăn Cozy Living", "desc": "Phù hợp căn hộ nhỏ,<br>120 × 75 × 75 cm", "price": 8990000, "img": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=420&q=80" },
+  { "id": 111, "name": "Bàn ăn Milano Wood", "desc": "Mặt chống trầy xước,<br>140 × 80 × 75 cm", "price": 9490000, "img": "https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=420&q=80" },
+  { "id": 112, "name": "Bàn ăn Osaka Modern", "desc": "Gỗ tần bì tự nhiên,<br>140 × 80 × 75 cm", "price": 9990000, "img": "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=420&q=80" },
+  { "id": 113, "name": "Bàn ăn Stockholm", "desc": "Scandinavian cao cấp,<br>150 × 80 × 75 cm", "price": 10490000, "img": "https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=420&q=80" },
+  { "id": 114, "name": "Bàn ăn Elegant Oak", "desc": "Gỗ sồi nguyên khối,<br>150 × 80 × 75 cm", "price": 11290000, "img": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=420&q=80" },
+  { "id": 115, "name": "Bàn ăn Verona", "desc": "Chân thép phối gỗ,<br>140 × 80 × 75 cm", "price": 11990000, "img": "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=420&q=80" },
+  { "id": 116, "name": "Bàn ăn Copenhagen", "desc": "Gỗ cao su tự nhiên,<br>150 × 85 × 75 cm", "price": 12790000, "img": "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=420&q=80" },
+  { "id": 117, "name": "Bàn ăn Signature Walnut", "desc": "Gỗ óc chó cao cấp,<br>160 × 85 × 75 cm", "price": 14100000, "img": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=420&q=80" },
+  { "id": 118, "name": "Bàn ăn Premium Nordic", "desc": "Gỗ sồi nhập khẩu,<br>160 × 90 × 75 cm", "price": 15490000, "img": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=420&q=80" },
+  { "id": 119, "name": "Bàn ăn Luxury Wood", "desc": "Mặt gỗ dày 30mm,<br>180 × 90 × 75 cm", "price": 17490000, "img": "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=420&q=80" },
+  { "id": 120, "name": "Bàn ăn Royal Walnut", "desc": "Gỗ óc chó nguyên khối,<br>180 × 90 × 75 cm", "price": 19890000, "img": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=420&q=80" }
+]

@@ -1,0 +1,6 @@
+[
+  { "label": "Sản phẩm", "href": "../danh-muc-san-pham/", "mega": "products" },
+  { "label": "Các phòng", "href": "../danh-muc-cac-phong/", "mega": "rooms" },
+  { "label": "Khuyến mãi", "href": "../khuyen-mai/", "dropdown": null },
+  { "label": "Đổi trả/ Bảo hành", "href": "../bao-hanh/", "dropdown": null }
+]

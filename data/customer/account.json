@@ -1,0 +1,14 @@
+{
+  "user": {
+    "name": "Hoàng Huy Tiến",
+    "birthday": "08/09/2006",
+    "gender": "Nam",
+    "email": "tienhhk24411@st.uel.edu.vn",
+    "phone": "0919120176",
+    "address": "Số 18, đường Hoàng Diệu, Tân An, Phường Lagi, tỉnh Lâm Đồng"
+  },
+  "orders": [
+    { "id": "HHT080906", "date": "30/06/2026", "total": 123000, "status": "Đang giao" },
+    { "id": "TPBH110306", "date": "08/09/2025", "total": 113000, "status": "Đã giao" }
+  ]
+}

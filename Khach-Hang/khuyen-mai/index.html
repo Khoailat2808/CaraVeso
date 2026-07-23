@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khuyến mãi — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/style.css">
+</head>
+<body data-page="promo">
+
+  <div id="site-header"></div>
+
+  <main>
+    <!-- ===== HERO KHUYẾN MÃI + ĐỒNG HỒ ĐẾM NGƯỢC ===== -->
+    <section class="promo-hero">
+      <h1>Khuyến mãi hôm nay</h1>
+      <p>Ưu đãi lên đến 30% cho các sản phẩm nội thất cao cấp — nhanh tay kẻo lỡ!</p>
+      <div class="countdown" role="timer" aria-label="Thời gian khuyến mãi còn lại">
+        <div class="countdown__cell">
+          <div class="countdown__num" id="cd-days">00</div>
+          <div class="countdown__label">NGÀY</div>
+        </div>
+        <div class="countdown__cell">
+          <div class="countdown__num" id="cd-hours">00</div>
+          <div class="countdown__label">GIỜ</div>
+        </div>
+        <div class="countdown__cell">
+          <div class="countdown__num" id="cd-mins">00</div>
+          <div class="countdown__label">PHÚT</div>
+        </div>
+        <div class="countdown__cell">
+          <div class="countdown__num" id="cd-secs">00</div>
+          <div class="countdown__label">GIÂY</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LƯỚI SẢN PHẨM ĐANG GIẢM GIÁ + BỘ LỌC ===== -->
+    <div class="container">
+      <div class="page-head">
+        <h1 class="page-title">Khuyến mãi<small id="result-count"></small></h1>
+        <div class="sort-control">
+          <span>⇅ Sắp xếp theo:</span>
+          <select id="sort-select" aria-label="Sắp xếp sản phẩm">
+            <option value="default">Mặc định</option>
+            <option value="price-asc">Giá tăng dần</option>
+            <option value="price-desc">Giá giảm dần</option>
+            <option value="name">Tên A → Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="catalog">
+        <!-- ===== SIDEBAR BỘ LỌC ===== -->
+        <aside class="filters">
+          <h2 class="filters__title">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            Bộ lọc
+          </h2>
+
+          <!-- Lọc theo giá -->
+          <div class="filter-group">
+            <button class="filter-group__head" type="button">
+              <span>Giá <small>(VND)</small></span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 15l-6-6-6 6"/></svg>
+            </button>
+            <div class="filter-group__body">
+              <div class="range-slider" id="price-slider">
+                <div class="range-slider__track"></div>
+                <div class="range-slider__fill" id="price-fill"></div>
+                <input type="range" id="price-range-min" min="500000" max="35000000" step="500000" value="500000" aria-label="Giá tối thiểu">
+                <input type="range" id="price-range-max" min="500000" max="35000000" step="500000" value="35000000" aria-label="Giá tối đa">
+              </div>
+              <div class="price-scale"><span>500.000</span><span>35.000.000</span></div>
+              <div class="price-inputs">
+                <input type="text" id="price-min" inputmode="numeric" placeholder="500.000" aria-label="Giá từ">
+                <span>—</span>
+                <input type="text" id="price-max" inputmode="numeric" placeholder="35.000.000" aria-label="Giá đến">
+              </div>
+            </div>
+          </div>
+
+          <!-- Lọc theo phân loại -->
+          <div class="filter-group">
+            <button class="filter-group__head" type="button">
+              <span>Phân loại</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 15l-6-6-6 6"/></svg>
+            </button>
+            <div class="filter-group__body">
+              <label class="filter-check"><input type="checkbox" name="category" value="sofa"> Ghế sofa</label>
+              <label class="filter-check"><input type="checkbox" name="category" value="ban"> Bàn</label>
+              <label class="filter-check"><input type="checkbox" name="category" value="tu"> Tủ</label>
+              <label class="filter-check"><input type="checkbox" name="category" value="ke"> Kệ</label>
+              <label class="filter-check"><input type="checkbox" name="category" value="nem"> Nệm - Chăn ga</label>
+              <label class="filter-check"><input type="checkbox" name="category" value="den"> Đèn trang trí</label>
+              <label class="filter-check"><input type="checkbox" name="category" value="trang-tri"> Đồ trang trí</label>
+            </div>
+          </div>
+        </aside>
+
+        <!-- ===== LƯỚI SẢN PHẨM (render bằng JS) ===== -->
+        <div>
+          <div class="product-grid" id="promo-grid"></div>
+          <div class="load-more-wrap">
+            <button class="btn-load-more" id="btn-load-more">Xem thêm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../shared/js/data.js"></script>
+  <script src="../shared/js/main.js"></script>
+</body>
+</html>

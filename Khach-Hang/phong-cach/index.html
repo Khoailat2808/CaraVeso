@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phong cách — CaraVeso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/style.css">
+</head>
+<!-- Trang dùng chung cho 4 phong cách: ?style=zen | minimalist | neoclassic | indochine (&room=...) -->
+<body data-page="style">
+
+  <div id="site-header"></div>
+
+  <!-- ===== BREADCRUMB: Trang chủ › Các phòng › Phòng ngủ › Zen Style ===== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="../trang-chu/">Trang chủ</a></li>
+        <li><a href="../phong/?room=phong-ngu">Các phòng</a></li>
+        <li><a id="style-breadcrumb-room" href="../phong/?room=phong-ngu">Phòng ngủ</a></li>
+        <li id="style-breadcrumb-name">Zen Style</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main id="style-root">
+    <!-- ===== HERO: CHỮ GIỮA ẢNH ===== -->
+    <section class="style-hero" id="style-hero">
+      <img src="" alt="">
+      <div class="style-hero__caption">
+        <h1 id="style-hero-name">ZEN</h1>
+        <p id="style-hero-tagline"></p>
+      </div>
+    </section>
+
+    <!-- ===== GIỚI THIỆU PHONG CÁCH ===== -->
+    <section class="container style-intro">
+      <h2 id="style-intro-title"></h2>
+      <p id="style-intro-desc"></p>
+    </section>
+
+    <!-- ===== 3 ẢNH MINH HỌA ===== -->
+    <section class="container">
+      <div class="style-gallery" id="style-gallery"></div>
+    </section>
+
+    <!-- ===== SẢN PHẨM THUỘC BỘ SƯU TẬP ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Các sản phẩm thuộc Oda Collection</h2>
+        </div>
+        <div class="product-grid product-grid--5" id="style-grid"></div>
+        <div class="pagination" id="style-pagination"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../shared/js/data.js"></script>
+  <script src="../shared/js/main.js"></script>
+</body>
+</html>

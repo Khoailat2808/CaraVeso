@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý sản phẩm - CaraVeso Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body data-page="products">
+  <aside class="sidebar" aria-label="Điều hướng admin">
+    <div class="brand-row">
+      <a class="brand" href="../tong-quan/">
+        <span>CaraVeso</span>
+        <small>Management</small>
+      </a>
+      <button class="icon-button notification" type="button" aria-label="Thông báo"><img src="../shared/assets/icon-bell.png" alt="" aria-hidden="true"></button>
+    </div>
+
+    <nav class="side-nav">
+      <a href="../tong-quan/"><img class="nav-icon bars" src="../shared/assets/icon-overview.png" alt="" aria-hidden="true">Báo cáo tổng quan</a>
+      <a href="../quan-ly-don-hang/"><img class="nav-icon receipt" src="../shared/assets/icon-orders.png" alt="" aria-hidden="true">Quản lý đơn hàng</a>
+      <a href="../quan-ly-khach-hang/"><img class="nav-icon user" src="../shared/assets/icon-customers.png" alt="" aria-hidden="true">Quản lý khách hàng</a>
+      <a class="is-active" href="../quan-ly-san-pham/"><img class="nav-icon box" src="../shared/assets/icon-products.png" alt="" aria-hidden="true">Quản lý sản phẩm</a>
+      <a href="../quan-ly-noi-dung/"><img class="nav-icon doc" src="../shared/assets/icon-content.png" alt="" aria-hidden="true">Quản lý nội dung</a>
+      <a href="../quan-ly-voucher/"><img class="nav-icon ticket" src="../shared/assets/icon-voucher.png" alt="" aria-hidden="true">Quản lý Voucher và Khuyến mãi</a>
+      <a href="../quan-ly-hau-mai/"><img class="nav-icon medal" src="../shared/assets/icon-aftersale.png" alt="" aria-hidden="true">Quản lý dịch vụ hậu mãi</a>
+      <a href="../cham-soc-khach-hang/"><img class="nav-icon headset" src="../shared/assets/icon-support.png" alt="" aria-hidden="true">Chăm sóc khách hàng</a>
+      <a href="../quan-ly-thanh-toan/"><img class="nav-icon coin" src="../shared/assets/icon-payment.png" alt="" aria-hidden="true">Quản lý thanh toán</a>
+      <a href="../quan-ly-danh-muc/"><img class="nav-icon folder" src="../shared/assets/icon-category.png" alt="" aria-hidden="true">Quản lý danh mục</a>
+    </nav>
+
+    <div class="admin-profile">
+      <img class="avatar photo" src="../shared/assets/avatar-anh-khoa.png" alt="Anh Khoa">
+      <div><strong>Anh Khoa</strong><span>Admin</span></div>
+      <button class="icon-button logout" type="button" aria-label="Đăng xuất"><img src="../shared/assets/icon-logout.png" alt="" aria-hidden="true"></button>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="top-header">
+      <h1>Quản lý sản phẩm</h1>
+    </header>
+
+    <main class="content product-content">
+      <section id="productListView">
+        <form class="product-toolbar" id="productFilters">
+          <label class="product-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input id="productSearchInput" type="search" placeholder="Tìm kiếm phiếu giảm giá, chương trình khuyến mãi...">
+          </label>
+          <select id="productCategoryFilter" aria-label="Danh mục">
+            <option value="">Danh mục</option>
+            <option value="sofa">Sofa</option>
+            <option value="ban">Bàn</option>
+            <option value="tu">Tủ</option>
+            <option value="den">Đèn</option>
+          </select>
+          <select id="productRoomFilter" aria-label="Các phòng">
+            <option value="">Các phòng</option>
+            <option value="phong-khach">Phòng khách</option>
+            <option value="phong-ngu">Phòng ngủ</option>
+            <option value="phong-bep">Phòng bếp</option>
+          </select>
+          <button class="btn-primary product-add-btn" type="button" id="showProductForm">
+            <span>+</span> Thêm sản phẩm
+          </button>
+        </form>
+
+        <section class="product-card">
+          <div class="product-tabs" role="tablist">
+            <button class="is-active" type="button" data-stock-tab="all">Tất cả (523)</button>
+            <button type="button" data-stock-tab="low">Sắp hết hàng (12)</button>
+            <button type="button" data-stock-tab="out">Hết hàng (10)</button>
+          </div>
+          <table class="product-table">
+            <thead>
+              <tr>
+                <th>Sản phẩm</th>
+                <th>SKU</th>
+                <th>Tồn kho</th>
+                <th>Trạng thái</th>
+                <th>Chỉnh sửa</th>
+              </tr>
+            </thead>
+            <tbody id="productRows"></tbody>
+          </table>
+          <div class="product-pager">
+            <button type="button" id="productPrevPage" aria-label="Trang trước">‹</button>
+            <strong id="productPage">1</strong>
+            <span>...</span>
+            <span id="productMaxPage">55</span>
+            <button type="button" id="productNextPage" aria-label="Trang sau">›</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="productFormView" hidden>
+        <h2 class="product-form-title">Thêm sản phẩm mới</h2>
+        <form class="product-form" id="productForm">
+          <div class="product-form-grid">
+            <label>Tên sản phẩm:<input id="productName" required placeholder="Nhập tên sản phẩm"></label>
+            <label>Mã sản phẩm (SKU):<input id="productSku" required placeholder="Nhập mã sản phẩm"></label>
+            <label>Chọn danh mục:<select id="productCategory"><option value="">(Có thể chọn nhiều hơn 1)</option><option value="sofa">Sofa</option><option value="ban">Bàn</option></select></label>
+            <label>Chọn danh mục phòng:<select id="productRoom"><option value="">(Có thể chọn nhiều hơn 1)</option><option value="phong-khach">Phòng khách</option><option value="phong-ngu">Phòng ngủ</option></select></label>
+            <div class="price-side">
+              <label>Giá nhập (VNĐ)<input id="productCost" type="number" placeholder="0 VNĐ"></label>
+              <span>—</span>
+              <label>Giá bán (VNĐ)<input id="productPrice" type="number" placeholder="0 VNĐ"></label>
+              <label>Lượng tồn kho:<input id="productStock" type="number" min="0" value="0"></label>
+            </div>
+          </div>
+
+          <section class="variant-card">
+            <div class="variant-head">
+              <h3>Phân loại và Biến thể sản phẩm</h3>
+              <button type="button" id="addVariant">Thêm phân loại</button>
+            </div>
+            <table>
+              <thead><tr><th>Phân loại</th><th>Số biến thể</th><th></th></tr></thead>
+              <tbody id="variantRows"></tbody>
+            </table>
+          </section>
+
+          <section class="media-card">
+            <h3><span>▸</span> Media sản phẩm</h3>
+            <div class="media-tabs">
+              <button class="is-active" type="button" data-media-tab="main">Ảnh chính</button>
+              <button type="button" data-media-tab="scene">Phối cảnh</button>
+              <button type="button" data-media-tab="model">Mô hình 3D</button>
+              <button type="button" data-media-tab="material">Vật liệu</button>
+              <button type="button" data-media-tab="variant">Phân loại</button>
+              <button type="button" data-media-tab="size">Kích thước</button>
+            </div>
+            <div class="media-body" id="mediaBody"></div>
+          </section>
+
+          <div class="product-actions">
+            <button class="btn-outline action-btn" type="button" id="backToProducts">Quay lại</button>
+            <button class="btn-primary action-btn" type="submit">Thêm</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="admin-footer">
+      <span>CaraVeso</span>
+      <small>Bản quyền © 2026 CARAVESO FURNITURE.</small>
+    </footer>
+  </div>
+
+  <script src="../shared/data.js"></script>
+  <script src="../shared/app.js"></script>
+</body>
+</html>
+
+
+
+
+
